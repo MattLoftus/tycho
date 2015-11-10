@@ -1,0 +1,19 @@
+{
+  "name": "tycho",
+  "version": "1.0.0",
+  "description": "A spacecraft monitoring application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattLoftus/tycho.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MattLoftus/tycho/issues"
+  },
+  "homepage": "https://github.com/MattLoftus/tycho#readme"
+}
