@@ -1,0 +1,31 @@
+{
+  "name": "Tycho",
+  "version": "0.0.0",
+  "authors": [
+    "Matt Loftus"
+  ],
+  "description": "A spacecraft monitoring application",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Materialize": "materialize#~0.97.1",
+    "angular": "~1.4.7",
+    "angular-jwt": "~0.0.9",
+    "angular-materialize": "*",
+    "angular-ui-router": "~0.2.15",
+    "jquery": "~2.1.4",
+    "jquery-knob": "jquery-knob#~1.2.11",
+    "keen-js": "~3.2.7",
+    "angular-jwt": "~0.0.9",
+    "Materialize": "materialize#~0.97.1",
+    "angular-materialize": "*",
+    "ng-file-upload": "~9.1.1",
+    "moment": "~2.10.6"
+  }
+}

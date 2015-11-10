@@ -1,0 +1,23 @@
+.DS_Store
+
+# SASS
+.sass-cache
+client/styles
+
+# Auth setup
+server/config/auth.js
+
+# Dependencies
+node_modules/
+client/lib
+client/dist
+client/styles
+
+# Images
+images/
+
+#API Keys
+client/keys/dashboardConfigure.js
+
+#Environmental variables
+.env
