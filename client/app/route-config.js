@@ -67,8 +67,8 @@
         },
         authenticate: true
       })
-      .state('stage-1', {
-        url: '/stage-1',
+      .state('stage1', {
+        url: '/stage1',
         views: {
           'nav': {
             templateUrl: 'app/navbar/navbar.html',
@@ -76,15 +76,15 @@
             controllerAs: 'navbar'            
           },
           '': {
-            templateUrl: 'app/stage-1/stage-1.html',
-            controller: 'Stage-1Controller',
+            templateUrl: 'app/stage1/stage1.html',
+            controller: 'Stage1Controller',
             controllerAs: 'stage-1'
           }
         },
         authenticate: true
       })
-      .state('stage-2', {
-        url: '/stage-2',
+      .state('stage2', {
+        url: '/stage2',
         views: {
           'nav': {
             templateUrl: 'app/navbar/navbar.html',
@@ -92,9 +92,9 @@
             controllerAs: 'navbar'            
           },
           '': {
-            templateUrl: 'app/stage-2/stage-2.html',
-            controller: 'Stage-2Controller',
-            controllerAs: 'stage-1'
+            templateUrl: 'app/stage2/stage2.html',
+            controller: 'Stage2Controller',
+            controllerAs: 'stage1'
           }
         },
         authenticate: true

@@ -2,9 +2,9 @@
   'use strict';
 
   angular.module('app')
-  .controller('CapsuleController', CapsuleController);
+  .controller('Stage1Controller', Stage1Controller);
 
-  function CapsuleController() {
+  function Stage1Controller() {
     var vm = this;
 
     
