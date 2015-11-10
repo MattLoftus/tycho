@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <title>Tycho</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="lib/Materialize/dist/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="styles/styles.css">
+  
+</head>
+<body>
+  <div class="main" ui-view></div>
+
+  <!-- build distribution -->
+  <!-- // <script src="dist/client.min.js"></script>
+  // <script src="dist/dependencies.min.js"></script> -->
+
+  <!-- app -->
+  <script src="app/app.js"></script>
+  <script src="app/route-config.js"></script>
+
+  <!-- controllers -->
+  <script src="auth/auth.controller.js"></script>
+  <script src="capsule/capsule.controller.js"></script>
+  <script src="mission/mission.controller.js"></script>
+  <script src="stage-1/stage-1.controller.js"></script>
+  <script src="stage-2/stage-2.controller.js"></script>
+  <script src="trajectory/trajectory.controller.js"></script>
+
+  <!-- services -->
+  <script src="services/auth.service.js"></script>
+  <script src="services/mission.service.js"></script>
+  <script src="services/vehicle.service.js"></script>
+  <script src="services/spacecraft.service.js"></script>
+  <script src="services/orbital.service.js"></script>
+
+
+  <script src="services/"></script>
+</body>
+</html>
