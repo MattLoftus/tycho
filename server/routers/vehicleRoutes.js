@@ -1,5 +1,7 @@
 var vehicleController = require('../controllers/vehicleController.js');
 
-module.exports = {
+module.exports = function (app) {
   
+  app.get('vehicleData', vehicleController.getVehicleData);
+
 }

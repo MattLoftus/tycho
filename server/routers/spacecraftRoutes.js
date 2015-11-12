@@ -1,5 +1,7 @@
 var spacecraftController = require('../controllers/spacecraftController.js');
 
-module.exports = {
+module.exports = function (app) {
+
+  app.get('spacecraftData', spacecraftController.getSpacecraftData);
   
 }
