@@ -11,7 +11,7 @@ module.exports = function (app, express) {
   var userRouter = express.Router();
   var missionRouter = express.Router();
   var orbitRouter = express.Router();
-  var spacecraftRouter = express.Router();
+  var craftRouter = express.Router();
   var vehicleRouter = express.Router();
 
   //morgan is for logging get and post data to the console.
@@ -28,7 +28,7 @@ module.exports = function (app, express) {
   app.use('/users', userRouter); 
   app.use('/mission', missionRouter);
   app.use('/orbit', orbitRouter);
-  app.use('/spacecraft', spacecraftRouter);
+  app.use('/spacecraft', craftRouter);
   app.use('/vehicle', vehicleRouter);
 
   //inject our routers into their respective route files
@@ -36,7 +36,7 @@ module.exports = function (app, express) {
   require('../routers/userRoutes.js')(userRouter);
   require('../routers/missionRoutes.js')(missionRouter, passport);
   require('../routers/orbitRoutes.js')(orbitRouter);
-  require('../routers/spacecraftRoutes.js')(spacecraftRouter);
+  require('../routers/craftRoutes.js')(craftRouter);
   require('../routers/vehicleRoutes.js')(vehicleRouter);
 
   //inject passport into passport configuration file

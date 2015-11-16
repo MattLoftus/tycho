@@ -2,6 +2,6 @@ var missionController = require('../controllers/missionController.js');
 
 module.exports = function (app) {
   
-  app.get('meta', missionController.getMetaData);
+  app.get('/meta/:missionID', missionController.getMetaData);
   
 }
