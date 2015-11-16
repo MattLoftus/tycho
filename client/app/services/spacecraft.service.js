@@ -4,7 +4,9 @@
   angular.module('app')
   .factory('Spacecraft', Spacecraft);
 
-  function Spacecraft() {
+  Spacecraft.$inject = ['$http'];
+
+  function Spacecraft($http) {
     var services = {
       getCraftData: getCraftData 
     };
