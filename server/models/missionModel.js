@@ -2,8 +2,8 @@ var db = require('../db/connection.js');
 
 module.exports = {
   
-  getMetaData: function (callback) {
-    db.query('select * from mission'), function (err, missionMeta) {
+  getMetaData: function (missionID, callback) {
+    db.query('select * from mission where mission_id = ?'), [missionID], function (err, missionMeta) {
       if (err) {
         callback(err);
       } else {

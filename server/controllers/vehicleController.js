@@ -25,7 +25,7 @@ module.exports = {
   },
 
   getTankData: function (req, res) {
-    vehicleModel.getTankData(req.params.missionID, function (err, tankData) {
+    vehicleModel.getTankData(req.params.missionID, req.params.stageID, function (err, tankData) {
       if (err) {
         console.error(err);
         res.status(404).send(err);

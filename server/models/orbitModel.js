@@ -1,8 +1,8 @@
 var db = require('../db/connection.js');
 
 module.exports = {
-  getVehicleTrajectory: function (callback) {
-    db.query('select * from mission', function (err, trajectory) {
+  getVehicleTrajectory: function (missionID, callback) {
+    db.query('select * from mission where mission_id = ?', [missionID], function (err, trajectory) {
       if (err) {
         callback(err);
       } else {
