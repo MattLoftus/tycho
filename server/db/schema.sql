@@ -15,7 +15,6 @@ CREATE TABLE 'mission' (
   'name' varchar(250),
   'velocity' float,
   'heading' float,
-  'velocity' float,
   'altitude' float,
   'latitude' float,
   'longitude' float,
@@ -33,7 +32,6 @@ CREATE TABLE 'engines' (
   'engine_num' int,
   'chamber_pressure' float,
   'force_thrust' float,
-  'created_at' int,
   'last_updated' int,
   PRIMARY KEY ('id')
 );
@@ -45,7 +43,6 @@ CREATE TABLE 'tanks' (
   'tank_pressure' float,
   'fuel_volume' float,
   'fuel_mass' float,
-  'created_at' int, 
   'last_updated' int,
   PRIMARY KEY ('id')
 )
@@ -56,6 +53,7 @@ CREATE TABLE 'craft' (
   'power' float,
   'cabin_pressure' float,
   'monoprop' float,
+  'last_updated' int,
   PRIMARY KEY ('id')
 )
 
