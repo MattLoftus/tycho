@@ -14,9 +14,9 @@ module.exports = {
 
   addCraftData: function (craftData, callback) {
     var date = Date.now();
-    db.query('insert into craft (mission_id, power, cabin_pressure, monoprop \
+    db.query('insert into craft (mission_id, power, cabin_pressure, monoprop, \
       last_updated) values (?, ?, ?, ?, ?)', [craftData.mission_id, craftData.power, 
-      craftData.cabin_pressure, craftData.monoprop], function (err, craftData) {
+      craftData.cabin_pressure, craftData.monoprop, date], function (err, craftData) {
         if (err) {
           callback(err);
         } else {

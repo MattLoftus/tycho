@@ -48,7 +48,7 @@ module.exports = {
 
   addTankData: function (tankData, callback) {
     var date = Date.now();
-    db.query('insert into tanks (mission_id, stage_num, tank_pressure, fuel_volume, 
+    db.query('insert into tanks (mission_id, stage_num, tank_pressure, fuel_volume, \
       fuel_mass, last_updated) values (?, ?, ?, ?, ?, ?)', [tankData.mission_id, 
       tankData.stage_num, tankData.tank_pressure, tankData.fuel_volume, tankData.fuel_mass,
       date], function (err, tankData) {

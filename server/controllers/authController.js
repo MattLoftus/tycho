@@ -21,9 +21,7 @@ module.exports = {
         // create the user
         var newUser = {
           username: req.body.username,
-          password: req.body.password,
-          email: req.body.email,
-          photo: '/assets/placeholder_avatar.svg.hi.png'
+          password: req.body.password
         };
 
         User.addUserByLocal(newUser, function (err, result) {
