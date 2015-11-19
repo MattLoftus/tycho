@@ -18,10 +18,10 @@ CREATE TABLE 'mission' (
   'altitude' float,
   'latitude' float,
   'longitude' float,
-  'created_at' int,
   'apogee' float,
   'perigee' float,
   'inclination' float,
+  'created_at' int,
   PRIMARY KEY ('id')
 );
 

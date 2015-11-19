@@ -20,7 +20,6 @@ var sampleMission = [{
   altitude: 50.1,
   latitude: 37.0,
   longitude: 35.0,
-  created_at: 100;
   apogee: 97,
   perigee: 74,
   inclination: 2.5
@@ -43,7 +42,7 @@ var sampleEngine = [{
   last_updated: 1
 }];
 
-var sampleTanks = [{
+var sampleTank = [{
   mission_id: 1,
   stage_num: 1,
   tank_pressure: 1,
@@ -69,17 +68,53 @@ function addUsers () {
 }
 
 function addMissionData () {
-
+  for (var i = 0; i < sampleMission.length; i++) {
+    var mission = sampleMission[i];
+    missionModel.addMissionData(mission, function (err, result) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("Added mission:", mission);
+      }
+    });
+  }
 }
 
 function addCraftData () {
-
+  for (var i = 0; i < sampleCraft.length; i++) {
+    var craft = sampleCraft[i];
+    craftModel.addCraftData(craft, function (err, result) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("Added craft:", craft);
+      }
+    });
+  }
 }
 
 function addEngineData () {
-
+  for (var i = 0; i < sampleEngine.length; i++) {
+    var engine = sampleEngine[i];
+    vehicleModel.addEngineData(engine, function (err, result) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("Added engine:", engine);
+      }
+    });
+  }
 }
 
 function addTankData () {
-  
+  for (var i = 0; i < sampleTank.length; i++) {
+    var tank = sampleTank[i];
+    vehicleModel.addTankData(tank, function (err, result) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("Added tank:", tank);
+      }
+    });
+  }
 }
