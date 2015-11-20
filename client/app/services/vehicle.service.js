@@ -17,8 +17,8 @@
 
     //engine and tank functions
 
-    function getEngineForStage (missionID, stageID) {
-      return $http.get('/vehicle/engine/stage/' + missionID + '/' + stageID)
+    function getEngineForStage (missionID, stageNo) {
+      return $http.get('/vehicle/engine/stage/' + missionID + '/' + stageNo)
         .then(function successCallback (res) {
           return res.data;
         }, function errorCallback (res) {
@@ -35,7 +35,7 @@
         })
     }
 
-    function getTankData (missionID, stageID) {
+    function getTankData (missionID, stageNo) {
       return $http.get('/vehicle/tank/' + missionID + '/' + stageID)
         .then(function successCallback (res) {
           return res.data;

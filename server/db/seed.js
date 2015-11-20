@@ -42,6 +42,7 @@ var sampleEngine = [{
 var sampleTank = [{
   mission_id: 1,
   stage_num: 1,
+  fuel_type: "hydrogen",
   tank_pressure: 1,
   fuel_volume: 150.0,
   fuel_mass: 100

@@ -51,8 +51,8 @@
         },
         authenticate: true
       })
-      .state('capsule', {
-        url: '/capsule',
+      .state('craft', {
+        url: '/craft',
         views: {
           'nav': {
             templateUrl: 'app/navbar/navbar.html',
@@ -61,8 +61,8 @@
           },
           '': {
             templateUrl: 'app/capsule/capsule.html',
-            controller: 'CapsuleController',
-            controllerAs: 'capsule'
+            controller: 'CraftController',
+            controllerAs: 'craft'
           }
         },
         authenticate: true

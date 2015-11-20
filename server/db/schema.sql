@@ -39,6 +39,7 @@ CREATE TABLE `tanks` (
   `id` int NOT NULL AUTO_INCREMENT,
   `mission_id` int,
   `stage_num` int,
+  `fuel_type` varchar(100),
   `tank_pressure` float,
   `fuel_volume` float,
   `fuel_mass` float,

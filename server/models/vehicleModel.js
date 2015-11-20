@@ -2,8 +2,8 @@ var db = require('../db/connection.js');
 
 module.exports = {
   
-  getEngineForStage: function (missionID, stageID, callback) {
-    db.query('select * from engines where mission_id = ? and stage_id = ?', [missionID, stageID], function (err, engineData) {
+  getEngineForStage: function (missionID, stageNo, callback) {
+    db.query('select * from engines where mission_id = ? and stage_num = ?', [missionID, stageNo], function (err, engineData) {
       if (err) {
         callback(err);
       } else {
@@ -22,8 +22,8 @@ module.exports = {
     });
   },
 
-  getTankData: function (missionID, stageID, callback) {
-    db.query('select * from engines where mission_id = ? and stage_id = ?', [missionID, stageID], function (err, tankData) {
+  getTankData: function (missionID, stageNo, callback) {
+    db.query('select * from engines where mission_id = ? and stage_num = ?', [missionID, stageNo], function (err, tankData) {
       if (err) {
         callback(err);
       } else {
@@ -48,10 +48,10 @@ module.exports = {
 
   addTankData: function (tankData, callback) {
     var date = Date.now();
-    db.query('insert into tanks (mission_id, stage_num, tank_pressure, fuel_volume, \
+    db.query('insert into tanks (mission_id, stage_num, fuel_type, tank_pressure, fuel_volume, \
       fuel_mass, last_updated) values (?, ?, ?, ?, ?, ?)', [tankData.mission_id, 
-      tankData.stage_num, tankData.tank_pressure, tankData.fuel_volume, tankData.fuel_mass,
-      date], function (err, tankData) {
+      tankData.stage_num, tankData.tank_pressure, tankData.fuel_type, tankData.fuel_volume, 
+      tankData.fuel_mass, date], function (err, tankData) {
         if (err) {
           callback(err);
         } else {

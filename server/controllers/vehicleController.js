@@ -3,7 +3,7 @@ var vehicleModel = require('../models/vehicleModel.js');
 module.exports = {
 
   getEngineForStage: function (req, res) {
-    vehicleModel.getEngineForStage(req.params.missionID, req.params.stageID, function (err, engineData) {
+    vehicleModel.getEngineForStage(req.params.missionID, req.params.stageNo, function (err, engineData) {
       if (err) {
         console.error(err);
         res.status(404).send(err);
@@ -25,7 +25,7 @@ module.exports = {
   },
 
   getTankData: function (req, res) {
-    vehicleModel.getTankData(req.params.missionID, req.params.stageID, function (err, tankData) {
+    vehicleModel.getTankData(req.params.missionID, req.params.stageNo, function (err, tankData) {
       if (err) {
         console.error(err);
         res.status(404).send(err);
