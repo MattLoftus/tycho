@@ -4,13 +4,13 @@
   angular.module('app')
   .controller('OrbitController', OrbitController);
 
-  OrbitController.$inject = ['Mission'];
+  OrbitController.$inject = ['$window', 'Mission'];
 
-  function OrbitController (Mission) {
+  function OrbitController ($window, Mission) {
     var vm = this;
 
     //View model properties and methods
-    vm.missionID = 0;
+    vm.missionID = $window.localStorage.missionID;
     vm.missionName = '';
     vm.heading = 0;
     vm.velocity = 0;
@@ -31,6 +31,7 @@
     function getOrbitalData () {
       Mission.getMissionMeta(vm.missionID) 
         .then(function (orbitData) {
+          console.log("The orbit data is: ", orbitData)
           vm.missionID = orbitData.id;
           vm.missionName = orbitData.name;
           vm.heading = orbitData.heading;

@@ -4,18 +4,17 @@
   angular.module('app')
   .controller('Stage1Controller', Stage1Controller);
 
-  Stage1Controller.$inject = ['Vehicle'];
+  Stage1Controller.$inject = ['$window', 'Vehicle'];
 
-  function Stage1Controller(Vehicle) {
+  function Stage1Controller($window, Vehicle) {
     var vm = this;
 
     //NOTE: This will ultimately probably vary depending
     //on the vehicle configuration and mission type. For 
     //now we make the assumption of a 9 engine stage
 
-
     //view model properties and methods
-    vm.missionID = 0;
+    vm.missionID = $window.localStorage.missionID;
     vm.stageNo = 1;
     vm.engines = {};
     vm.tanks = {};

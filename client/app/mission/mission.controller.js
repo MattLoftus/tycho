@@ -4,13 +4,13 @@
   angular.module('app')
   .controller('MissionController', MissionController);
 
-  MissionController.$inject = ['Mission'];
+  MissionController.$inject = ['$window', 'Mission'];
 
-  function MissionController (Mission) {
+  function MissionController ($window, Mission) {
     var vm = this;
 
     //View model properties and methods
-    vm.missionID = 0;
+    vm.missionID = $window.localStorage.missionID;
     vm.missionName = '';
     vm.heading = 0;
     vm.velocity = 0;
@@ -30,18 +30,19 @@
     //Non scope methods
     function getMissionMeta () {
       Mission.getMissionMeta(vm.missionID) 
-        .then(function (orbitData) {
-          vm.missionID = orbitData.id;
-          vm.missionName = orbitData.name;
-          vm.heading = orbitData.heading;
-          vm.velocity = orbitData.velocity;
-          vm.altitude = orbitData.altitude;
-          vm.latitude = orbitData.latitude;
-          vm.longitude = orbitData.longitude;
-          vm.apogee = orbitData.apogee;
-          vm.perigee = orbitData.perigee;
-          vm.inclination = orbitData.inclination;
-          vm.timestamp = orbitData.last_updated;
+        .then(function (missionData) {
+          console.log("The mission data is: ", missionData);
+          vm.missionID = missionData.id;
+          vm.missionName = missionData.name;
+          vm.heading = missionData.heading;
+          vm.velocity = missionData.velocity;
+          vm.altitude = missionData.altitude;
+          vm.latitude = missionData.latitude;
+          vm.longitude = missionData.longitude;
+          vm.apogee = missionData.apogee;
+          vm.perigee = missionData.perigee;
+          vm.inclination = missionData.inclination;
+          vm.timestamp = missionData.last_updated;
         });
     }
     

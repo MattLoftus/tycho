@@ -25,7 +25,7 @@
     $stateProvider
       .state('auth', {
         url: '/',
-        templateUrl: 'app/auth/auth.html',
+        templateUrl: 'app/auth/signin.html',
         controller: 'AuthController',
         controllerAs: 'auth',
         authenticate: false

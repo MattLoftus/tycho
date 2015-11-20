@@ -1,0 +1,18 @@
+<div class="signin">
+  <div>
+    <h5>Log In</h5>
+
+    <form name="auth.form" ng-submit="auth.signin()">
+      <input type="text" name="username" ng-model="auth.user.username" placeholder="Username" ng-pattern='/^[a-zA-Z0-9]*$/' required><br>
+
+      <input type="password" name="password" ng-model="auth.user.password" placeholder="Password" required><br>
+
+      <input type"text" name="mission ID" ng-model="auth.missionID" required><br>
+
+      <p>{{ auth.message }}</p>
+
+      <button type="submit">Log In</button>
+    </form>
+
+  </div>
+</div>

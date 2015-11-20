@@ -4,14 +4,14 @@
   angular.module('app')
   .controller('CraftController', CraftController);
 
-  CraftController.$inject = ['Spacecraft'];
+  CraftController.$inject = ['$window', 'Spacecraft'];
 
-  function CraftController (Spacecraft) {
+  function CraftController ($window, Spacecraft) {
     var vm = this;
 
     //view model properties and methods
     vm.craftID = 0;
-    vm.missionID = 0;
+    vm.missionID = $window.localStorage.missionID;
     vm.power = 0
     vm.cabinPressure = 0;
     vm.monoprop = 0;
