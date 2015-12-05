@@ -8,6 +8,7 @@ module.exports = function (app, express) {
 
   //Create all routers we will need
   //TODO: make authRouter
+  var authRouter = express.Router();
   var userRouter = express.Router();
   var missionRouter = express.Router();
   var orbitRouter = express.Router();
@@ -25,6 +26,7 @@ module.exports = function (app, express) {
  
 
   //Make our app use all the routers we define 
+  app.use('/auth', authRouter);
   app.use('/users', userRouter); 
   app.use('/mission', missionRouter);
   app.use('/orbit', orbitRouter);
@@ -32,14 +34,12 @@ module.exports = function (app, express) {
   app.use('/vehicle', vehicleRouter);
 
   //inject our routers into their respective route files
-  //TODO: Add inject Auth router into authRoutes.js
+  require('../routers/authRoutes.js')(authRouter);
   require('../routers/userRoutes.js')(userRouter);
   require('../routers/missionRoutes.js')(missionRouter, passport);
   require('../routers/orbitRoutes.js')(orbitRouter);
   require('../routers/craftRoutes.js')(craftRouter);
   require('../routers/vehicleRoutes.js')(vehicleRouter);
 
-  //inject passport into passport configuration file
-  require('../config/passport')(passport);
 
 };

@@ -9,12 +9,11 @@
   config.$inject = ['$stateProvider', '$urlRouterProvider', '$httpProvider', '$windowProvider'];
 
   function config($stateProvider, $urlRouterProvider, $httpProvider, $windowProvider) {
-    // default path
     $urlRouterProvider.otherwise(function ($injector, $location) {
       var window = $windowProvider.$get();
       var username = window.localStorage.username;
       if (username) {
-        return '/dashboard/' + username;
+        return '/mission';
       } else {
         return '/';
       }
@@ -37,82 +36,37 @@
       })
       .state('mission', {
         url: '/mission',
-        views: {
-          'nav': {
-            templateUrl: 'app/navbar/navbar.html',
-            controller: 'NavbarController',
-            controllerAs: 'navbar'
-          },
-          '': {
-            templateUrl: 'app/mission/mission.html',
-            controller: 'MissionController',
-            controllerAs: 'mission'
-          }
-        },
+        templateUrl: 'app/mission/mission.html',
+        controller: 'MissionController',
+        controllerAs: 'mission',
         authenticate: true
       })
       .state('craft', {
         url: '/craft',
-        views: {
-          'nav': {
-            templateUrl: 'app/navbar/navbar.html',
-            controller: 'NavbarController',
-            controllerAs: 'navbar'
-          },
-          '': {
-            templateUrl: 'app/capsule/capsule.html',
-            controller: 'CraftController',
-            controllerAs: 'craft'
-          }
-        },
+        templateUrl: 'app/capsule/capsule.html',
+        controller: 'CraftController',
+        controllerAs: 'craft',
         authenticate: true
       })
       .state('stage1', {
         url: '/stage1',
-        views: {
-          'nav': {
-            templateUrl: 'app/navbar/navbar.html',
-            controller: 'NavbarController',
-            controllerAs: 'navbar'            
-          },
-          '': {
-            templateUrl: 'app/stage1/stage1.html',
-            controller: 'Stage1Controller',
-            controllerAs: 'stage-1'
-          }
-        },
+        templateUrl: 'app/stage1/stage1.html',
+        controller: 'Stage1Controller',
+        controllerAs: 'stage-1',
         authenticate: true
       })
       .state('stage2', {
         url: '/stage2',
-        views: {
-          'nav': {
-            templateUrl: 'app/navbar/navbar.html',
-            controller: 'NavbarController',
-            controllerAs: 'navbar'            
-          },
-          '': {
-            templateUrl: 'app/stage2/stage2.html',
-            controller: 'Stage2Controller',
-            controllerAs: 'stage1'
-          }
-        },
+        templateUrl: 'app/stage2/stage2.html',
+        controller: 'Stage2Controller',
+        controllerAs: 'stage1',
         authenticate: true
       })
       .state('orbit', {
         url: '/orbit',
-        views: {
-          'nav': {
-            templateUrl: 'app/navbar/navbar.html',
-            controller: 'NavbarController',
-            controllerAs: 'navbar'            
-          },
-          '': {
-            templateUrl: 'app/orbit/orbit.html',
-            controller: 'OrbitController',
-            controllerAs: 'orbit'
-          }
-        },
+        templateUrl: 'app/orbit/orbit.html',
+        controller: 'OrbitController',
+        controllerAs: 'orbit',
         authenticate: true
       });
 
@@ -152,7 +106,7 @@
     $rootScope.$on('$stateChangeStart', function(event, toState) {
       if (toState.authenticate && !$window.localStorage.token) {
         event.preventDefault();
-        $state.transitionTo('splash');
+        $state.transitionTo('auth');
       }
     });
   }

@@ -1,5 +1,5 @@
 var User = require("../models/userModel.js");
-var util = require("../config/utilities.js");
+var util = require("../config/utils.js");
 
 module.exports = {
 

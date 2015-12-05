@@ -2,11 +2,11 @@
   'use strict';
 
   angular.module('app')
-    .factory('Auth', Auth);
+    .factory('User', User);
 
-  Auth.$inject = ['$http', '$window', '$state', 'jwtHelper'];
+  User.$inject = ['$http', '$window', '$state', 'jwtHelper'];
 
-  function Auth($http, $window, $state, jwtHelper) {
+  function User($http, $window, $state, jwtHelper) {
     var services = {
       signin: signin,
       signout: signout,
