@@ -192,7 +192,7 @@ function addCraftData () {
 
 function addEngineData () {
   for (var i = 0; i < sampleEngines.length; i++) {
-    var engine = sampleEngine[i];
+    var engine = sampleEngines[i];
     vehicleModel.addEngineData(engine, function (err, result) {
       if (err) {
         console.error(err);
@@ -205,7 +205,7 @@ function addEngineData () {
 
 function addTankData () {
   for (var i = 0; i < sampleTanks.length; i++) {
-    var tank = sampleTank[i];
+    var tank = sampleTanks[i];
     vehicleModel.addTankData(tank, function (err, result) {
       if (err) {
         console.error(err);

@@ -6,6 +6,9 @@ module.exports = function (app) {
 
   app.get('/engine/all/:missionID', vehicleController.getAllEngines);
 
+  app.get('/tank/all/:missionID', vehicleController.getAllTanks);
+
   app.get('/tank/:missionID/:stageNo', vehicleController.getTankData);
+
 
 }

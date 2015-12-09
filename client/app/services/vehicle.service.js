@@ -10,7 +10,8 @@
     var services = {
       getEngineForStage: getEngineForStage,
       getAllEngines: getAllEngines,
-      getTankData: getTankData 
+      getTankData: getTankData,
+      getAllTanks: getAllTanks 
     };
 
     return services;
@@ -41,6 +42,15 @@
           return res.data;
         }, function errorCallback (res) {
           console.log("Error retrieving tank data for stage");
+        });
+    }
+
+    function getAllTanks (missionID) {
+      return $http.get('/vehicle/tank/all/' + missionID)
+        .then(function successCallback (res) {
+          return res.data;
+        }, function errorCallback (res) {
+          console.log("Error retrieving all tank data");
         });
     }
   }

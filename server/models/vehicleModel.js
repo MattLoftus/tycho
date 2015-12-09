@@ -23,7 +23,7 @@ module.exports = {
   },
 
   getTankData: function (missionID, stageNo, callback) {
-    db.query('select * from engines where mission_id = ? and stage_num = ?', [missionID, stageNo], function (err, tankData) {
+    db.query('select * from tanks where mission_id = ? and stage_num = ?', [missionID, stageNo], function (err, tankData) {
       if (err) {
         callback(err);
       } else {
@@ -31,6 +31,16 @@ module.exports = {
       }
     });
   }, 
+
+  getAllTanks: function (missionID, callback) {
+    db.query('select * from tanks where mission_id = ?', [missionID], function (err, tankData) {
+      if (err) {
+        callback(err);
+      } else {
+        callback(null, tankData);
+      }
+    });
+  },
 
   addEngineData: function (engineData, callback) {
     var date = Date.now();

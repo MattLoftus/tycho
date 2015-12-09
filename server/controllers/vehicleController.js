@@ -33,6 +33,17 @@ module.exports = {
         res.status(200).json(tankData);
       }
     });
+  },
+
+  getAllTanks: function (req, res) {
+    vehicleModel.getAllTanks(req.params.missionID, function (err, tankData) {
+      if (err) {
+        console.error(err);
+        res.status(404).send(err);
+      } else {
+        res.status(200).json(tankData);
+      }
+    });
   }
   
 }
