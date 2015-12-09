@@ -31,22 +31,114 @@ var sampleCraft = [{
   monoprop: 52.2
 }];
 
-var sampleEngine = [{
-  mission_id: 1,
-  stage_num: 1,
-  engine_num: 1,
-  chamber_pressure: 87.0,
-  force_thrust: 100.0
-}];
+var sampleEngines = [
+  {
+    mission_id: 1,
+    stage_num: 1,
+    engine_num: 1,
+    chamber_pressure: 87.0,
+    force_thrust: 100.0
+  },
+  {
+    mission_id: 1,
+    stage_num: 1,
+    engine_num: 2,
+    chamber_pressure: 87.0,
+    force_thrust: 100.0
+  },
+  {
+    mission_id: 1,
+    stage_num: 1,
+    engine_num: 3,
+    chamber_pressure: 87.0,
+    force_thrust: 100.0
+  },
+  {
+    mission_id: 1,
+    stage_num: 1,
+    engine_num: 4,
+    chamber_pressure: 87.0,
+    force_thrust: 100.0
+  },
+  {
+    mission_id: 1,
+    stage_num: 1,
+    engine_num: 5,
+    chamber_pressure: 87.0,
+    force_thrust: 100.0
+  },
+  {
+    mission_id: 1,
+    stage_num: 1,
+    engine_num: 6,
+    chamber_pressure: 87.0,
+    force_thrust: 100.0
+  },
+  {
+    mission_id: 1,
+    stage_num: 1,
+    engine_num: 7,
+    chamber_pressure: 87.0,
+    force_thrust: 100.0
+  },
+  {
+    mission_id: 1,
+    stage_num: 1,
+    engine_num: 8,
+    chamber_pressure: 87.0,
+    force_thrust: 100.0
+  },
+  {
+    mission_id: 1,
+    stage_num: 1,
+    engine_num: 9,
+    chamber_pressure: 87.0,
+    force_thrust: 100.0
+  },
+  {
+    mission_id: 1,
+    stage_num: 2,
+    engine_num: 1,
+    chamber_pressure: 87.0,
+    force_thrust: 100.0
+  }
+];
 
-var sampleTank = [{
-  mission_id: 1,
-  stage_num: 1,
-  fuel_type: "hydrogen",
-  tank_pressure: 1,
-  fuel_volume: 150.0,
-  fuel_mass: 100
-}];
+var sampleTanks = [
+  {
+    mission_id: 1,
+    stage_num: 1,
+    fuel_type: "RP1",
+    tank_pressure: 1,
+    fuel_volume: 150.0,
+    fuel_mass: 100
+  },
+  {
+    mission_id: 1,
+    stage_num: 1,
+    fuel_type: "LOX",
+    tank_pressure: 1,
+    fuel_volume: 150.0,
+    fuel_mass: 100
+  },
+  {
+    mission_id: 1,
+    stage_num: 2,
+    fuel_type: "RP1",
+    tank_pressure: 1,
+    fuel_volume: 150.0,
+    fuel_mass: 100
+  },
+  {
+    mission_id: 1,
+    stage_num: 2,
+    fuel_type: "LOX",
+    tank_pressure: 1,
+    fuel_volume: 150.0,
+    fuel_mass: 100
+  },
+
+];
 
 function run () {
   addUsers();
@@ -99,7 +191,7 @@ function addCraftData () {
 }
 
 function addEngineData () {
-  for (var i = 0; i < sampleEngine.length; i++) {
+  for (var i = 0; i < sampleEngines.length; i++) {
     var engine = sampleEngine[i];
     vehicleModel.addEngineData(engine, function (err, result) {
       if (err) {
@@ -112,7 +204,7 @@ function addEngineData () {
 }
 
 function addTankData () {
-  for (var i = 0; i < sampleTank.length; i++) {
+  for (var i = 0; i < sampleTanks.length; i++) {
     var tank = sampleTank[i];
     vehicleModel.addTankData(tank, function (err, result) {
       if (err) {
