@@ -8,7 +8,7 @@ module.exports = {
           console.error(err);
           res.status(404).send(err)
         } else {
-          res.status(200).json(missionMeta);
+          res.status(200).json(missionMeta[0]);
         }
       });
     }

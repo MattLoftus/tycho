@@ -8,6 +8,7 @@ module.exports = {
         console.error(err);
         res.status(404).send(err);
       } else {
+        console.log(trajectory);
         res.status(200).json(trajectory);
       }
     });

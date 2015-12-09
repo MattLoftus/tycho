@@ -1,1 +1,35 @@
-<div></div>
+<div class="orbit">
+
+
+  <div class="main-container">
+    <div class="meta-data">
+      <i class="material-icons">menu</i>
+      <p>Mission | {{ orbit.missionName }}</p>
+      <p>Heading | {{ orbit.heading }} </p>
+    </div>
+    <canvas class="trajectory-canvas" width="800" height="800"></canvas>
+    
+  </div>
+
+  <div class="data-container">
+    <div class="field-names">
+      <p>Apogee</p>
+      <p>Perigee</p>
+      <p>Altitude</p>
+      <p>Inclination</p>
+      <p>Latitude</p>
+      <p>Longitude</p>
+      <p>Velocity</p>
+    </div>
+    <div class="field-values">
+      <p>{{ orbit.apogee }} km</p>
+      <p>{{ orbit.perigee }} km</p>
+      <p>{{ orbit.altitude }} km</p>
+      <p>{{ orbit.inclination }} deg</p>
+      <p>{{ orbit.latitude }} deg</p>
+      <p>{{ orbit.longitude }} deg</p>
+      <p>{{ orbit.velocity }} m/s</p>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,95 @@
+$mainBackground: #000;
+$earthBlue: #0000A0;
+$red: #ff0000;
+
+html {
+  font-size: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: $mainBackground;
+}
+
+.orbit {
+
+  
+
+  display: flex;
+  flex-direction: row; 
+  align-items: stretch;
+
+  p {
+    color: white;
+  }
+  
+  .main-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  canvas {
+    flex-grow: 9;
+    height: 90vh;
+    width: 90vh;
+
+  }
+
+  .meta-data {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    p {
+      margin-right: 5rem;
+      color: $red;
+    }
+  }
+
+  i {
+    margin-right: 5rem;
+    color: white;
+    font-size: 3rem; 
+  }
+  
+  .data-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    p {
+    
+    }
+  }
+
+  .field-names {
+    display: flex;
+    flex-direction: column;
+    p {
+      border-left: 2px solid white;
+      padding-left: .5rem;
+    }
+  }
+
+  .field-values {
+    display: flex;
+    flex-direction: column;
+    p {
+      color: green;
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

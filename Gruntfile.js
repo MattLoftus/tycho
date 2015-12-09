@@ -15,12 +15,18 @@ module.exports = function(grunt) {
       }
     },
 
-    uglify: {
-      client: {
-        src: [
-          'client/dist/client.js'
-        ],
-        dest: 'client/dist/client.min.js'
+    sass: {
+      dist: {
+        files: {
+          'client/styles/styles.css' : 'client/sass/styles.scss'
+        }
+      }
+    },
+
+    watch: {
+      css: {
+        files: ['client/sass/styles.scss'],
+        tasks: ['sass']
       }
     },
 
@@ -55,13 +61,27 @@ module.exports = function(grunt) {
   // Main grunt tasks
   ////////////////////////////////////////////////////
 
+  grunt.registerTask('server-dev', function (target) {
+    // Running nodejs in a different process and displaying output on the main console
+    var nodemon = grunt.util.spawn({
+         cmd: 'grunt',
+         grunt: true,
+         args: 'nodemon'
+    });
+    nodemon.stdout.pipe(process.stdout);
+    nodemon.stderr.pipe(process.stderr);
+
+    grunt.task.run([ 'watch' ]);
+  });
+
   grunt.registerTask('build', [
-    'concat'
+    'concat',
+    'sass'  
   ]);
 
   grunt.registerTask('default', [
     'build',
-    'nodemon'
+    'server-dev'
   ]);
 
 };
