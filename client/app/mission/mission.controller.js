@@ -4,9 +4,9 @@
   angular.module('app')
   .controller('MissionController', MissionController);
 
-  MissionController.$inject = ['$window', 'Mission'];
+  MissionController.$inject = ['$window', 'Mission', 'Vehicle'];
 
-  function MissionController ($window, Mission) {
+  function MissionController ($window, Mission, Vehicle) {
     var vm = this;
 
     //View model properties and methods
@@ -21,6 +21,8 @@
     vm.perigee = 0;
     vm.inclination = 0;
     vm.timestamp;
+    vm.engines = {};
+    vm.tanks = {};
 
     //Initialization procedures
     getMissionMeta();
@@ -44,6 +46,14 @@
           vm.inclination = missionData.inclination;
           vm.timestamp = missionData.last_updated;
         });
+    }
+
+    function getEngineData () {
+
+    }
+
+    function getTankData () {
+
     }
     
   }
