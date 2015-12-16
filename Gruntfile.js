@@ -9,7 +9,10 @@ module.exports = function(grunt) {
           "client/lib/jquery/dist/jquery.min.js",
           "client/lib/angular/angular.min.js",
           "client/lib/angular-ui-router/release/angular-ui-router.min.js",
-          "client/lib/angular-jwt/dist/angular-jwt.min.js"
+          "client/lib/angular-jwt/dist/angular-jwt.min.js",
+          "client/lib/jquery/dist/jquery.min.js",
+          "client/lib/moment/moment.min.js",
+          "client/lib/three.js/build/three.min.js"
         ],
         dest: 'client/dist/dependencies.min.js'
       }

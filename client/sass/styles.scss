@@ -24,20 +24,21 @@ html {
   flex-direction: row;
 
   .meta {
-    flex-grow: 10;
+    flex-basis: 30%;
     display: flex;
     flex-direction: column;
     border: 1px solid white;
   }
 
   .data {
-    flex-grow: 1;
+    flex-basis: 50%;
     display: flex;
     flex-direction: column;
     border: 1px solid white;
   }
 
   .title {
+    flex-basis: 20%;
     flex-grow: 1;
     display: block;
     margin: .5rem auto .5rem auto;
@@ -48,32 +49,29 @@ html {
   }
 
   .main-stats {
-    flex-grow: 6;
+    flex-basis: 80%;
     display: flex;
     flex-direction: row;
   }
 
   .vehic-stats,
   .time {
+    flex-basis: 50%;
     flex-grow: 1;
-    p {
-      display: block;
-      margin: auto;
-    }
   }
 
   .trajectory {
-    flex-grow: 1;
+    flex-basis: 50%;
     border: 1px solid white;
   }
 
   canvas {
-    height: 50vh;
-    width: 25vw;
+    height: 90%;
+    width: 90%;
   }
 
   .falcon-container {
-    flex-grow: 1;
+    flex-basis: 10%;
     border: 1px solid white;
   }
 
@@ -85,7 +83,33 @@ html {
   }
 
   .engines-tanks {
-    flex-grow: 16;
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+  } 
+
+  .stage-2 {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid white;
+    .tanks {
+      flex-grow: 2;
+      display: flex;
+      flex-direction: row;
+    }
+    .engines {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  .stage-1 {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: row;
     border: 1px solid white;
   }
 
@@ -112,19 +136,19 @@ html {
   }
   
   .main-container {
+    flex-basis: 80%;
     display: flex;
     flex-direction: column;
   }
 
-  canvas {
+  /*canvas {
     flex-grow: 9;
     height: 90vh;
     width: 90vh;
 
-  }
+  }*/
 
   .meta-data {
-    flex-grow: 1;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -141,6 +165,7 @@ html {
   }
   
   .data-container {
+    flex-basis: 20%;
     flex-grow: 1;
     display: flex;
     flex-direction: row;
