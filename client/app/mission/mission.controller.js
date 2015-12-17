@@ -36,7 +36,10 @@
     getTankData();
     drawTrajectory();
     s1EngineGraphic();
-
+    fuelTankGraphic(".s2-tank-graphic .RP1");
+    fuelTankGraphic(".s2-tank-graphic .LOX");
+    fuelTankGraphic(".s1-tank-graphic .RP1");
+    fuelTankGraphic(".s1-tank-graphic .LOX");
     //Scope methods
 
     //Non scope methods
@@ -158,7 +161,7 @@
       var camera = new THREE.PerspectiveCamera( 75, $window.innerWidth/$window.innerHeight, 0.1, 1000 );
       camera.position.set(0,0,300)
 
-      var renderer = new THREE.WebGLRenderer();
+      var renderer = new THREE.WebGLRenderer({antialias: true});
       renderer.setSize( $window.innerWidth * .3, $window.innerHeight * .3 );
       $(".s1-engine-graphic").append( renderer.domElement );
 
@@ -228,6 +231,91 @@
         renderer.render(scene, camera);
       };
 
+      render();
+    }
+
+    //////////////////////////////////
+    ///////////FUEL TANKS/////////////
+    //////////////////////////////////
+
+    function fuelTankGraphic (selector) {
+      var scene = new THREE.Scene();
+      var aspectRatio = $(selector).width()/$(selector).height();
+      var camera = new THREE.PerspectiveCamera( 75, 1.3, 0.1, 1000 );
+
+      var renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize( $window.innerWidth * .15, $window.innerHeight * .2);
+      // renderer.setSize( $(selector).width(), $(selector).height());
+      $(selector).append( renderer.domElement );
+
+      camera.position.set(0, 0, 70);
+
+      //Orbit Controls
+      // var orbit = new THREE.OrbitControls(camera, renderer.domElement);
+
+      //Lighting
+      var light = new THREE.AmbientLight( 0x404040 ); // soft white light
+      scene.add( light );
+
+      var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
+      directionalLight.position.set( -2, 2, 0 );
+      scene.add( directionalLight );
+
+
+      var tankGeometry = new THREE.CylinderGeometry( 25, 25, 70, 30, 30 );
+      var tankMaterial = new THREE.MeshPhongMaterial({
+        color: 0x65696b,
+        emissive: 0x2d2828,
+        specular: 0x7f7373,
+        wireframe: false,
+        transparent: true,
+        opacity: .5
+      });
+      var tank = new THREE.Mesh( tankGeometry, tankMaterial );
+      scene.add( tank );
+
+      var fuelSpecs = {
+        radius: 24,
+        height: 40,
+        radialSegments: 30,
+        heightSegments: 30
+      }
+
+      var fuelGeometry = new THREE.CylinderGeometry(fuelSpecs.radius, fuelSpecs.radius, fuelSpecs.height, fuelSpecs.radialSegments, fuelSpecs.heightSegments);
+      var fuelMaterial = new THREE.MeshPhongMaterial({
+        color: 0x117cb1,
+        emissive: 0x0b1b91,
+        specular: 0x1e1a1a
+      });
+      var fuel = new THREE.Mesh(fuelGeometry, fuelMaterial);
+      scene.add(fuel);
+      fuel.position.y = -13;
+
+      ///////////////////////////
+      /// RENDERING/ANIM LOOP ///
+      ///////////////////////////
+
+      var vec = new THREE.Vector3( 0, 0, 0 );
+      // var z = 500;
+      // var dx = 1;
+      // var dz = -0.5;
+      // var t = 20;
+      // dx = -2*(dz + .1)
+
+      var render = function (actions) {
+        // camera.position.x += dx;
+        // camera.position.z += dz;
+        // fuelSpecs.height -= 1;
+        // fuelGeometry = new THREE.CylinderGeometry(fuelSpecs.radius, fuelSpecs.radius, fuelSpecs.height, fuelSpecs.radialSegments, fuelSpecs.heightSegments);
+        // fuel = new THREE.Mesh(fuelGeometry, fuelMaterial);
+        // scene.add(fuel);
+        fuel.scale.y -= .0001;
+        fuel.position.y -= .02;
+
+        camera.lookAt(vec)
+        renderer.render(scene, camera);
+        requestAnimationFrame( render );
+      };
       render();
     }
 
