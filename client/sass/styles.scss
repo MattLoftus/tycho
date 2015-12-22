@@ -100,6 +100,8 @@ html {
     border: 1px solid $grey;
   } 
 
+  /* STAGE 2 STYLES */
+
   .stage-2 {
     flex-basis: 35%;
     flex-grow: 1;
@@ -111,10 +113,12 @@ html {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       align-items: center;
       border-right: 1px solid $grey;
       .stage-2-title {
         flex-basis: 15%;
+        flex-grow: 0;
         align-self: flex-start;
         color: $green;
         border-bottom: 1px solid $grey;
@@ -123,15 +127,24 @@ html {
       }
       .s2-tanks {
         flex-basis: 15%;
+        flex-shrink: 0;
         color: $softRed;
       } 
       .s2-tank-graphic {
         flex-basis: 70%;
         display: flex;
         flex-direction: row;
-        
-        div {
+        justify-content: space-between;
+        .RP1,
+        .LOX {
           flex-basis: 50%;
+          display: flex;
+          flex-direction: row;
+        }
+        .s2-RP1-stats,
+        .s2-LOX-stats {
+          display: flex;
+          flex-direction: column;
         }
       }
 
@@ -155,6 +168,7 @@ html {
     }
   }
 
+  /* STAGE 1 STYLES */
 
   .stage-1 {
     flex-basis: 65%;
@@ -187,12 +201,19 @@ html {
         align-self: stretch;
         display: flex;
         flex-direction: column;
-        div {
+        .RP1,
+        .LOX {
           flex-basis: 50%;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
         }
+        .s1-RP1-stats,
+        .s1-LOX-stats {
+          display: flex;
+          flex-direction: column;
+        }
+        
       }
     }
     .engines {

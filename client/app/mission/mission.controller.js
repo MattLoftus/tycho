@@ -36,10 +36,10 @@
     getTankData();
     drawTrajectory();
     s1EngineGraphic();
-    fuelTankGraphic(".s2-tank-graphic .RP1");
-    fuelTankGraphic(".s2-tank-graphic .LOX");
-    fuelTankGraphic(".s1-tank-graphic .RP1");
-    fuelTankGraphic(".s1-tank-graphic .LOX");
+    fuelTankGraphic(".s2-tank-graphic .RP1", 2);
+    fuelTankGraphic(".s2-tank-graphic .LOX", 2);
+    fuelTankGraphic(".s1-tank-graphic .RP1", 1);
+    fuelTankGraphic(".s1-tank-graphic .LOX", 1);
     //Scope methods
 
     //Non scope methods
@@ -90,70 +90,6 @@
         });
     }
 
-    //Creating the trajectory map
-    function drawTrajectory () {
-      var canvas = $(".trajectory-canvas")[0];
-      console.log(canvas);
-
-      //Distance scaling constant
-      var D = canvas.height / ( 5 * 6371 );
-      var radiusEarth = canvas.height / 5;
-
-      var center = [canvas.width/2, canvas.height/2];
-      var ctx = canvas.getContext("2d");
-      //Set apogee and perigee
-      var perigee = [center[0], center[1] - vm.perigee * D - radiusEarth - 100];
-      var apogee = [center[0], center[1] + vm.apogee * D + radiusEarth + 100];
-      console.log("Center: ", center);
-      console.log("Perigee: ", perigee);
-      console.log("Apogee: ", apogee);
- 
-      //Draw earth
-      ctx.beginPath();
-      ctx.arc(center[0], center[1], radiusEarth, 0, 2*Math.PI);
-      ctx.fillStyle = "#0000A0";
-      ctx.fill()
-      ctx.strokeStyle = "#0000A0";
-      ctx.lineWidth = 1;
-      ctx.stroke();
-      ctx.closePath();
-
-      //Draw apogee and perigee
-      ctx.beginPath(); 
-      ctx.arc(perigee[0], perigee[1], 6, 0, 2*Math.PI);
-      ctx.fillStyle = "#FFF";
-      ctx.fill()
-      ctx.strokeStyle = "#FFF";
-      ctx.lineWidth = 1;
-      ctx.stroke();
-      ctx.closePath();
-      ctx.beginPath();
-      ctx.arc(apogee[0], apogee[1], 6, 0, 2*Math.PI);
-      ctx.stroke();
-      ctx.fill();
-
-      //Apogee/Perigee text markers
-      ctx.font = "20px Helvetica Neue";
-      ctx.fillText("Pg", perigee[0] + 8, perigee[1] - 8);
-      ctx.fillText("Ap", apogee[0] + 8, apogee[1] - 8);
-
-      //Draw vehicle trajectory
-      ctx.beginPath();
-      ctx.moveTo(perigee[0], perigee[1]); // A1 (Perigee)
-      ctx.setLineDash([3,3]);
-      ctx.bezierCurveTo(
-        center[0] + 1.5 * radiusEarth, perigee[1], // C1
-        center[0] + 1.5 * radiusEarth, apogee[1], // C2
-        apogee[0], apogee[1]); // A2 (Apogee)
-      ctx.bezierCurveTo(
-        center[0] - 1.5 * radiusEarth, apogee[1], // C3
-        center[0] - 1.5 * radiusEarth, perigee[1], // C4
-        perigee[0], perigee[1]); // A1 (Back to Perigee)
-      ctx.strokeStyle = "#FFF";
-      ctx.stroke();
-      ctx.closePath();
-
-    }
 
     //Create Stage 1 engine graphic
     function s1EngineGraphic () {
@@ -238,20 +174,33 @@
     ///////////FUEL TANKS/////////////
     //////////////////////////////////
 
-    function fuelTankGraphic (selector) {
+    function fuelTankGraphic (selector, stageNo) {
       var scene = new THREE.Scene();
-      var aspectRatio = $(selector).width()/$(selector).height();
+      var width = $window.innerWidth;
+      var height = $window.innerHeight;
       var camera = new THREE.PerspectiveCamera( 75, 1.3, 0.1, 1000 );
+      
 
+
+      if (stageNo === 2) {
+        height = height * .35 * .7;
+        width = width * .6 * .55 * .3;
+      } else {
+        height = height * .65 * .8 * .5;
+        width = width * .6 * .4 * .5;
+      }
+      // var camera = new THREE.OrthographicCamera(- width/1 , width / 1, height / 1, -height /  1, 1, 1000 );
+
+      console.log("Selector:  ", selector, "width, height:  ", width, "  ", height)
       var renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setSize( $window.innerWidth * .15, $window.innerHeight * .2);
-      // renderer.setSize( $(selector).width(), $(selector).height());
+      // renderer.setSize( $window.innerWidth * .12, $window.innerHeight * .25);
+      renderer.setSize( width, height);
       $(selector).append( renderer.domElement );
 
-      camera.position.set(0, 0, 70);
+      camera.position.set(0, 0, 100);
 
       //Orbit Controls
-      // var orbit = new THREE.OrbitControls(camera, renderer.domElement);
+      var orbit = new THREE.OrbitControls(camera, renderer.domElement);
 
       //Lighting
       var light = new THREE.AmbientLight( 0x404040 ); // soft white light
@@ -262,12 +211,12 @@
       scene.add( directionalLight );
 
 
-      var tankGeometry = new THREE.CylinderGeometry( 25, 25, 70, 30, 30 );
+      var tankGeometry = new THREE.CylinderGeometry( 30, 30, 70, 30, 30 );
       var tankMaterial = new THREE.MeshPhongMaterial({
         color: 0x65696b,
         emissive: 0x2d2828,
         specular: 0x7f7373,
-        wireframe: false,
+        wireframe: true,
         transparent: true,
         opacity: .5
       });
@@ -275,11 +224,25 @@
       scene.add( tank );
 
       var fuelSpecs = {
-        radius: 24,
+        radius: 29,
         height: 40,
         radialSegments: 30,
         heightSegments: 30
       }
+
+      //Tank top/bottom
+      var tankCapGeometry = new THREE.SphereGeometry(30,30, 30, Math.PI*1.5, Math.PI, 0, 3.1);
+      var tankTop = new THREE.Mesh(tankCapGeometry, tankMaterial)
+      scene.add(tankTop);
+      tankTop.position.y = 34;
+      // tankTop.rotation.x = Math.PI / 2 ;
+      tankTop.rotation.z = -Math.PI/2;
+
+
+      var tankBottom = new THREE.Mesh(tankCapGeometry, tankMaterial)
+      scene.add(tankBottom);
+      tankBottom.position.y = -34;
+      tankBottom.rotation.z = Math.PI/2;
 
       var fuelGeometry = new THREE.CylinderGeometry(fuelSpecs.radius, fuelSpecs.radius, fuelSpecs.height, fuelSpecs.radialSegments, fuelSpecs.heightSegments);
       var fuelMaterial = new THREE.MeshPhongMaterial({
@@ -291,32 +254,98 @@
       scene.add(fuel);
       fuel.position.y = -13;
 
+      var fuelCapGeometry = new THREE.SphereGeometry(29,30, 30, Math.PI*1.5, Math.PI, 0, 3.1);
+      var fuelBottom = new THREE.Mesh(fuelCapGeometry, fuelMaterial);
+      scene.add(fuelBottom);
+      fuelBottom.position.y = -32;
+      fuelBottom.rotation.z = Math.PI/2;
+
       ///////////////////////////
       /// RENDERING/ANIM LOOP ///
       ///////////////////////////
 
       var vec = new THREE.Vector3( 0, 0, 0 );
-      // var z = 500;
-      // var dx = 1;
-      // var dz = -0.5;
-      // var t = 20;
-      // dx = -2*(dz + .1)
-
+    
       var render = function (actions) {
-        // camera.position.x += dx;
-        // camera.position.z += dz;
-        // fuelSpecs.height -= 1;
-        // fuelGeometry = new THREE.CylinderGeometry(fuelSpecs.radius, fuelSpecs.radius, fuelSpecs.height, fuelSpecs.radialSegments, fuelSpecs.heightSegments);
-        // fuel = new THREE.Mesh(fuelGeometry, fuelMaterial);
-        // scene.add(fuel);
-        fuel.scale.y -= .0001;
-        fuel.position.y -= .02;
+        if (fuel.scale.y > 0) {
+          fuel.scale.y -= .001;
+          fuel.position.y -= .02;
+        } else {
+          fuel.visible = false;
+        }
 
         camera.lookAt(vec)
         renderer.render(scene, camera);
         requestAnimationFrame( render );
       };
       render();
+    }
+
+
+
+    //Creating the trajectory map
+    function drawTrajectory () {
+      var canvas = $(".trajectory-canvas")[0];
+      console.log(canvas);
+
+      //Distance scaling constant
+      var D = canvas.height / ( 5 * 6371 );
+      var radiusEarth = canvas.height / 5;
+
+      var center = [canvas.width/2, canvas.height/2];
+      var ctx = canvas.getContext("2d");
+      //Set apogee and perigee
+      var perigee = [center[0], center[1] - vm.perigee * D - radiusEarth - 100];
+      var apogee = [center[0], center[1] + vm.apogee * D + radiusEarth + 100];
+      console.log("Center: ", center);
+      console.log("Perigee: ", perigee);
+      console.log("Apogee: ", apogee);
+ 
+      //Draw earth
+      ctx.beginPath();
+      ctx.arc(center[0], center[1], radiusEarth, 0, 2*Math.PI);
+      ctx.fillStyle = "#0000A0";
+      ctx.fill()
+      ctx.strokeStyle = "#0000A0";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.closePath();
+
+      //Draw apogee and perigee
+      ctx.beginPath(); 
+      ctx.arc(perigee[0], perigee[1], 6, 0, 2*Math.PI);
+      ctx.fillStyle = "#FFF";
+      ctx.fill()
+      ctx.strokeStyle = "#FFF";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.closePath();
+      ctx.beginPath();
+      ctx.arc(apogee[0], apogee[1], 6, 0, 2*Math.PI);
+      ctx.stroke();
+      ctx.fill();
+
+      //Apogee/Perigee text markers
+      ctx.font = "20px Helvetica Neue";
+      ctx.fillText("Pg", perigee[0] + 8, perigee[1] - 8);
+      ctx.fillText("Ap", apogee[0] + 8, apogee[1] - 8);
+
+      //Draw vehicle trajectory
+      ctx.beginPath();
+      ctx.moveTo(perigee[0], perigee[1]); // A1 (Perigee)
+      ctx.setLineDash([3,3]);
+      ctx.bezierCurveTo(
+        center[0] + 1.5 * radiusEarth, perigee[1], // C1
+        center[0] + 1.5 * radiusEarth, apogee[1], // C2
+        apogee[0], apogee[1]); // A2 (Apogee)
+      ctx.bezierCurveTo(
+        center[0] - 1.5 * radiusEarth, apogee[1], // C3
+        center[0] - 1.5 * radiusEarth, perigee[1], // C4
+        perigee[0], perigee[1]); // A1 (Back to Perigee)
+      ctx.strokeStyle = "#FFF";
+      ctx.stroke();
+      ctx.closePath();
+
     }
 
     
