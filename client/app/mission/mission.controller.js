@@ -34,7 +34,8 @@
     getMissionMeta();
     getEngineData();
     getTankData();
-    drawTrajectory();
+    // drawTrajectory();
+    trajectoryGraphic();
     s1EngineGraphic();
     s2EngineGraphic();
     fuelTankGraphic(".s2-tank-graphic .RP1", 2);
@@ -318,74 +319,140 @@
       render();
     }
 
+    //Create THREEJS trajectory Map
+    function trajectoryGraphic () {
+      //////////////////////
+      ///  SCENE/CAMERA  ///
+      //////////////////////
+
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera( 75, $window.innerWidth/$window.innerHeight, 0.1, 1000 );
+
+      var width = $window.innerWidth;
+      var height = $window.innerHeight;
+      width = width * .33;
+      height = height * .55;
+      var renderer = new THREE.WebGLRenderer();
+      renderer.setSize( width, height );
+      $(".trajectory").append( renderer.domElement );
+
+      camera.position.set(0, 0, 200);
+      camera.rotation.x = -(Math.PI / 4) * .4 ;
+      // camera.rotation. = (Math.PI/2) * 0.25;
+      // camera.lookAt(0,0,0);
+
+      ///////////////////////////
+      ///// ORBIT CONTROLS //////
+      ///////////////////////////
+      var orbit = new THREE.OrbitControls(camera, renderer.domElement);
+
+      //////////////////////
+      /////  LIGHTS  ///////
+      //////////////////////
+
+      var light = new THREE.AmbientLight( 0x888888 )
+      scene.add( light )
+
+      var light = new THREE.DirectionalLight( 0xcccccc, 1 )
+      light.position.set(5,3,5)
+      scene.add( light )
 
 
-    //Creating the trajectory map
-    function drawTrajectory () {
-      var canvas = $(".trajectory-canvas")[0];
-      console.log(canvas);
+      //////////////////////
+      /////  OBJECTS  //////
+      //////////////////////
 
-      //Distance scaling constant
-      var D = canvas.height / ( 5 * 6371 );
-      var radiusEarth = canvas.height / 5;
+      //Earth
+      var radius = 50;
+      var segments = 32;
+      var rings = 32;
 
-      var center = [canvas.width/2, canvas.height/2];
-      var ctx = canvas.getContext("2d");
-      //Set apogee and perigee
-      var perigee = [center[0], center[1] - vm.perigee * D - radiusEarth - 100];
-      var apogee = [center[0], center[1] + vm.apogee * D + radiusEarth + 100];
-      console.log("Center: ", center);
-      console.log("Perigee: ", perigee);
-      console.log("Apogee: ", apogee);
- 
-      //Draw earth
-      ctx.beginPath();
-      ctx.arc(center[0], center[1], radiusEarth, 0, 2*Math.PI);
-      ctx.fillStyle = "#0000A0";
-      ctx.fill()
-      ctx.strokeStyle = "#0000A0";
-      ctx.lineWidth = 1;
-      ctx.stroke();
-      ctx.closePath();
+      var geometry = new THREE.SphereGeometry(radius, segments, rings);
+      var material = new THREE.MeshPhongMaterial({color: 0x3022bb});
+      var sphere = new THREE.Mesh( geometry, material );
+      scene.add( sphere );
 
-      //Draw apogee and perigee
-      ctx.beginPath(); 
-      ctx.arc(perigee[0], perigee[1], 6, 0, 2*Math.PI);
-      ctx.fillStyle = "#FFF";
-      ctx.fill()
-      ctx.strokeStyle = "#FFF";
-      ctx.lineWidth = 1;
-      ctx.stroke();
-      ctx.closePath();
-      ctx.beginPath();
-      ctx.arc(apogee[0], apogee[1], 6, 0, 2*Math.PI);
-      ctx.stroke();
-      ctx.fill();
+      //Spacecraft
+      var radius = 5;
+      var segments = 32;
+      var rings = 32;
 
-      //Apogee/Perigee text markers
-      ctx.font = "20px Helvetica Neue";
-      ctx.fillText("Pg", perigee[0] + 8, perigee[1] - 8);
-      ctx.fillText("Ap", apogee[0] + 8, apogee[1] - 8);
+      var craftGeometry = new THREE.SphereGeometry(radius, segments, rings);
+      var craftMaterial = new THREE.MeshPhongMaterial({color: 0xffffff});
+      var craft = new THREE.Mesh( craftGeometry, craftMaterial );
+      craft.position.set(100, 0, 0);
+      scene.add( craft );
 
-      //Draw vehicle trajectory
-      ctx.beginPath();
-      ctx.moveTo(perigee[0], perigee[1]); // A1 (Perigee)
-      ctx.setLineDash([3,3]);
-      ctx.bezierCurveTo(
-        center[0] + 1.5 * radiusEarth, perigee[1], // C1
-        center[0] + 1.5 * radiusEarth, apogee[1], // C2
-        apogee[0], apogee[1]); // A2 (Apogee)
-      ctx.bezierCurveTo(
-        center[0] - 1.5 * radiusEarth, apogee[1], // C3
-        center[0] - 1.5 * radiusEarth, perigee[1], // C4
-        perigee[0], perigee[1]); // A1 (Back to Perigee)
-      ctx.strokeStyle = "#FFF";
-      ctx.stroke();
-      ctx.closePath();
+      //Optional Target
+      var radius = 5;
+      var segments = 32;
+      var rings = 32;
 
+      var targetGeometry = new THREE.SphereGeometry(radius, segments, rings);
+      var targetMaterial = new THREE.MeshPhongMaterial({color: 0x00cc00});
+      var targetObject = new THREE.Mesh( targetGeometry, targetMaterial );
+      targetObject.position.set(0, -30, 100);
+      scene.add( targetObject );
+
+      //////////////////////
+      ////  TRAJECTORY  ////
+      //////////////////////
+     
+      //Current Trajectory / orbit
+      var apogee = [0, 150, 0];
+      var perigee = [0, 100, 0];
+
+      var ellipseMaterial = new THREE.LineBasicMaterial({color:0xffffff, opacity:1});
+      var ellipse = new THREE.EllipseCurve(
+        0, 0, 
+        perigee[1] * .75, apogee[1] * .75, 
+        0, 2.0 * Math.PI, 
+        false);
+      var ellipsePath = new THREE.CurvePath(ellipse.getPoints(1000));
+      ellipsePath.add(ellipse);
+      var ellipseGeometry = ellipsePath.createPointsGeometry(100);
+      var line = new THREE.Line(ellipseGeometry, ellipseMaterial);
+      scene.add( line );
+      line.rotation.z = (Math.PI / 2) * 0.75;
+      line.rotation.x = (Math.PI / 2) * 1.2;
+
+
+      //Target trajectory / orbit
+      var targetMaterial = new THREE.LineDashedMaterial({
+        color: 0x00cc00, 
+        opacity:1, 
+        dashSize: 8,
+        gapSize: 8
+      });
+      var targetOrbit = new THREE.EllipseCurve(
+        0,0,
+        perigee[1] * 1.0, apogee[1] * 1.0, 
+        0, 2.0 * Math.PI, 
+        false);
+      var targetPath = new THREE.CurvePath(targetOrbit.getPoints(1000));
+      targetPath.add(targetOrbit);
+      var targetGeometry = targetPath.createPointsGeometry(100);
+      var target = new THREE.Line(targetGeometry, targetMaterial);
+      scene.add( target );
+      target.rotation.z = (Math.PI / 2) * 0.75;
+      target.rotation.x = (Math.PI / 2) * 1.2;
+
+
+      ///////////////////////////
+      /// RENDERING/ANIM LOOP ///
+      ///////////////////////////
+
+      var vec = new THREE.Vector3( 0, 0, 0 );
+      var z = 500;
+      var dz = -3;
+
+      var render = function (actions) {
+        camera.lookAt(vec)
+        renderer.render(scene, camera);
+        requestAnimationFrame( render );
+      };
+      render();
     }
-
-    
   }
 
 })();
