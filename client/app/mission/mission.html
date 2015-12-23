@@ -69,7 +69,9 @@
               <div>
                 <p>RP1</p>
                 <p>Mp</p>
+                <p>{{mission.tanks.stage2.RP1.fuel_mass}} kg</p>
                 <p>Tp</p>
+                <p>{{mission.tanks.stage2.RP1.tank_pressure}} bar</p>
               </div>
 
             </div>
@@ -83,7 +85,9 @@
               <div>
                 <p>LOX</p>
                 <p>Mp</p>
+                <p>{{mission.tanks.stage2.LOX.fuel_mass}} kg</p>
                 <p>Tp</p>
+                <p>{{mission.tanks.stage2.LOX.tank_pressure}} bar</p>
               </div>
 
             </div>
@@ -99,11 +103,24 @@
         <div class="s2-engines">Engines</div>
 
         <div class="s2-engine-graphic">
-          Placeholder graphic
         </div>
 
         <div class="s2-engine-stats">
-          Placeholder stats
+          <table>
+            <thead>
+              <th>Engine #</th>
+              <th>Ft (kN)</th>
+              <th>Cp (kN)</th>
+              <th>Status</th>
+            </thead>
+            <tbody>
+              <td>1</td>
+              <td>{{mission.engines.stage2["1"].force_thrust}}</td>
+              <td>{{mission.engines.stage2["1"].chamber_pressure}}</td>
+              <td>OK</td>
+              
+            </tbody>
+          </table>
         </div>
 
       </div>
@@ -127,7 +144,9 @@
               <div>
                 <p>RP1</p>
                 <p>Mp</p>
+                <p>{{mission.tanks.stage1.RP1.fuel_mass}} kg</p>
                 <p>Tp</p>
+                <p>{{mission.tanks.stage1.RP1.tank_pressure}} bar</p>
               </div>
 
             </div>
@@ -141,7 +160,9 @@
               <div>
                 <p>LOX</p>
                 <p>Mp</p>
+                <p>{{mission.tanks.stage1.LOX.fuel_mass}} kg</p>
                 <p>Tp</p>
+                <p>{{mission.tanks.stage1.LOX.tank_pressure}} bar</p>
               </div>
 
             </div>
@@ -170,8 +191,84 @@
           
         </div>
 
-        <div class="engine-stats">
-          Placeholder Stats
+        <div class="s1-engine-stats">
+          
+          <table>
+            <thead>
+              <th>Engine #</th>
+              <th>Ft (kN)</th>
+              <th>Cp (kN)</th>
+              <th>Status</th>
+            </thead>
+            <tbody>
+
+              <tr>
+              <td>1</td>
+              <td>{{mission.engines.stage1["1"].force_thrust}}</td>
+              <td>{{mission.engines.stage1["1"].chamber_pressure}}</td>
+              <td>OK</td>
+              </tr>
+              
+              <tr>
+              <td>2</td>
+              <td>{{mission.engines.stage1["2"].force_thrust}}</td>
+              <td>{{mission.engines.stage1["2"].chamber_pressure}}</td>
+              <td>OK</td>
+              </tr>
+              
+              <tr>
+              <td>3</td>
+              <td>{{mission.engines.stage1["3"].force_thrust}}</td>
+              <td>{{mission.engines.stage1["3"].chamber_pressure}}</td>
+              <td>OK</td>
+              </tr>
+
+              <tr>
+              <td>4</td>
+              <td>{{mission.engines.stage1["4"].force_thrust}}</td>
+              <td>{{mission.engines.stage1["4"].chamber_pressure}}</td>
+              <td>OK</td>
+              </tr>
+
+              <tr>
+              <td>5</td>
+              <td>{{mission.engines.stage1["5"].force_thrust}}</td>
+              <td>{{mission.engines.stage1["5"].chamber_pressure}}</td>
+              <td>OK</td>
+              </tr>
+
+              <tr>
+              <td>6</td>
+              <td>{{mission.engines.stage1["6"].force_thrust}}</td>
+              <td>{{mission.engines.stage1["6"].chamber_pressure}}</td>
+              <td>OK</td>
+              </tr>
+
+              <tr>
+              <td>7</td>
+              <td>{{mission.engines.stage1["7"].force_thrust}}</td>
+              <td>{{mission.engines.stage1["7"].chamber_pressure}}</td>
+              <td>OK</td>
+              </tr>
+
+              <tr>
+              <td>8</td>
+              <td>{{mission.engines.stage1["8"].force_thrust}}</td>
+              <td>{{mission.engines.stage1["8"].chamber_pressure}}</td>
+              <td>OK</td>
+              </tr>
+
+              <tr>
+              <td>9</td>
+              <td>{{mission.engines.stage1["9"].force_thrust}}</td>
+              <td>{{mission.engines.stage1["9"].chamber_pressure}}</td>
+              <td>OK</td>
+              </tr>
+
+
+            </tbody>
+          </table>
+
         </div>
 
 

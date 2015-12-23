@@ -145,7 +145,12 @@ html {
         .s2-LOX-stats {
           display: flex;
           flex-direction: column;
+          p {
+            font-size: .8rem;
+            margin: .2rem auto;
+          }
         }
+
       }
 
     }
@@ -154,6 +159,7 @@ html {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
+      justify-content: space-around;
       align-items: center;
       .s2-engines {
         flex-basis: 20%;
@@ -164,6 +170,10 @@ html {
       }
       .s2-engines-stats {
         flex-basis: 40%;
+      }
+      th {
+        border-bottom: 1px solid $grey;
+        padding-right: .5rem;
       }
     }
   }
@@ -212,8 +222,11 @@ html {
         .s1-LOX-stats {
           display: flex;
           flex-direction: column;
+          p {
+            font-size: .8rem;
+            margin: .2rem auto;
+          }
         }
-        
       }
     }
     .engines {
@@ -228,11 +241,23 @@ html {
       .s1-engine-graphic {
         flex-basis: 40%;
         position: relative;
-        border: 1px solid $grey;
       }
-      .engine-stats {
+      .s1-engine-stats {
         flex-basis: 40%;
       }
+      th {
+        border-bottom: 1px solid $grey;
+        padding-right: .5rem;
+        font-size: 1rem;
+      }
+      tr {
+        font-size: .5rem;
+      }
+      td {
+        border-left: 1px solid $grey;
+        padding-left: .5rem;
+      }
+
 
     }
 
