@@ -34,7 +34,6 @@
     getMissionMeta();
     getEngineData();
     getTankData();
-    // drawTrajectory();
     trajectoryGraphic();
     s1EngineGraphic();
     s2EngineGraphic();
@@ -42,7 +41,6 @@
     fuelTankGraphic(".s2-tank-graphic .LOX", 2);
     fuelTankGraphic(".s1-tank-graphic .RP1", 1);
     fuelTankGraphic(".s1-tank-graphic .LOX", 1);
-    //Scope methods
 
     //Non scope methods
     function getMissionMeta () {
@@ -253,7 +251,7 @@
         color: 0x65696b,
         emissive: 0x2d2828,
         specular: 0x7f7373,
-        wireframe: false,
+        wireframe: true,
         transparent: true,
         opacity: .5
       });
@@ -331,12 +329,12 @@
       var width = $window.innerWidth;
       var height = $window.innerHeight;
       width = width * .33;
-      height = height * .55;
-      var renderer = new THREE.WebGLRenderer();
+      height = height * .45;
+      var renderer = new THREE.WebGLRenderer({antialias: true});
       renderer.setSize( width, height );
       $(".trajectory").append( renderer.domElement );
 
-      camera.position.set(0, 0, 200);
+      camera.position.set(0, 0, 175);
       camera.rotation.x = -(Math.PI / 4) * .4 ;
       // camera.rotation. = (Math.PI/2) * 0.25;
       // camera.lookAt(0,0,0);
@@ -368,7 +366,14 @@
       var rings = 32;
 
       var geometry = new THREE.SphereGeometry(radius, segments, rings);
-      var material = new THREE.MeshPhongMaterial({color: 0x3022bb});
+      var material = new THREE.MeshPhongMaterial({
+        map: THREE.ImageUtils.loadTexture("../../assets/earth_3.jpg"),
+        color: 0xaaaaaa,
+        ambient: 0xaaaaaa,
+        specular: 0x333333,
+        bumpScale: 0.2,
+        shininess: 10
+      });
       var sphere = new THREE.Mesh( geometry, material );
       scene.add( sphere );
 

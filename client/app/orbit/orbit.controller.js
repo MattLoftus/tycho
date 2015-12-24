@@ -66,7 +66,7 @@
       var scene = new THREE.Scene();
       var camera = new THREE.PerspectiveCamera( 75, $window.innerWidth/$window.innerHeight, 0.1, 1000 );
 
-      var renderer = new THREE.WebGLRenderer();
+      var renderer = new THREE.WebGLRenderer({antialias: true});
       renderer.setSize( $window.innerWidth * .8, $window.innerHeight * .8 );
       $(".trajectory-graphic").append( renderer.domElement );
 
@@ -101,10 +101,17 @@
       var segments = 32;
       var rings = 32;
 
-      var geometry = new THREE.SphereGeometry(radius, segments, rings);
-      var material = new THREE.MeshPhongMaterial({color: 0x3022bb});
-      var sphere = new THREE.Mesh( geometry, material );
-      scene.add( sphere );
+      var earthGeometry = new THREE.SphereGeometry(radius, segments, rings);
+      var earthMaterial = new THREE.MeshPhongMaterial({
+        map: THREE.ImageUtils.loadTexture("../../assets/earth_3.jpg"),
+        color: 0xaaaaaa,
+        ambient: 0xaaaaaa,
+        specular: 0x333333,
+        bumpScale: 0.2,
+        shininess: 10
+      });
+      var earth = new THREE.Mesh( earthGeometry, earthMaterial );
+      scene.add( earth );
 
       //Spacecraft
       var radius = 5;
@@ -181,13 +188,8 @@
       var dz = -3;
 
       var render = function (actions) {
-        // z += dz;
-        // camera.position.z += dz;
-        // if (Math.abs(z) > 500) {
-        //   dz *= -1;
-        // }
-        // line.rotation.y += 0.001;
-        // target.rotation.y -= 0.002;
+        earth.rotation.y += .001;
+
         camera.lookAt(vec)
         renderer.render(scene, camera);
         requestAnimationFrame( render );
