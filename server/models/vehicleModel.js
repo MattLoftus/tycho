@@ -45,9 +45,9 @@ module.exports = {
   addEngineData: function (engineData, callback) {
     var date = Date.now();
     db.query('insert into engines (mission_id, stage_num, engine_num, \
-      chamber_pressure, force_thrust, last_updated) values (?, ?, ?, ?, \
-      ?, ?)', [engineData.mission_id, engineData.stage_num, engineData.engine_num,
-      engineData.chamber_pressure, engineData.force_thrust, date], function (err, engineData) {
+      chamber_pressure, force_thrust, turbopump_speed, last_updated) values (?, ?, ?, ?, \
+      ?, ?, ?)', [engineData.mission_id, engineData.stage_num, engineData.engine_num,
+      engineData.chamber_pressure, engineData.force_thrust, engineData.turbopump_speed, date], function (err, engineData) {
         if (err) {
           callback(err);
         } else {

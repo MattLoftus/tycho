@@ -17,7 +17,7 @@
 
     //Initialization
     getEngineData();
-    for (var i = 1; i < 10; i++) {
+    for (var i = 1; i < 11; i++) {
       engineGraphic(i);
     }
 
@@ -65,7 +65,7 @@
       var nozzleGeometry = new THREE.CylinderGeometry(2, 9.3, 17, 45, 20, true);
       // var nozzleMaterial = new THREE.MeshBasicMaterial( {color: 0x00b8e6} );
       var nozzleMaterial = new THREE.MeshPhongMaterial({
-        color: 0xa4abaf,
+        color: 0x393b3c,
         emissive: 0x1e1b1b,
         specular: 0x433d3d,
         shininess: 85,
@@ -116,9 +116,9 @@
           for (var i = 0; i < engineData.length; i++) {
             var engine = engineData[i];
             vm.engines[engine.engine_num] = engine;
-            
           }
           console.log(vm.engines);
+          console.log(vm.engines["1"].chamber_pressure);
         });
     }
     

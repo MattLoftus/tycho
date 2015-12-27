@@ -37,70 +37,80 @@ var sampleEngines = [
     stage_num: 1,
     engine_num: 1,
     chamber_pressure: 87.0,
-    force_thrust: 100.0
+    force_thrust: 100.0,
+    turbopump_speed: 432.0
   },
   {
     mission_id: 1,
     stage_num: 1,
     engine_num: 2,
     chamber_pressure: 87.0,
-    force_thrust: 100.0
+    force_thrust: 100.0,
+    turbopump_speed: 432.0
   },
   {
     mission_id: 1,
     stage_num: 1,
     engine_num: 3,
     chamber_pressure: 87.0,
-    force_thrust: 100.0
+    force_thrust: 100.0,
+    turbopump_speed: 432.0
   },
   {
     mission_id: 1,
     stage_num: 1,
     engine_num: 4,
     chamber_pressure: 87.0,
-    force_thrust: 100.0
+    force_thrust: 100.0,
+    turbopump_speed: 432.0
   },
   {
     mission_id: 1,
     stage_num: 1,
     engine_num: 5,
     chamber_pressure: 87.0,
-    force_thrust: 100.0
+    force_thrust: 100.0,
+    turbopump_speed: 432.0
   },
   {
     mission_id: 1,
     stage_num: 1,
     engine_num: 6,
     chamber_pressure: 87.0,
-    force_thrust: 100.0
+    force_thrust: 100.0,
+    turbopump_speed: 432.0
   },
   {
     mission_id: 1,
     stage_num: 1,
     engine_num: 7,
     chamber_pressure: 87.0,
-    force_thrust: 100.0
+    force_thrust: 100.0,
+    turbopump_speed: 432.0
   },
   {
     mission_id: 1,
     stage_num: 1,
     engine_num: 8,
     chamber_pressure: 87.0,
-    force_thrust: 100.0
+    force_thrust: 100.0,
+    turbopump_speed: 432.0
   },
   {
     mission_id: 1,
     stage_num: 1,
     engine_num: 9,
     chamber_pressure: 87.0,
-    force_thrust: 100.0
+    force_thrust: 100.0,
+    turbopump_speed: 432.0
   },
   {
     mission_id: 1,
     stage_num: 2,
-    engine_num: 1,
+    engine_num: 10,
     chamber_pressure: 87.0,
-    force_thrust: 100.0
+    force_thrust: 100.0,
+    turbopump_speed: 432.0
   }
 ];
 

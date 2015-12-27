@@ -469,6 +469,9 @@ html {
       flex-basis: 5%;
       width: 5%;
       font-size: 2rem;
+      &:hover {
+        cursor: pointer;
+      }
     }
     h2 {
       flex-basis: 25%;
@@ -491,8 +494,8 @@ html {
 
   .row-1,
   .row-2 {
-    flex-basis: 45%;
-    height: 45vh;
+    flex-basis: 44%;
+    height: 44vh;
     margin: 0;
     padding: 0;
     border-bottom: 1px solid $grey;
@@ -521,12 +524,32 @@ html {
         list-style: none;
         padding:0;
         li {
-          width: 100%;
-          margin-right:0;
+          margin: .6rem auto;
           padding:0;
-          border-bottom: 1px solid $grey;
-          font-size: 1rem;
+          font-size: .9rem;
           font-weight: 300;
+        }
+        .status {
+          color: $green;
+        }
+      }
+
+      .stats {
+        display: flex;
+        flex-direction: row;
+      }
+      .stats .stat-name {
+        flex-basis: 70%;
+        width: 70%; 
+        li {
+          padding-left: .2rem;
+        }
+      }
+      .stats .stat-value {
+        flex-basis: 30%;
+        width: 30%;
+        li {
+          border: 1px solid $earthBlue;
         }
       }
     }

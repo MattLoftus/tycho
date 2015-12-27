@@ -31,6 +31,7 @@ CREATE TABLE `engines` (
   `engine_num` int,
   `chamber_pressure` float,
   `force_thrust` float,
+  `turbopump_speed` float,
   `last_updated` bigint,
   PRIMARY KEY (`id`)
 );
