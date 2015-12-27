@@ -68,6 +68,20 @@
         controller: 'OrbitController',
         controllerAs: 'orbit',
         authenticate: true
+      })
+      .state('engines', {
+        url: '/engines',
+        templateUrl: 'app/engines/engines.html',
+        controller: 'EnginesController',
+        controllerAs: 'engines',
+        authenticate: true
+      })
+      .state('tanks', {
+        url: '/tanks',
+        templateUrl: 'app/tanks/tanks.html',
+        controller: 'TanksController',
+        controllerAs: 'tanks',
+        authenticate: true
       });
 
       // auth interceptor to ensure JWT gets sent in request header

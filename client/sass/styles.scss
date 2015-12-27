@@ -10,7 +10,7 @@ html {
   box-sizing: border-box;
   width: 100%;
   height: 100vh;
-  font-family: 'Roboto-Slab', 'Lato', Helvetica, Arial, sans-serif;
+  font-family: 'Lato', 'Roboto Condensed', 'Ubuntu', 'Roboto Slab', 'Droid Serif', 'Crimson Text', Trebuchet, sans-serif;;
   font-size: 20px;
   background-color: $mainBackground;
   color: white;
@@ -69,14 +69,15 @@ html {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     p {
       margin: 0 auto;
     }
     div {
-      border: 1px solid $grey;
-      padding: .5rem;
+      width: 90%;
+      border: 2px solid $grey;
+      padding: .2rem 0 .2rem 1rem;
     }
   }
 
@@ -147,7 +148,7 @@ html {
         flex-basis: 70%;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
         .RP1,
         .LOX {
           flex-basis: 50%;
@@ -158,9 +159,17 @@ html {
         .s2-LOX-stats {
           display: flex;
           flex-direction: column;
+          h3 {
+            font-size: 1rem;
+            color: $softRed;
+            margin-bottom: .3rem;
+            padding-left: .3rem
+          }
           p {
             font-size: .8rem;
-            margin: .2rem auto;
+            margin: 0 0 .5rem .3rem;
+            padding-left: .3rem;
+            border-left: 2px solid $grey;
           }
         }
 
@@ -221,7 +230,6 @@ html {
       }
       .s1-tank-graphic {
         flex-basis: 80%;
-        align-self: stretch;
         display: flex;
         flex-direction: column;
         .RP1,
@@ -229,15 +237,23 @@ html {
           flex-basis: 50%;
           display: flex;
           flex-direction: row;
-          justify-content: space-between;
+          justify-content: space-around;
         }
         .s1-RP1-stats,
         .s1-LOX-stats {
           display: flex;
           flex-direction: column;
+          h3 {
+            font-size: 1rem;
+            color: $softRed;
+            margin-bottom: .3rem;
+            padding-left: .3rem
+          }
           p {
             font-size: .8rem;
-            margin: .2rem auto;
+            margin: 0 0 .5rem 0;
+            padding-left: .3rem;
+            border-left: 2px solid $grey;
           }
         }
       }
@@ -432,6 +448,132 @@ html {
 }
 
 
+/*********************************
+********   ENGINES VIEW **********
+*********************************/
+
+.engines-overview {
+
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    flex-basis: 10%;
+    height: 10vh;
+    border: 1px solid $grey;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    i {
+      flex-basis: 5%;
+      width: 5%;
+      font-size: 2rem;
+    }
+    h2 {
+      flex-basis: 25%;
+      width: 25%;
+      font-size: 2rem;
+      font-weight: 300;
+      color: $green;
+    }
+    h4 {
+      flex-basis: 35%;
+      width: 30%;
+      font-size: 1.5rem;
+      font-weight: 200;
+      color: white;
+      .top-level-status {
+        color: $green;
+      }
+    }
+  }
+
+  .row-1,
+  .row-2 {
+    flex-basis: 45%;
+    height: 45vh;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid $grey;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    .engine:nth-child(1) {
+      border-left: 1px solid $grey;
+    }
+    .engine {
+      flex-basis: 20%;
+      width: 20%;
+      border-right: 1px solid $grey;
+      display: flex;
+      flex-direction: column;
+      div {
+        flex-basis: 50%;
+        height: 50%;
+      }
+      .graphic {
+        display: flex;
+        flex-direction: row;
+
+      }
+      ul {
+        list-style: none;
+        padding:0;
+        li {
+          width: 100%;
+          margin-right:0;
+          padding:0;
+          border-bottom: 1px solid $grey;
+          font-size: 1rem;
+          font-weight: 300;
+        }
+      }
+    }
+
+  }
+
+  /*.row-2 {
+    flex-basis: 45%;
+    height: 45vh;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid $grey;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    li:nth-child(1) {
+      border-left: 1px solid $grey;
+    }
+    li {
+      flex-basis: 20%;
+      width: 20%;
+      border-right: 1px solid $grey;
+      display: flex;
+      flex-direction: column;
+      div {
+        flex-basis: 50%;
+        height: 50%;
+        width: 100%;
+      }
+      .graphic {
+        display: flex;
+        flex-direction: row;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        li {
+          margin:0;
+          padding:0;
+          border-bottom: 1px solid $grey;
+          font-size: .5rem;
+        }
+      }
+    }
+  }*/
+
+}
 
 
 

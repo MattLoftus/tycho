@@ -47,7 +47,7 @@
       Mission.getMissionMeta(vm.missionID) 
         .then(function (missionData) {
           vm.missionID = missionData.id;
-          vm.missionName = missionData.name;
+          vm.missionName = missionData.name[0].toUpperCase() + missionData.name.slice(1);
           vm.heading = missionData.heading;
           vm.velocity = missionData.velocity;
           vm.altitude = missionData.altitude;
@@ -222,7 +222,7 @@
       
       if (stageNo === 2) {
         height = height * .35 * .7;
-        width = width * .6 * .55 * .3;
+        width = width * .6 * .55 * .34;
       } else {
         height = height * .65 * .8 * .5;
         width = width * .6 * .4 * .5;
@@ -232,7 +232,7 @@
       renderer.setSize( width, height);
       $(selector).append( renderer.domElement );
 
-      camera.position.set(0, 0, 120);
+      camera.position.set(0, 0, 67);
 
       //Orbit Controls
       var orbit = new THREE.OrbitControls(camera, renderer.domElement);
@@ -246,12 +246,12 @@
       scene.add( directionalLight );
 
 
-      var tankGeometry = new THREE.CylinderGeometry( 40, 40, 70, 30, 30 );
+      var tankGeometry = new THREE.CylinderGeometry( 25, 25, 40, 30, 30 );
       var tankMaterial = new THREE.MeshPhongMaterial({
         color: 0x65696b,
         emissive: 0x2d2828,
         specular: 0x7f7373,
-        wireframe: true,
+        wireframe: false,
         transparent: true,
         opacity: .5
       });
@@ -260,21 +260,22 @@
 
 
       //Tank top/bottom
-      var tankCapGeometry = new THREE.SphereGeometry(40,40, 30, Math.PI*1.5, Math.PI, 0, 3.1);
+      // var tankCapGeometry = new THREE.SphereGeometry(40,40, 30, Math.PI*1.5, Math.PI, 0, 3.1);
+      var tankCapGeometry = new THREE.SphereGeometry(27,30, 30, 0, 2*Math.PI, 0, 1.2);
       var tankTop = new THREE.Mesh(tankCapGeometry, tankMaterial)
       scene.add(tankTop);
-      tankTop.position.y = 34;
+      tankTop.position.y = 10;
       // tankTop.rotation.x = Math.PI / 2 ;
-      tankTop.rotation.z = -Math.PI/2;
+      // tankTop.rotation.z = -Math.PI/2;
 
 
       var tankBottom = new THREE.Mesh(tankCapGeometry, tankMaterial)
       scene.add(tankBottom);
-      tankBottom.position.y = -34;
-      tankBottom.rotation.z = Math.PI/2;
+      tankBottom.position.y = -10;
+      tankBottom.rotation.z = -Math.PI;
 
       var fuelSpecs = {
-        radius: 39,
+        radius: 24,
         height: 40,
         radialSegments: 30,
         heightSegments: 30
@@ -288,13 +289,13 @@
       });
       var fuel = new THREE.Mesh(fuelGeometry, fuelMaterial);
       scene.add(fuel);
-      fuel.position.y = -13;
 
-      var fuelCapGeometry = new THREE.SphereGeometry(39,30, 30, Math.PI*1.5, Math.PI, 0, 3.1);
+      // var fuelCapGeometry = new THREE.SphereGeometry(39,30, 30, Math.PI*1.5, Math.PI, 0, 3.1);
+      var fuelCapGeometry = new THREE.SphereGeometry(25,30, 30, 0, 2*Math.PI, 0, 1.3);
       var fuelBottom = new THREE.Mesh(fuelCapGeometry, fuelMaterial);
       scene.add(fuelBottom);
-      fuelBottom.position.y = -32;
-      fuelBottom.rotation.z = Math.PI/2;
+      fuelBottom.position.y = -11;
+      fuelBottom.rotation.z = Math.PI;
 
       ///////////////////////////
       /// RENDERING/ANIM LOOP ///
@@ -340,9 +341,9 @@
       // camera.lookAt(0,0,0);
 
       ///////////////////////////
-      ///// ORBIT CONTROLS //////
+      /// ORBIT CONTROLS //////
       ///////////////////////////
-      var orbit = new THREE.OrbitControls(camera, renderer.domElement);
+      // var orbit = new THREE.OrbitControls(camera, renderer.domElement);
 
       //////////////////////
       /////  LIGHTS  ///////
@@ -365,8 +366,8 @@
       var segments = 32;
       var rings = 32;
 
-      var geometry = new THREE.SphereGeometry(radius, segments, rings);
-      var material = new THREE.MeshPhongMaterial({
+      var earthGeometry = new THREE.SphereGeometry(radius, segments, rings);
+      var earthMaterial = new THREE.MeshPhongMaterial({
         map: THREE.ImageUtils.loadTexture("../../assets/earth_3.jpg"),
         color: 0xaaaaaa,
         ambient: 0xaaaaaa,
@@ -374,8 +375,8 @@
         bumpScale: 0.2,
         shininess: 10
       });
-      var sphere = new THREE.Mesh( geometry, material );
-      scene.add( sphere );
+      var earth = new THREE.Mesh( earthGeometry, earthMaterial );
+      scene.add( earth );
 
       //Spacecraft
       var radius = 5;
@@ -452,6 +453,7 @@
       var dz = -3;
 
       var render = function (actions) {
+        earth.rotation.y += .001;
         camera.lookAt(vec)
         renderer.render(scene, camera);
         requestAnimationFrame( render );

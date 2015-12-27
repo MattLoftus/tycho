@@ -39,6 +39,10 @@
             <p>Main Shutdown</p>
             <p>-00:03:42</p>
           </div>
+          <div>
+            <p>Stage 2 Start</p>
+            <p>-00:03:55</p>
+          </div>
 
         </div>
 
@@ -47,7 +51,7 @@
     </div>
 
     <div class="trajectory">
-      <p>Trajectory</p>
+      <p ui-sref="orbit" >Trajectory</p>
      <!--  <canvas class="trajectory-canvas" width="500" height="500px"></canvas> -->
 
     </div>
@@ -77,7 +81,7 @@
             <div class="s2-RP1-stats">
 
               <div>
-                <p>RP1</p>
+                <h3>RP1</h3>
                 <p>Mp</p>
                 <p>{{mission.tanks.stage2.RP1.fuel_mass}} kg</p>
                 <p>Tp</p>
@@ -93,7 +97,7 @@
             <div class="s2-LOX-stats">
 
               <div>
-                <p>LOX</p>
+                <h3>LOX</h3>
                 <p>Mp</p>
                 <p>{{mission.tanks.stage2.LOX.fuel_mass}} kg</p>
                 <p>Tp</p>
@@ -152,7 +156,7 @@
             <div class="s1-RP1-stats">
 
               <div>
-                <p>RP1</p>
+                <h3>RP1</h3>
                 <p>Mp</p>
                 <p>{{mission.tanks.stage1.RP1.fuel_mass}} kg</p>
                 <p>Tp</p>
@@ -168,7 +172,7 @@
             <div class="s1-LOX-stats">
 
               <div>
-                <p>LOX</p>
+                <h3>LOX</h3>
                 <p>Mp</p>
                 <p>{{mission.tanks.stage1.LOX.fuel_mass}} kg</p>
                 <p>Tp</p>
