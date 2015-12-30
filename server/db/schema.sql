@@ -50,8 +50,10 @@ CREATE TABLE `tanks` (
   `fuel_volume` float,
   `fuel_mass` float,
   `fuel_temp` float,
-  `intake` varchar(10),
-  `outake` varchar(10),
+  `fuel_intake` varchar(10),
+  `fuel_outtake` varchar(10),
+  `he_bottle_status` varchar(10),
+  `pump_status` varchar(10),
   `last_updated` bigint,
   PRIMARY KEY (`id`)
 );

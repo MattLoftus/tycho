@@ -317,8 +317,10 @@ var sampleTanks = [
     fuel_volume: 150.0,
     fuel_mass: 100,
     fuel_temp: 145.0,
-    intake: "closed",
-    outake: "open"
+    fuel_intake: "closed",
+    fuel_outtake: "open",
+    he_bottle_status: "Nominal",
+    pump_status: "Nominal"
   },
   {
     mission_id: 1,
@@ -328,8 +330,10 @@ var sampleTanks = [
     fuel_volume: 150.0,
     fuel_mass: 100,
     fuel_temp: 145.0,
-    intake: "closed",
-    outake: "open"
+    fuel_intake: "closed",
+    fuel_outtake: "open",
+    he_bottle_status: "Nominal",
+    pump_status: "Nominal"
   },
   {
     mission_id: 1,
@@ -339,8 +343,10 @@ var sampleTanks = [
     fuel_volume: 150.0,
     fuel_mass: 100,
     fuel_temp: 145.0,
-    intake: "closed",
-    outake: "open"
+    fuel_intake: "closed",
+    fuel_outtake: "open",
+    he_bottle_status: "Nominal",
+    pump_status: "Nominal"
   },
   {
     mission_id: 1,
@@ -350,8 +356,10 @@ var sampleTanks = [
     fuel_volume: 150.0,
     fuel_mass: 100,
     fuel_temp: 145.0,
-    intake: "closed",
-    outake: "open"
+    fuel_intake: "closed",
+    fuel_outtake: "open",
+    he_bottle_status: "Nominal",
+    pump_status: "Nominal"
   }
 
 ];
