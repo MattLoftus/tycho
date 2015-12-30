@@ -21,7 +21,10 @@ var sampleMission = [{
   longitude: 35.0,
   apogee: 97,
   perigee: 74,
-  inclination: 2.5
+  inclination: 2.5,
+  target_apogee: 150,
+  target_perigee: 97,
+  target_inclination: 12
 }];
 
 var sampleCraft = [{
@@ -37,7 +40,9 @@ var sampleEngines = [
     stage_num: 1,
     engine_num: 1,
     chamber_pressure: 87.0,
+    exit_pressure: 95.0,
     force_thrust: 100.0,
+    nozzle_temp: 872.0,
     turbopump_speed: 432.0
   },
   {
@@ -45,7 +50,9 @@ var sampleEngines = [
     stage_num: 1,
     engine_num: 2,
     chamber_pressure: 87.0,
+    exit_pressure: 95.0,
     force_thrust: 100.0,
+    nozzle_temp: 872.0,
     turbopump_speed: 432.0
   },
   {
@@ -53,7 +60,9 @@ var sampleEngines = [
     stage_num: 1,
     engine_num: 3,
     chamber_pressure: 87.0,
+    exit_pressure: 95.0,
     force_thrust: 100.0,
+    nozzle_temp: 872.0,
     turbopump_speed: 432.0
   },
   {
@@ -61,7 +70,9 @@ var sampleEngines = [
     stage_num: 1,
     engine_num: 4,
     chamber_pressure: 87.0,
+    exit_pressure: 95.0,
     force_thrust: 100.0,
+    nozzle_temp: 872.0,
     turbopump_speed: 432.0
   },
   {
@@ -69,7 +80,9 @@ var sampleEngines = [
     stage_num: 1,
     engine_num: 5,
     chamber_pressure: 87.0,
+    exit_pressure: 95.0,
     force_thrust: 100.0,
+    nozzle_temp: 872.0,
     turbopump_speed: 432.0
   },
   {
@@ -77,7 +90,9 @@ var sampleEngines = [
     stage_num: 1,
     engine_num: 6,
     chamber_pressure: 87.0,
+    exit_pressure: 95.0,
     force_thrust: 100.0,
+    nozzle_temp: 872.0,
     turbopump_speed: 432.0
   },
   {
@@ -85,7 +100,9 @@ var sampleEngines = [
     stage_num: 1,
     engine_num: 7,
     chamber_pressure: 87.0,
+    exit_pressure: 95.0,
     force_thrust: 100.0,
+    nozzle_temp: 872.0,
     turbopump_speed: 432.0
   },
   {
@@ -93,7 +110,9 @@ var sampleEngines = [
     stage_num: 1,
     engine_num: 8,
     chamber_pressure: 87.0,
+    exit_pressure: 95.0,
     force_thrust: 100.0,
+    nozzle_temp: 872.0,
     turbopump_speed: 432.0
   },
   {
@@ -101,7 +120,9 @@ var sampleEngines = [
     stage_num: 1,
     engine_num: 9,
     chamber_pressure: 87.0,
+    exit_pressure: 95.0,
     force_thrust: 100.0,
+    nozzle_temp: 872.0,
     turbopump_speed: 432.0
   },
   {
@@ -109,7 +130,9 @@ var sampleEngines = [
     stage_num: 2,
     engine_num: 10,
     chamber_pressure: 87.0,
+    exit_pressure: 95.0,
     force_thrust: 100.0,
+    nozzle_temp: 872.0,
     turbopump_speed: 432.0
   }
 ];
@@ -121,7 +144,10 @@ var sampleTanks = [
     fuel_type: "RP1",
     tank_pressure: 1,
     fuel_volume: 150.0,
-    fuel_mass: 100
+    fuel_mass: 100,
+    fuel_temp: 145.0,
+    intake: "closed",
+    outake: "open"
   },
   {
     mission_id: 1,
@@ -129,7 +155,10 @@ var sampleTanks = [
     fuel_type: "LOX",
     tank_pressure: 1,
     fuel_volume: 150.0,
-    fuel_mass: 100
+    fuel_mass: 100,
+    fuel_temp: 145.0,
+    intake: "closed",
+    outake: "open"
   },
   {
     mission_id: 1,
@@ -137,7 +166,10 @@ var sampleTanks = [
     fuel_type: "RP1",
     tank_pressure: 1,
     fuel_volume: 150.0,
-    fuel_mass: 100
+    fuel_mass: 100,
+    fuel_temp: 145.0,
+    intake: "closed",
+    outake: "open"
   },
   {
     mission_id: 1,
@@ -145,7 +177,10 @@ var sampleTanks = [
     fuel_type: "LOX",
     tank_pressure: 1,
     fuel_volume: 150.0,
-    fuel_mass: 100
+    fuel_mass: 100,
+    fuel_temp: 145.0,
+    intake: "closed",
+    outake: "open"
   },
 
 ];

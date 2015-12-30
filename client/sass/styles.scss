@@ -14,7 +14,12 @@ html {
   font-size: 20px;
   background-color: $mainBackground;
   color: white;
+  font-weight: 300;
+}
 
+/* GENERAL */
+ul {
+  list-style: none;
 }
 
 
@@ -27,6 +32,8 @@ html {
 
   display: flex;
   flex-direction: row;
+  background: linear-gradient(to bottom, #000000 45%, #3A388D 120%);
+
 
   .meta {
     flex-basis: 30%;
@@ -356,6 +363,15 @@ html {
     
   }
 
+  /*Actions*/
+  .s1-engines span:hover,
+  .s2-engines span:hover,
+  .trajectory p:hover,
+  .s1-tanks span:hover,
+  .s2-tanks span:hover {
+    cursor: pointer;
+    color: #66ffff;
+  }
   /*.stage-2-title,
   .stage-1-title {
     float: left;
@@ -494,6 +510,7 @@ html {
 
   .row-1,
   .row-2 {
+    background: linear-gradient(to bottom, #000000 45%, #3A388D 95%);    
     flex-basis: 44%;
     height: 44vh;
     margin: 0;
@@ -549,7 +566,7 @@ html {
         flex-basis: 30%;
         width: 30%;
         li {
-          border: 1px solid $earthBlue;
+          color: $green;
         }
       }
     }
@@ -597,6 +614,247 @@ html {
   }*/
 
 }
+
+/*********************************
+*******  FUEL TANKS VIEW *********
+*********************************/
+
+.tank-overview {
+
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(to bottom, #000000 50%, #653030 120%);
+
+  .header {
+    flex-basis: 10%;
+    height: 10vh;
+    border: 1px solid $grey;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    i {
+      flex-basis: 5%;
+      width: 5%;
+      font-size: 2rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    h2 {
+      flex-basis: 25%;
+      width: 25%;
+      font-size: 2rem;
+      font-weight: 300;
+      color: $green;
+    }
+    h4 {
+      flex-basis: 35%;
+      width: 30%;
+      font-size: 1.5rem;
+      font-weight: 200;
+      color: white;
+      .top-level-status {
+        color: $green;
+      }
+    }
+  }
+
+  .stage-1,
+  .stage-2 {
+    flex-basis: 44%;
+    height: 44vh;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid $grey;
+    .graphic-container {
+      flex-basis: 50%;
+      width: 50%;
+    }
+    .LOX {
+      border-left: 1px solid $grey;
+    }
+    .LOX,
+    .RP1 {
+      border-right: 1px solid $grey;
+      display: flex;
+      flex-direction: row;
+    }
+    .LOX .main-stats,
+    .RP1 .secondary-stats {
+      flex-basis: 33%;
+      width: 33%;
+    }
+    ul {
+      padding-left: .5rem;
+    }
+    ul li {
+      margin: .3rem 0 .3rem 0;
+    }
+  }
+
+  .fuel-type {
+    color: $softRed;
+    font-size: 1.25rem;
+  }
+
+  .title-bar {
+    font-size: 1.25rem;
+  }
+
+  .stat-value {
+    color: $green;
+  }
+}
+
+/*********************************
+*******   SPACECRAFT VIEW ********
+*********************************/
+
+.spacecraft {
+
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    flex-basis: 10%;
+    height: 10vh;
+    border: 1px solid $grey;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    i {
+      flex-basis: 5%;
+      width: 5%;
+      font-size: 2rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    h2 {
+      flex-basis: 25%;
+      width: 25%;
+      font-size: 2rem;
+      font-weight: 300;
+      color: $green;
+    }
+    h4 {
+      flex-basis: 17%;
+      width: 17%;
+      align-self: center;
+      font-size: 1.5rem;
+      font-weight: 200;
+      color: white;
+      .top-level-status {
+        color: $green;
+      }
+    }
+  }
+
+  .main {
+    flex-basis: 88%;
+    height: 88vh;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid $grey;
+    .col-1,
+    .col-2 {
+      flex-basis: 25%;
+      width: 25%;
+      border-left: 1px solid $grey;
+    }
+    .col-3 {
+      flex-basis: 50%;
+      width: 50%;
+      border-left: 1px solid $grey;
+    }
+    .col-1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .dragon-image-container, 
+    .orientation-graphic {
+      flex-basis: 50%;
+      height: 44vh;
+      img {
+        margin-top: .4rem;
+      }
+    }
+    .orientation-graphic {
+      border-top: 1px solid $grey;
+      width: 100%;
+    }
+
+    .col-2 {
+      display: flex;
+      flex-direction: column;
+    }
+    .life-power-systems,
+    .trajectory-graphic {
+      flex-basis: 50%;
+      height: 44vh;
+      h5 {
+        font-size: 1rem;
+        font-weight: 300;
+        color: $softRed;
+        margin: .2rem 0 0 .2rem;
+      }
+    }
+    .trajectory-graphic {
+      border-top: 1px solid $grey;
+    }
+    .life-support,
+    .power-systems {
+      height: 22vh;
+      ul {
+        margin: .2rem 0;
+        list-style: none;
+        padding:0;
+        li {
+          margin: .1rem auto;
+          padding:0;
+          font-size: .8rem;
+          font-weight: 300;
+        }
+        .status {
+          color: $green;
+        }
+      }
+
+      .stats {
+        display: flex;
+        flex-direction: row;
+      }
+      .stats .stat-name {
+        flex-basis: 70%;
+        width: 70%; 
+        li {
+          padding-left: .2rem;
+        }
+      }
+      .stats .stat-value {
+        flex-basis: 30%;
+        width: 30%;
+        li {
+          color: $green;
+        }
+      }
+    }
+    .power-systems {
+      border-top: 1px solid $grey;
+    }
+
+  }
+
+
+
+}
+
+
+
 
 
 

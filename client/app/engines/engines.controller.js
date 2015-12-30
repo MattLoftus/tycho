@@ -36,7 +36,8 @@
       var scene = new THREE.Scene();
       var camera = new THREE.PerspectiveCamera( 75, width/height, 0.1, 1000 );
 
-      var renderer = new THREE.WebGLRenderer({antialias: true});
+      var renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+      renderer.setClearColor(0xffffff, 0);
       renderer.setSize( width, height );
       $(selector).prepend( renderer.domElement );
 

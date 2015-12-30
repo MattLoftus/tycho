@@ -42,7 +42,11 @@
     fuelTankGraphic(".s1-tank-graphic .RP1", 1);
     fuelTankGraphic(".s1-tank-graphic .LOX", 1);
 
-    //Non scope methods
+    ///////////////////////////////
+    ////DATA RETRIEVAL METHODS/////
+    ///////////////////////////////
+
+    //Get top level mission meta data
     function getMissionMeta () {
       Mission.getMissionMeta(vm.missionID) 
         .then(function (missionData) {
@@ -92,13 +96,18 @@
     }
 
 
+    ///////////////////////////////
+    ///GRAPHIC RENDERING METHODS///
+    ///////////////////////////////
+
     //Create Stage 1 engine graphic
     function s1EngineGraphic () {
       var scene = new THREE.Scene();
       var camera = new THREE.PerspectiveCamera( 75, $window.innerWidth/$window.innerHeight, 0.1, 1000 );
       camera.position.set(0,0,300)
 
-      var renderer = new THREE.WebGLRenderer({antialias: true});
+      var renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+      renderer.setClearColor(0xffffff, 0);
       renderer.setSize( $window.innerWidth * .3, $window.innerHeight * .3 );
       $(".s1-engine-graphic").append( renderer.domElement );
 
@@ -182,7 +191,8 @@
       width = width * .6 * .45 * .2;
       height = height * .35 * .3;
 
-      var renderer = new THREE.WebGLRenderer({antialias: true});
+      var renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+      renderer.setClearColor( 0xffffff, 0);
       renderer.setSize( width, height );
       $(".s2-engine-graphic").append( renderer.domElement );
 
@@ -218,7 +228,6 @@
       var scene = new THREE.Scene();
       var width = $window.innerWidth;
       var height = $window.innerHeight;
-      var camera = new THREE.PerspectiveCamera( 75, 1.3, 0.1, 1000 );
       
       if (stageNo === 2) {
         height = height * .35 * .7;
@@ -227,15 +236,17 @@
         height = height * .65 * .8 * .5;
         width = width * .6 * .4 * .5;
       }
+      var camera = new THREE.PerspectiveCamera( 75, width/height, 0.1, 1000 );
       // var camera = new THREE.OrthographicCamera(- width/1 , width / 1, height / 1, -height /  1, 1, 1000 );
-      var renderer = new THREE.WebGLRenderer({ antialias: true });
+      var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setClearColor( 0xffffff, 0);
       renderer.setSize( width, height);
       $(selector).append( renderer.domElement );
 
       camera.position.set(0, 0, 67);
 
       //Orbit Controls
-      var orbit = new THREE.OrbitControls(camera, renderer.domElement);
+      // var orbit = new THREE.OrbitControls(camera, renderer.domElement);
 
       //Lighting
       var light = new THREE.AmbientLight( 0x404040 ); // soft white light
@@ -331,7 +342,8 @@
       var height = $window.innerHeight;
       width = width * .33;
       height = height * .45;
-      var renderer = new THREE.WebGLRenderer({antialias: true});
+      var renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+      renderer.setClearColor( 0xffffff, 0);
       renderer.setSize( width, height );
       $(".trajectory").append( renderer.domElement );
 

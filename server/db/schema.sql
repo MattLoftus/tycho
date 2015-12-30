@@ -20,6 +20,9 @@ CREATE TABLE `mission` (
   `apogee` float,
   `perigee` float,
   `inclination` float,
+  `target_apogee` float,
+  `target_perigee` float,
+  `target_inclination` float,
   `last_updated` bigint,
   PRIMARY KEY (`id`)
 );
@@ -30,7 +33,9 @@ CREATE TABLE `engines` (
   `stage_num` int,
   `engine_num` int,
   `chamber_pressure` float,
+  `exit_pressure` float,
   `force_thrust` float,
+  `nozzle_temp` float,
   `turbopump_speed` float,
   `last_updated` bigint,
   PRIMARY KEY (`id`)
@@ -44,6 +49,9 @@ CREATE TABLE `tanks` (
   `tank_pressure` float,
   `fuel_volume` float,
   `fuel_mass` float,
+  `fuel_temp` float,
+  `intake` varchar(10),
+  `outake` varchar(10),
   `last_updated` bigint,
   PRIMARY KEY (`id`)
 );

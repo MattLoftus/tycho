@@ -16,10 +16,13 @@ module.exports = {
     date = Date.now();
     db.query('insert into mission (name, velocity, heading, \
       altitude, latitude, longitude, apogee, perigee, \
-      inclination, last_updated) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
+      inclination, target_apogee, target_perigee, target_inclination, \
+      last_updated) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
       [missionData.name, missionData.velocity, missionData.heading, 
       missionData.altitude, missionData.latitude, missionData.longitude,
-      missionData.apogee, missionData.perigee, missionData.inclination, date], 
+      missionData.apogee, missionData.perigee, missionData.inclination,
+      missionData.target_apogee, missionData.target_perigee, 
+      missionData.target_inclination, date], 
       function (err,  missionData) {
         if (err) {
           callback(err);

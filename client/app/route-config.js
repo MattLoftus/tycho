@@ -43,7 +43,7 @@
       })
       .state('craft', {
         url: '/craft',
-        templateUrl: 'app/capsule/capsule.html',
+        templateUrl: 'app/craft/craft.html',
         controller: 'CraftController',
         controllerAs: 'craft',
         authenticate: true
