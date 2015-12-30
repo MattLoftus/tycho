@@ -29,9 +29,17 @@ var sampleMission = [{
 
 var sampleCraft = [{
   mission_id: 1,
-  power: 100,
-  cabin_pressure: 1.2,
-  monoprop: 52.2
+  cabin_pressure: 100,
+  o2_level: 100,
+  co2_level: 100,
+  cycle_rate: 100,
+  o2_storage: 100,
+  h2o_storage: 100,
+  total_power: 100,
+  pv_1_production: 100,
+  pv_1_orientation: 100,
+  pv_2_production: 100,
+  pv_2_orientation: 100,  
 }];
 
 var sampleEngines = [
@@ -137,6 +145,169 @@ var sampleEngines = [
   }
 ];
 
+var sampleCraftEngines = [
+  {
+    mission_id: 1,
+    engine_type: "superdraco",
+    engine_id: "SD-1",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "superdraco",
+    engine_id: "SD-2",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "superdraco",
+    engine_id: "SD-3",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "superdraco",
+    engine_id: "SD-4",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "rcs",
+    engine_id: "B1-1",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "rcs",
+    engine_id: "B1-2",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "rcs",
+    engine_id: "B1-3",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "rcs",
+    engine_id: "B1-4",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "rcs",
+    engine_id: "B2-1",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "rcs",
+    engine_id: "B2-2",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "rcs",
+    engine_id: "B2-3",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "rcs",
+    engine_id: "B2-4",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "rcs",
+    engine_id: "B3-1",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "rcs",
+    engine_id: "B3-2",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "rcs",
+    engine_id: "B3-3",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "rcs",
+    engine_id: "B3-4",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "rcs",
+    engine_id: "B4-1",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "rcs",
+    engine_id: "B4-2",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "rcs",
+    engine_id: "B4-3",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  },
+  {
+    mission_id: 1,
+    engine_type: "rcs",
+    engine_id: "B4-4",
+    force_thrust: 123,
+    chamber_pressure: 27,
+    chamber_temperature: 456
+  }
+];
+
 var sampleTanks = [
   {
     mission_id: 1,
@@ -181,8 +352,75 @@ var sampleTanks = [
     fuel_temp: 145.0,
     intake: "closed",
     outake: "open"
-  },
+  }
 
+];
+
+var sampleCraftTanks = [
+  {
+    mission_id: 1,
+    tank_type: "superdraco",
+    tank_id: "SD-1",
+    fuel_mass: 75,
+    fuel_temp: 123,
+    tank_pressure: 23
+  },
+  {
+    mission_id: 1,
+    tank_type: "superdraco",
+    tank_id: "SD-2",
+    fuel_mass: 75,
+    fuel_temp: 123,
+    tank_pressure: 23
+  },
+  {
+    mission_id: 1,
+    tank_type: "superdraco",
+    tank_id: "SD-3",
+    fuel_mass: 75,
+    fuel_temp: 123,
+    tank_pressure: 23
+  },
+  {
+    mission_id: 1,
+    tank_type: "superdraco",
+    tank_id: "SD-4",
+    fuel_mass: 75,
+    fuel_temp: 123,
+    tank_pressure: 23
+  },
+  {
+    mission_id: 1,
+    tank_type: "rcs",
+    tank_id: "B1",
+    fuel_mass: 75,
+    fuel_temp: 123,
+    tank_pressure: 23
+  },
+  {
+    mission_id: 1,
+    tank_type: "rcs",
+    tank_id: "B2",
+    fuel_mass: 75,
+    fuel_temp: 123,
+    tank_pressure: 23
+  },
+  {
+    mission_id: 1,
+    tank_type: "rcs",
+    tank_id: "B3",
+    fuel_mass: 75,
+    fuel_temp: 123,
+    tank_pressure: 23
+  },
+  {
+    mission_id: 1,
+    tank_type: "rcs",
+    tank_id: "B4",
+    fuel_mass: 75,
+    fuel_temp: 123,
+    tank_pressure: 23
+  }
 ];
 
 function run () {
@@ -191,6 +429,8 @@ function run () {
   addCraftData();
   addEngineData();
   addTankData();
+  addCraftEngineData();
+  addCraftTankData();
 };
 run();
 
@@ -259,4 +499,31 @@ function addTankData () {
       }
     });
   }
+}
+
+function addCraftEngineData() {
+  for (var i = 0; i < sampleCraftEngines.length; i++) {
+    var engine = sampleCraftEngines[i];
+    craftModel.addCraftEngineData(engine, function (err, result) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("Added spacecraft engine:", engine);
+      }
+    });
+  }
+}
+
+function addCraftTankData() {
+    for (var i = 0; i < sampleCraftTanks.length; i++) {
+      var tank = sampleCraftTanks[i];
+      craftModel.addCraftTankData(tank, function (err, result) {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log("Added spacecraft tank:", tank);
+        }
+      });
+    } 
+
 }

@@ -50,6 +50,7 @@
     function getMissionMeta () {
       Mission.getMissionMeta(vm.missionID) 
         .then(function (missionData) {
+          console.log(missionData);
           vm.missionID = missionData.id;
           vm.missionName = missionData.name[0].toUpperCase() + missionData.name.slice(1);
           vm.heading = missionData.heading;

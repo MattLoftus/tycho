@@ -59,16 +59,52 @@ CREATE TABLE `tanks` (
 CREATE TABLE `craft` (
   `id` int NOT NULL AUTO_INCREMENT,
   `mission_id` int,
-  `power` float,
   `cabin_pressure` float,
-  `monoprop` float,
+  `o2_level` float,
+  `co2_level` float,
+  `cycle_rate` float,
+  `o2_storage` float,
+  `h2o_storage` float,
+  `total_power` float,
+  `pv_1_production` float,
+  `pv_1_orientation` float,
+  `pv_2_production` float,
+  `pv_2_orientation` float,  
+  `last_updated` bigint,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `spacecraft_engines` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `mission_id` int,
+  `engine_type` varchar(15),
+  `engine_id` varchar(5),
+  `force_thrust` float,
+  `chamber_pressure` float,
+  `chamber_temperature` float,
+  `last_updated` bigint,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `spacecraft_tanks` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `mission_id` int,
+  `tank_type` varchar(15),
+  `tank_id` varchar(5),
+  `fuel_mass` float,
+  `fuel_temp` float,
+  `tank_pressure` float,
   `last_updated` bigint,
   PRIMARY KEY (`id`)
 );
 
 ALTER TABLE `engines` ADD CONSTRAINT `engines_fk0` FOREIGN KEY (`mission_id`) REFERENCES `mission`(`id`);
 
+ALTER TABLE `spacecraft_engines` ADD CONSTRAINT `spacecraft_engines_fk0` FOREIGN KEY (`mission_id`) REFERENCES `mission`(`id`);
+
 ALTER TABLE `tanks` ADD CONSTRAINT `tanks_fk0` FOREIGN KEY (`mission_id`) REFERENCES `mission`(`id`);
+
+ALTER TABLE `spacecraft_tanks` ADD CONSTRAINT `spacecraft_tanks_fk0` FOREIGN KEY (`mission_id`) REFERENCES `mission`(`id`);
 
 ALTER TABLE `craft` ADD CONSTRAINT `messages_fk0` FOREIGN KEY (`mission_id`) REFERENCES `mission`(`id`);
 
