@@ -525,7 +525,7 @@ ul {
 
   .row-1,
   .row-2 {
-    background: linear-gradient(to bottom, #000000 45%, #3A388D 95%);    
+    background: linear-gradient(to bottom, #000000 45%, #3A388D 140%);    
     flex-basis: 44%;
     height: 44vh;
     margin: 0;
@@ -709,6 +709,10 @@ ul {
     }
   }
 
+  .secondary-stats li:nth-child(even) {
+    margin-bottom: 1rem;
+  }
+
   .fuel-type {
     color: $softRed;
     font-size: 1.25rem;
@@ -815,6 +819,7 @@ ul {
     }
     .trajectory-graphic {
       border-top: 1px solid $grey;
+      height: 44vh;
       h5:hover {
         cursor: pointer;
         color: #66ffff;
@@ -830,7 +835,7 @@ ul {
         li {
           margin: .1rem auto;
           padding:0;
-          font-size: .9rem;
+          font-size: .8rem;
           font-weight: 300;
         }
         .status {
@@ -866,7 +871,7 @@ ul {
       flex-direction: column;
       h5 {
         flex-basis: 8%;
-        height: 3vh;
+        height: 4vh;
       }
       .super-draco {
         flex-basis: 20%;
@@ -895,12 +900,12 @@ ul {
         margin: auto;
       }
       th {
-        font-size: .9rem;
+        font-size: .8rem;
         font-weight: 300;
         border-bottom: 1px solid $grey;
       }
       td {
-        font-size: .9rem;
+        font-size: .8rem;
         color: $green;
       }
 

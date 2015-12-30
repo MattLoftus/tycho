@@ -12,7 +12,7 @@
       
   </div>
 
-  <div class="stage-2">
+  <div class="stage-1">
     
     <div class="graphic-container LOX">
       <div class="main-stats">
@@ -23,28 +23,32 @@
           <li>Status</li>
           <li class="stat-value">OK</li>
           <li>Fuel Mass</li>
-          <li class="stat-value">100 Kg</li>
+          <li class="stat-value">{{ tanks.tanks.stage1.LOX.fuel_mass }} Kg</li>
           <li>Fuel Temp</li>
-          <li class="stat-value">123 K</li>
+          <li class="stat-value">{{ tanks.tanks.stage1.LOX.fuel_temp }} K</li>
           <li>Average Pressure</li>
-          <li class="stat-value">100 atm</li>
+          <li class="stat-value">{{ tanks.tanks.stage1.LOX.tank_pressure}} atm</li>
 
         </ul>
 
+      </div>
+
+      <div class="tank-graphic">
+        
       </div>
 
       <div class="secondary-stats">
         
         <ul>
           
-          <li>Fuel In</li>
-          <li class="stat-value">Locked</li>
+          <li>Fuel Intake</li>
+          <li class="stat-value">{{ tanks.tanks.stage1.LOX.fuel_intake }}</li>
           <li>Fuel Out</li>
-          <li class="stat-value">Open</li>
-          <li>H-Bottle Pressure</li>
-          <li class="stat-value">Nominal</li>
+          <li class="stat-value">{{ tanks.tanks.stage1.LOX.fuel_outtake }}</li>
+          <li>He-Bottle Pressure</li>
+          <li class="stat-value">{{ tanks.tanks.stage1.LOX.he_bottle_status }}</li>
           <li>Pump Status</li>
-          <li class="stat-value">Nominal</li>
+          <li class="stat-value">{{ tanks.tanks.stage1.LOX.pump_status }}</li>
 
         </ul>
 
@@ -62,14 +66,18 @@
           <li>Status</li>
           <li class="stat-value">OK</li>
           <li>Fuel Mass</li>
-          <li class="stat-value">100 Kg</li>
+          <li class="stat-value">{{ tanks.tanks.stage1.RP1.fuel_mass }} Kg</li>
           <li>Fuel Temp</li>
-          <li class="stat-value">123 K</li>
+          <li class="stat-value">{{ tanks.tanks.stage1.RP1.fuel_temp }} K</li>
           <li>Average Pressure</li>
-          <li class="stat-value">100 atm</li>
+          <li class="stat-value">{{ tanks.tanks.stage1.RP1.tank_pressure }} atm</li>
 
         </ul>
 
+      </div>
+
+      <div class="tank-graphic">
+        
       </div>
 
       <div class="secondary-stats">
@@ -77,13 +85,13 @@
         <ul>
           
           <li>Fuel In</li>
-          <li class="stat-value">Locked</li>
+          <li class="stat-value">{{ tanks.tanks.stage1.RP1.fuel_intake }}</li>
           <li>Fuel Out</li>
-          <li class="stat-value">Open</li>
-          <li>H-Bottle Pressure</li>
-          <li class="stat-value">Nominal</li>
+          <li class="stat-value">{{ tanks.tanks.stage1.RP1.fuel_outtake }}</li>
+          <li>He-Bottle Pressure</li>
+          <li class="stat-value">{{ tanks.tanks.stage1.RP1.he_bottle_status }}</li>
           <li>Pump Status</li>
-          <li class="stat-value">Nominal</li>
+          <li class="stat-value">{{ tanks.tanks.stage1.RP1.pump_status }}</li>
 
         </ul>
 
@@ -94,7 +102,7 @@
 
   </div>
 
-  <div class="stage-1">
+  <div class="stage-2">
 
 
     <div class="graphic-container LOX">
@@ -106,14 +114,18 @@
           <li>Status</li>
           <li class="stat-value">OK</li>
           <li>Fuel Mass</li>
-          <li class="stat-value">100 Kg</li>
+          <li class="stat-value">{{ tanks.tanks.stage2.LOX.fuel_mass }} Kg</li>
           <li>Fuel Temp</li>
-          <li class="stat-value">123 K</li>
+          <li class="stat-value">{{ tanks.tanks.stage2.LOX.fuel_temp }} K</li>
           <li>Average Pressure</li>
-          <li class="stat-value">100 atm</li>
+          <li class="stat-value">{{ tanks.tanks.stage2.LOX.tank_pressure }} atm</li>
 
         </ul>
 
+      </div>
+
+      <div class="tank-graphic">
+        
       </div>
       
       <div class="secondary-stats">
@@ -121,13 +133,13 @@
         <ul>
           
           <li>Fuel In</li>
-          <li class="stat-value">Locked</li>
+          <li class="stat-value">{{ tanks.tanks.stage2.LOX.fuel_intake }}</li>
           <li>Fuel Out</li>
-          <li class="stat-value">Open</li>
-          <li>H-Bottle Pressure</li>
-          <li class="stat-value">Nominal</li>
+          <li class="stat-value">{{ tanks.tanks.stage2.LOX.fuel_outtake }}</li>
+          <li>He-Bottle Pressure</li>
+          <li class="stat-value">{{ tanks.tanks.stage2.LOX.he_bottle_status}}</li>
           <li>Pump Status</li>
-          <li class="stat-value">Nominal</li>
+          <li class="stat-value">{{ tanks.tanks.stage2.LOX.pump_status }}</li>
 
 
         </ul>
@@ -146,14 +158,18 @@
           <li>Status</li>
           <li class="stat-value">OK</li>
           <li>Fuel Mass</li>
-          <li class="stat-value">100 Kg</li>
+          <li class="stat-value">{{ tanks.tanks.stage2.RP1.fuel_mass }} Kg</li>
           <li>Fuel Temp</li>
-          <li class="stat-value">123 K</li>
+          <li class="stat-value">{{ tanks.tanks.stage2.RP1.fuel_temp }} K</li>
           <li>Average Pressure</li>
-          <li class="stat-value">100 atm</li>
+          <li class="stat-value">{{ tanks.tanks.stage2.RP1.tank_pressure }} atm</li>
 
         </ul>
 
+      </div>
+
+      <div class="tank-graphic">
+        
       </div>
       
       <div class="secondary-stats">
@@ -161,13 +177,13 @@
         <ul>
           
           <li>Fuel In</li>
-          <li class="stat-value">Locked</li>
+          <li class="stat-value">{{ tanks.tanks.stage2.RP1.fuel_intake }}</li>
           <li>Fuel Out</li>
-          <li class="stat-value">Open</li>
-          <li>H-Bottle Pressure</li>
-          <li class="stat-value">Nominal</li>
+          <li class="stat-value">{{ tanks.tanks.stage2.RP1.fuel_outtake }}</li>
+          <li>He-Bottle Pressure</li>
+          <li class="stat-value">{{ tanks.tanks.stage2.RP1.he_bottle_status }}</li>
           <li>Pump Status</li>
-          <li class="stat-value">Nominal</li>
+          <li class="stat-value">{{ tanks.tanks.stage2.RP1.pump_status }}</li>
 
 
         </ul>

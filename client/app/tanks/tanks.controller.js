@@ -20,16 +20,16 @@
 
     //Initialization procedures
     getTankData();
-    fuelTankGraphic(".stage-2 .LOX .main-stats");
-    fuelTankGraphic(".stage-2 .RP1 .main-stats");
-    fuelTankGraphic(".stage-1 .LOX .main-stats");
-    fuelTankGraphic(".stage-1 .RP1 .main-stats");
+    fuelTankGraphic(".stage-2 .LOX .tank-graphic");
+    fuelTankGraphic(".stage-2 .RP1 .tank-graphic");
+    fuelTankGraphic(".stage-1 .LOX .tank-graphic");
+    fuelTankGraphic(".stage-1 .RP1 .tank-graphic");
     
     //Get all fuel tank data for both rocket stages
     function getTankData () {
       Vehicle.getAllTanks(vm.missionID)
         .then(function (tankData) {
-          console.log(tankData);
+          // console.log(tankData);
           for (var i = 0; i < tankData.length; i++) {
             var tank = tankData[i];
             if (tank.stage_num === 1) {
@@ -38,6 +38,8 @@
               vm.tanks.stage2[tank.fuel_type] = tank;
             }
           }
+
+          console.log(vm.tanks);
         });
     }
 
@@ -53,7 +55,8 @@
       var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
       renderer.setClearColor( 0xffffff, 0);
       renderer.setSize( width, height);
-      $(renderer.domElement).insertAfter(selector);
+      // $(renderer.domElement).insertAfter(selector);
+      $(selector).append(renderer.domElement);
 
       camera.position.set(0, 0, 67);
 
