@@ -10,9 +10,6 @@ FUEL TANKS VIEW   -- line xx  *********
 SPACECRAFT VIEW   -- line xx  *********
 ***************************************/
 
-
-
-
 $mainBackground: #000;
 $earthBlue: #3022BB;
 $red: #F60A0A;
@@ -20,6 +17,33 @@ $green: #00CC00;
 $engineGreen: #017101;
 $grey: #CFC2C2;
 $softRed: #E45151;
+
+/* Defaults */
+.default-header {
+  flex-basis: 10%;
+  height: 10vh;
+  border: 1px solid $grey;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  i {
+    flex-basis: 5%;
+    width: 5%;
+    font-size: 2rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.default-warning {
+  color: #e5e600;
+}
+
+.defualt-critical {
+  color: $red;
+}
 
 html {
   box-sizing: border-box;
@@ -36,7 +60,6 @@ html {
 ul {
   list-style: none;
 }
-
 
 
 /*********************************
@@ -310,72 +333,7 @@ ul {
       }
 
 
-    }
-
-    /*** ENGINE GRAPHIC  ***/
-    .circle {
-
-      position: absolute;
-      top: 50%;
-      right: 50%;
-      /*bottom: 0;
-      left: 0;*/
-      /*margin: auto;*/
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: #006600;
-      /*-webkit-transform: translateY(90px); */
-      transform: translateY(85px);
-      border: 1px solid black;
-    }
-
-    .circle-1 {
-      /*transform: translateY(85px);*/
-      transform: translateY(75px);
-    }
-
-    .circle-2 {
-      transform-origin: center 100px;
-      /*transform-origin: 50% 100px;*/
-      transform: rotate(45deg);
-    }
-
-    .circle-3 {
-      transform-origin: center 100px;
-      transform: rotate(90deg);
-    }
-
-    .circle-4 {
-      transform-origin: center 100px;
-      transform: rotate(135deg);
-    }
-
-    .circle-5 {
-      transform-origin: 50% 100px;
-      transform: rotate(180deg);
-    }
-
-    .circle-6 {
-      transform-origin: 50% 100px;
-      transform: rotate(225deg);
-    }
-
-    .circle-7 {
-      transform-origin: 50% 100px;
-      transform: rotate(270deg);
-    }
-
-    .circle-8 {
-      transform-origin: 50% 100px;
-      transform: rotate(315deg);
-    }
-
-    .circle-9 {
-      transform-origin: 50% 100px;
-      transform: rotate(360deg);
-    }
-    
+    }    
   }
 
   /*Actions*/
@@ -489,21 +447,7 @@ ul {
   flex-direction: column;
 
   .header {
-    flex-basis: 10%;
-    height: 10vh;
-    border: 1px solid $grey;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    i {
-      flex-basis: 5%;
-      width: 5%;
-      font-size: 2rem;
-      &:hover {
-        cursor: pointer;
-      }
-    }
+    @extend .default-header;
     h2 {
       flex-basis: 25%;
       width: 25%;
@@ -569,6 +513,9 @@ ul {
         .status {
           color: $green;
         }
+        .warning {
+          color: #e5e600;
+        }
       }
 
       .stats {
@@ -585,8 +532,10 @@ ul {
       .stats .stat-value {
         flex-basis: 30%;
         width: 30%;
-        li {
-          color: $green;
+        
+        color: $green;
+        .warning {
+          color: #e5e600;
         }
       }
     }
@@ -602,46 +551,6 @@ ul {
 
   }
 
-  /*.row-2 {
-    flex-basis: 45%;
-    height: 45vh;
-    margin: 0;
-    padding: 0;
-    border-bottom: 1px solid $grey;
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    li:nth-child(1) {
-      border-left: 1px solid $grey;
-    }
-    li {
-      flex-basis: 20%;
-      width: 20%;
-      border-right: 1px solid $grey;
-      display: flex;
-      flex-direction: column;
-      div {
-        flex-basis: 50%;
-        height: 50%;
-        width: 100%;
-      }
-      .graphic {
-        display: flex;
-        flex-direction: row;
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-        li {
-          margin:0;
-          padding:0;
-          border-bottom: 1px solid $grey;
-          font-size: .5rem;
-        }
-      }
-    }
-  }*/
-
 }
 
 /*********************************
@@ -656,21 +565,7 @@ ul {
   background: linear-gradient(to bottom, #000000 50%, #653030 120%);
 
   .header {
-    flex-basis: 10%;
-    height: 10vh;
-    border: 1px solid $grey;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    i {
-      flex-basis: 5%;
-      width: 5%;
-      font-size: 2rem;
-      &:hover {
-        cursor: pointer;
-      }
-    }
+    @extend .default-header;
     h2 {
       flex-basis: 25%;
       width: 25%;
@@ -759,21 +654,7 @@ ul {
   flex-direction: column;
 
   .header {
-    flex-basis: 10%;
-    height: 10vh;
-    border: 1px solid $grey;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    i {
-      flex-basis: 5%;
-      width: 5%;
-      font-size: 2rem;
-      &:hover {
-        cursor: pointer;
-      }
-    }
+    @extend .default-header;
     h2 {
       flex-basis: 25%;
       width: 25%;
@@ -945,6 +826,7 @@ ul {
 
 
 }
+
 
 
 
