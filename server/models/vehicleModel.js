@@ -72,6 +72,21 @@ module.exports = {
           callback(null, tankData);
         }
       });
-  }
+  },
+
+  updateEngineData: function (engineData, callback) {
+    var date = Date.now();
+    db.query('update engines set stage_num = ?, engine_num = ?, \
+      chamber_pressure = ?, exit_pressure = ?, force_thrust = ?, nozzle_temp = ?, \
+      turbopump_speed = ?, last_updated = ? where mission_id = ?', [engineData.stage_num, engineData.engine_num,
+      engineData.chamber_pressure, engineData.exit_pressure, engineData.force_thrust, 
+      engineData.nozzle_temp, engineData.turbopump_speed, date, engineData.mission_id], function (err, engineData) {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null, engineData);
+        }
+      });
+  } 
 
 }
