@@ -550,8 +550,13 @@ ul {
       .graphic {
         display: flex;
         flex-direction: row;
-
+        justify-content: flex-end;
       }
+      
+      .info {
+        flex-basis: 50%;
+      }
+
       ul {
         list-style: none;
         padding:0;
@@ -584,6 +589,15 @@ ul {
           color: $green;
         }
       }
+    }
+
+    .engine-no {
+      color: $softRed;
+    }
+
+    img {
+      height: 24vh;
+      width: auto;
     }
 
   }
@@ -703,14 +717,22 @@ ul {
     }
     ul {
       padding-left: .5rem;
+      margin-top: 0;
     }
     ul li {
       margin: .3rem 0 .3rem 0;
     }
   }
 
+  .secondary-stats {
+    margin-top: 2rem;
+  }
+
   .secondary-stats li:nth-child(even) {
-    margin-bottom: 1rem;
+    margin-bottom: .6rem;
+  }
+  .main-stats li:nth-child(odd) {
+    margin-bottom: .6rem;
   }
 
   .fuel-type {

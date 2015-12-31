@@ -247,7 +247,7 @@
       camera.position.set(0, 0, 67);
 
       //Orbit Controls
-      // var orbit = new THREE.OrbitControls(camera, renderer.domElement);
+      var orbit = new THREE.OrbitControls(camera, renderer.domElement);
 
       //Lighting
       var light = new THREE.AmbientLight( 0x404040 ); // soft white light

@@ -17,9 +17,9 @@
 
     //Initialization
     getEngineData();
-    for (var i = 1; i < 11; i++) {
-      engineGraphic(i);
-    }
+    // for (var i = 1; i < 11; i++) {
+    //   engineGraphic(i);
+    // }
 
     //Scope methods
 
