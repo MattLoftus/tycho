@@ -1,3 +1,6 @@
+//This script will be used to update the database table data
+//on an interval to simulate the real time data updating you 
+//would see in a mission.
 var craftModel = require('../models/craftModel.js');
 var missionModel = require('../models/missionModel.js');
 var userModel = require('../models/userModel.js');
@@ -14,14 +17,14 @@ var sampleTanks = sampleData.sampleTanks;
 var sampleCraftTanks = sampleData.sampleCraftTanks;
 
 var time = 0;
-var interval = 5000;
+var interval = 1000;
 
 setInterval(function () {
   updateEngineData();
   time += interval;
 }, interval);
 
-//Methods for updating datasets in the database
+//Table updating methos
 function updateEngineData (time) {
   for (var i = 0; i < sampleEngines.length; i++) {
     var engine = sampleEngines[i];

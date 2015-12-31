@@ -17,6 +17,7 @@
 
     //Initialization
     getEngineData();
+    setInterval(getEngineData, 1000);
     // for (var i = 1; i < 11; i++) {
     //   engineGraphic(i);
     // }
@@ -26,6 +27,20 @@
 
     //Non-scope methods
 
+
+
+    //Get all engine data for both rocket stages
+    function getEngineData() {
+      Vehicle.getAllEngines(vm.missionID)
+        .then(function (engineData) {
+          console.log(engineData);
+          for (var i = 0; i < engineData.length; i++) {
+            var engine = engineData[i];
+            vm.engines[engine.engine_num] = engine;
+          }
+          console.log(vm.engines);
+        });
+    }
 
     //Engine Graphic creator
     function engineGraphic(engine_num) {
@@ -107,20 +122,6 @@
       };
       render();
 
-    }
-
-    //Get all engine data for both rocket stages
-    function getEngineData() {
-      Vehicle.getAllEngines(vm.missionID)
-        .then(function (engineData) {
-          console.log(engineData);
-          for (var i = 0; i < engineData.length; i++) {
-            var engine = engineData[i];
-            vm.engines[engine.engine_num] = engine;
-          }
-          console.log(vm.engines);
-          console.log(vm.engines["1"].chamber_pressure);
-        });
     }
     
   }
