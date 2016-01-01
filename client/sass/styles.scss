@@ -17,6 +17,7 @@ $green: #00CC00;
 $engineGreen: #017101;
 $grey: #CFC2C2;
 $softRed: #E45151;
+$yellow: #e5e600;
 
 /* Defaults */
 .default-header {
@@ -37,12 +38,25 @@ $softRed: #E45151;
   }
 }
 
-.default-warning {
-  color: #e5e600;
+
+@-webkit-keyframes warningPulse { 
+  0% {color: $yellow;} 
+  50% {color: #7f8000;} 
+  100% {color: $yellow;} 
 }
 
-.defualt-critical {
-  color: $red;
+@-webkit-keyframes criticalPulse { 
+  0% {color: $red;} 
+  50% {color: black;} 
+  100% {color: $red;} 
+}
+
+.default-critical {
+  -webkit-animation: criticalPulse 1s infinite;
+}
+
+.default-warning {
+  -webkit-animation: warningPulse 3s infinite alternate; 
 }
 
 html {
@@ -496,11 +510,9 @@ ul {
         flex-direction: row;
         justify-content: flex-end;
       }
-      
       .info {
         flex-basis: 50%;
       }
-
       ul {
         list-style: none;
         padding:0;
@@ -513,8 +525,8 @@ ul {
         .status {
           color: $green;
         }
-        .warning {
-          color: #e5e600;
+        li.warning {
+          @extend .default-warning;
         }
       }
 
@@ -535,7 +547,7 @@ ul {
         
         color: $green;
         .warning {
-          color: #e5e600;
+          @extend .default-warning;
         }
       }
     }
@@ -546,7 +558,7 @@ ul {
 
     img {
       height: 24vh;
-      width: auto;
+      max-width: 10vw;
     }
 
   }
