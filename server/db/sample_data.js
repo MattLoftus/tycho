@@ -43,101 +43,101 @@ module.exports = {
       mission_id: 1,
       stage_num: 1,
       engine_num: 1,
-      chamber_pressure: 87.0,
-      exit_pressure: 95.0,
-      force_thrust: 100.0,
-      nozzle_temp: 872.0,
-      turbopump_speed: 432.0
+      chamber_pressure: 0,
+      exit_pressure: 0,
+      force_thrust: 0,
+      nozzle_temp: 273,
+      turbopump_speed: 0
     },
     {
       mission_id: 1,
       stage_num: 1,
       engine_num: 2,
-      chamber_pressure: 87.0,
-      exit_pressure: 95.0,
-      force_thrust: 100.0,
-      nozzle_temp: 872.0,
-      turbopump_speed: 432.0
+      chamber_pressure: 0,
+      exit_pressure: 0,
+      force_thrust: 0,
+      nozzle_temp: 273,
+      turbopump_speed: 0
     },
     {
       mission_id: 1,
       stage_num: 1,
       engine_num: 3,
-      chamber_pressure: 87.0,
-      exit_pressure: 95.0,
-      force_thrust: 100.0,
-      nozzle_temp: 872.0,
-      turbopump_speed: 432.0
+      chamber_pressure: 0,
+      exit_pressure: 0,
+      force_thrust: 0,
+      nozzle_temp: 273,
+      turbopump_speed: 0
     },
     {
       mission_id: 1,
       stage_num: 1,
       engine_num: 4,
-      chamber_pressure: 87.0,
-      exit_pressure: 95.0,
-      force_thrust: 100.0,
-      nozzle_temp: 872.0,
-      turbopump_speed: 432.0
+      chamber_pressure: 0,
+      exit_pressure: 0,
+      force_thrust: 0,
+      nozzle_temp: 273,
+      turbopump_speed: 0
     },
     {
       mission_id: 1,
       stage_num: 1,
       engine_num: 5,
-      chamber_pressure: 87.0,
-      exit_pressure: 95.0,
-      force_thrust: 100.0,
-      nozzle_temp: 872.0,
-      turbopump_speed: 432.0
+      chamber_pressure: 0,
+      exit_pressure: 0,
+      force_thrust: 0,
+      nozzle_temp: 273,
+      turbopump_speed: 0
     },
     {
       mission_id: 1,
       stage_num: 1,
       engine_num: 6,
-      chamber_pressure: 87.0,
-      exit_pressure: 95.0,
-      force_thrust: 100.0,
-      nozzle_temp: 872.0,
-      turbopump_speed: 432.0
+      chamber_pressure: 0,
+      exit_pressure: 0,
+      force_thrust: 0,
+      nozzle_temp: 273,
+      turbopump_speed: 0
     },
     {
       mission_id: 1,
       stage_num: 1,
       engine_num: 7,
-      chamber_pressure: 87.0,
-      exit_pressure: 95.0,
-      force_thrust: 100.0,
-      nozzle_temp: 872.0,
-      turbopump_speed: 432.0
+      chamber_pressure: 0,
+      exit_pressure: 0,
+      force_thrust: 0,
+      nozzle_temp: 273,
+      turbopump_speed: 0
     },
     {
       mission_id: 1,
       stage_num: 1,
       engine_num: 8,
-      chamber_pressure: 87.0,
-      exit_pressure: 95.0,
-      force_thrust: 100.0,
-      nozzle_temp: 872.0,
-      turbopump_speed: 432.0
+      chamber_pressure: 0,
+      exit_pressure: 0,
+      force_thrust: 0,
+      nozzle_temp: 273,
+      turbopump_speed: 0
     },
     {
       mission_id: 1,
       stage_num: 1,
       engine_num: 9,
-      chamber_pressure: 87.0,
-      exit_pressure: 95.0,
-      force_thrust: 100.0,
-      nozzle_temp: 872.0,
-      turbopump_speed: 432.0
+      chamber_pressure: 0,
+      exit_pressure: 0,
+      force_thrust: 0,
+      nozzle_temp: 273,
+      turbopump_speed: 0
     },
     {
       mission_id: 1,
       stage_num: 2,
       engine_num: 10,
-      chamber_pressure: 87.0,
-      exit_pressure: 95.0,
-      force_thrust: 100.0,
-      nozzle_temp: 872.0,
-      turbopump_speed: 432.0
+      chamber_pressure: 0,
+      exit_pressure: 0,
+      force_thrust: 0,
+      nozzle_temp: 273,
+      turbopump_speed: 0
     }
   ],
 

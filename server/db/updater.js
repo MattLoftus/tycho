@@ -20,19 +20,24 @@ var time = 0;
 var interval = 1000;
 
 setInterval(function () {
-  updateEngineData();
-  time += interval;
+  updateEngineData(time);
+  time += interval/1000;
 }, interval);
 
 //Table updating methos
 function updateEngineData (time) {
   for (var i = 0; i < sampleEngines.length; i++) {
     var engine = sampleEngines[i];
-    engine.chamber_pressure++;
-    engine.exit_pressure++;
-    engine.force_thrust++;
-    engine.nozzle_temp++;
-    engine.turbopump_speed++;
+    if (time < 9.7) {
+      engine.chamber_pressure++;
+      engine.exit_pressure++;
+      
+    }
+    if (time < 825) {
+      engine.force_thrust++;
+      engine.nozzle_temp += 1.3;
+      engine.turbopump_speed += .5;
+    }
     vehicleModel.updateEngineData(engine, function (err, result) {
       if (err) {
         console.error(err);
