@@ -88,6 +88,18 @@ module.exports = {
           callback(null, engineData);
         }
       });
+  },
+  updateTankData: function (tankData, callback) {
+    var date = Date.now();
+    db.query('update tanks set fuel_volume = ? where (stage_num = ? and \
+      fuel_type = ?)', [tankData.fuel_volume, tankData.stage_num, tankData.fuel_type], 
+      function (err, tankData) {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null, tankData);
+        }
+      });
   } 
 
 }

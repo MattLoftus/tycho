@@ -20,6 +20,7 @@
 
     //Initialization procedures
     getTankData();
+    setInterval(getTankData, 1000);
     fuelTankGraphic(".stage-2 .LOX .tank-graphic");
     fuelTankGraphic(".stage-2 .RP1 .tank-graphic");
     fuelTankGraphic(".stage-1 .LOX .tank-graphic");
@@ -42,6 +43,12 @@
           console.log(vm.tanks);
         });
     }
+
+    //Falcon 9 Fuel Notes:
+    //Stage 1 LOX: 150,000 Liters
+    //Stage 1 RP1: 95,000 Liters
+    //Stage 2 LOX: 28,000 Liters
+    //Stage 2 RP1: 17,000 Liters
 
 
     //Tank Graphic rendering method

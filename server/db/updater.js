@@ -21,10 +21,13 @@ var interval = 1000;
 
 setInterval(function () {
   updateEngineData(time);
+  updateTankData(time);
   time += interval/1000;
 }, interval);
 
 //Table updating methos
+
+//Update main engine data
 function updateEngineData (time) {
   for (var i = 0; i < sampleEngines.length; i++) {
     var engine = sampleEngines[i];
@@ -42,8 +45,61 @@ function updateEngineData (time) {
       if (err) {
         console.error(err);
       } else {
-        console.log("Added engine:", engine);
+        console.log("updated engine:", engine);
       }
     });
   }
 }
+
+//Update main fuel tank data
+//Stage sep: 144 sec. 2nd stage start: 155 sec, shutdown: 600sec 
+function updateTankData(time) {
+  var flowRateS1LOX = 857.1429;
+  var flowRateS1RP1 = 571.429;
+  var flowRateS2LOX = 60.674;
+  var flowRateS2RP1 = 35.955;
+  if (time < 144) {
+    sampleTanks[0].fuel_volume -= flowRateS1RP1;
+    vehicleModel.updateTankData(sampleTanks[0], function (err, result) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("updated tank", sampleTanks[0]);
+      }
+    });
+    sampleTanks[1].fuel_volume -= flowRateS1LOX;
+    vehicleModel.updateTankData(sampleTanks[1], function (err, result) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("updated tank", sampleTanks[1]);
+      }
+    });
+  } else if (time >= 155 && time < 600) {
+    sampleTanks[2].fuel_volume -= flowRateS2RP1;
+    vehicleModel.updateTankData(sampleTanks[2], function (err, result) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("updated tank", sampleTanks[2]);
+      }
+    });
+    sampleTanks[3].fuel_volume -= flowRateS2LOX;
+    vehicleModel.updateTankData(sampleTanks[3], function (err, result) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("updated tank", sampleTanks[3]);
+      }
+    });
+  }
+}
+
+
+
+
+
+
+
+
+

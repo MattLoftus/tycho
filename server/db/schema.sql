@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS tycho;
+
 CREATE DATABASE tycho;
 
 USE tycho;

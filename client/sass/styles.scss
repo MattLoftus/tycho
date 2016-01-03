@@ -105,7 +105,6 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    border-bottom: 1px solid white;
   }
 
   .title {
@@ -671,7 +670,7 @@ ul {
       margin-top: 0;
     }
     ul li {
-      margin: .3rem 0 .3rem 0;
+      margin: 0rem 0 .3rem 0;
     }
   }
 
@@ -696,7 +695,7 @@ ul {
   }
 
   .stat-value {
-    color: $green;
+    color: $lightBlue;
   }
 }
 
