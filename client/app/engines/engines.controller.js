@@ -24,8 +24,6 @@
     //Scope methods
     //Non-scope methods
 
-
-
     //Get all engine data for both rocket stages
     function getEngineData() {
       Vehicle.getAllEngines(vm.missionID)
@@ -55,14 +53,13 @@
     //change status to "warning" for the given engine
     function throwCaution(engineNo, type) {
       var baseSelector = ".engine-" + engineNo;
-      $(baseSelector + " .status").addClass("warning");
+      $(baseSelector + " .status").addClass("warning").text("Warning");
       $(baseSelector + type).addClass("warning");
     }
 
     function throwCritical(engineNo) {
 
     }
-
     
   }
 

@@ -2,10 +2,14 @@
 
 
   <div class="main-container">
-    <div class="meta-data">
+    <div class="header">
+
       <i class="material-icons">menu</i>
-      <p>Mission | {{ orbit.missionName }}</p>
-      <p>Heading | {{ orbit.heading }} </p>
+
+      <h2>Trajectory Overview</h2>
+
+      <h4>Trajectory Status: <span class="top-level-status">Nominal</span></h4>
+    
     </div>
     <!-- <canvas class="trajectory-canvas" width="800" height="800"></canvas> -->
 
@@ -14,24 +18,36 @@
   </div>
 
   <div class="data-container">
-    <div class="field-names">
-      <p>Apogee</p>
-      <p>Perigee</p>
-      <p>Altitude</p>
-      <p>Inclination</p>
-      <p>Latitude</p>
-      <p>Longitude</p>
-      <p>Velocity</p>
-    </div>
-    <div class="field-values">
-      <p>{{ orbit.apogee }} km</p>
-      <p>{{ orbit.perigee }} km</p>
-      <p>{{ orbit.altitude }} km</p>
-      <p>{{ orbit.inclination }} deg</p>
-      <p>{{ orbit.latitude }} deg</p>
-      <p>{{ orbit.longitude }} deg</p>
-      <p>{{ orbit.velocity }} m/s</p>
-    </div>
+
+    <ul class="field-names">
+
+      <li>Apogee</li>
+      <li>Target Apogee</li>
+      <li>Perigee</li>
+      <li>Target Perigee</li>
+      <li>Inclination</li>
+      <li>Target Inclination</li>
+      <li>Altitude</li>
+      <li>Latitude</li>
+      <li>Longitude</li>
+      <li>Velocity</li>
+  
+    </ul>
+
+    <ul class="field-values">
+
+      <li>{{ orbit.orbit.apogee }} km</li>
+      <li>{{ orbit.orbit.target_apogee }} km</li>
+      <li>{{ orbit.orbit.perigee }} km</li>
+      <li>{{ orbit.orbit.target_perigee }} km</li>
+      <li>{{ orbit.orbit.inclination }} deg</li>
+      <li>{{ orbit.orbit.target_inclination }} deg</li>
+      <li>{{ orbit.orbit.altitude }} km</li>
+      <li>{{ orbit.orbit.latitude }} deg</li>
+      <li>{{ orbit.orbit.longitude }} deg</li>
+      <li>{{ orbit.orbit.velocity }} m/s</li>
+
+    </ul>
   </div>
 
 </div>

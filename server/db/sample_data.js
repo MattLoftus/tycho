@@ -9,17 +9,17 @@ module.exports = {
   }],
 
   sampleMission: [{
-    name: "endurance",
-    velocity: 100.2,
+    name: "Endurance",
+    velocity: 450,
     heading: 37.1,
-    altitude: 50.1,
-    latitude: 37.0,
-    longitude: 35.0,
-    apogee: 97,
-    perigee: 74,
-    inclination: 2.5,
-    target_apogee: 150,
-    target_perigee: 97,
+    altitude: 100,
+    latitude: 4,
+    longitude: 0,
+    apogee: 175,
+    perigee: 150,
+    inclination: 4,
+    target_apogee: 250,
+    target_perigee: 250,
     target_inclination: 12
   }],
 

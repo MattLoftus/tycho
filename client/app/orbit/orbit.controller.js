@@ -11,78 +11,52 @@
 
     //View model properties and methods
     vm.missionID = $window.localStorage.missionID;
-    vm.missionName = '';
-    vm.heading = 0;
-    vm.velocity = 0;
-    vm.altitude = 0;
-    vm.latitude = 0;
-    vm.longitude = 0;
-    vm.apogee = 0;
-    vm.perigee = 0;
-    vm.inclination = 0;
-    vm.timestamp;
-
-    //TODO: Think about procedures for explicity determining the dimensions
-    //of the canvas then calculating all necessary parameters (earth radius,
-    //apogee, perigee, etc.) based off of that scale.
-    
-    //AND how to redefine the properties of ctx based on what we are 
-    //drawing at the given moment.
-
-    //How to determine C1-C4 based on a variable trajectory
+    vm.orbit = {};
 
     //Initialization procedures
     getOrbitalData();
-    trajectoryGraphic();
-    // drawTrajectory();
-
-    //Scope methods
 
     //Non scope methods
     function getOrbitalData () {
       Mission.getMissionMeta(vm.missionID) 
         .then(function (orbitData) {
-          console.log("The orbit data is: ", orbitData)
-          vm.missionID = orbitData.id;
-          vm.missionName = orbitData.name;
-          vm.heading = orbitData.heading;
-          vm.velocity = orbitData.velocity;
-          vm.altitude = orbitData.altitude;
-          vm.latitude = orbitData.latitude;
-          vm.longitude = orbitData.longitude;
-          vm.apogee = orbitData.apogee;
-          vm.perigee = orbitData.perigee;
-          vm.inclination = orbitData.inclination;
-          vm.timestamp = orbitData.last_updated;
+          for (var key in orbitData) {
+            vm.orbit[key] = orbitData[key];
+          }
+          console.log(vm.orbit);
+          trajectoryGraphic();
         });
     }
 
+    //Graphic scaling notes
+    //Earth radius = 50 units
+    //Earth real radius = 6371 km
+    //Distance conversion: 50/6731 = x / (actual distance)
+
+    //Calculate current position based on altitude, latitude, longitude
+
+    //We want two main cases: 
+      //1) orbit is not yet achieved, i.e perigee is negative.
+      //In this case we want to draw a parabola with our apogee
+      //as the apex, AND we want to have a zoomed in view of the
+      //trajectory, probably directly below the current position, 
+      //looking at the current position.
+
+      //2) orbit is reached, apogee and perigee positive. Now we want
+      //To show a zoomed out view of the orbit.
+
     //Create THREEJS trajectory Map
     function trajectoryGraphic () {
-      //////////////////////
-      ///  SCENE/CAMERA  ///
-      //////////////////////
-
+      var width = $window.innerWidth * .75;
+      var height = $window.innerHeight * .88;
       var scene = new THREE.Scene();
-      var camera = new THREE.PerspectiveCamera( 75, $window.innerWidth/$window.innerHeight, 0.1, 1000 );
+      var camera = new THREE.PerspectiveCamera( 75, width/height , 0.1, 1000 );
 
       var renderer = new THREE.WebGLRenderer({antialias: true});
-      renderer.setSize( $window.innerWidth * .8, $window.innerHeight * .8 );
+      renderer.setSize( width, height );
       $(".trajectory-graphic").append( renderer.domElement );
-
-      camera.position.set(0, 0, 200);
-      camera.rotation.x = -(Math.PI / 4) * .4 ;
-      // camera.rotation. = (Math.PI/2) * 0.25;
-      // camera.lookAt(0,0,0);
-
-      ///////////////////////////
-      ///// ORBIT CONTROLS //////
-      ///////////////////////////
+      
       var orbit = new THREE.OrbitControls(camera, renderer.domElement);
-
-      //////////////////////
-      /////  LIGHTS  ///////
-      //////////////////////
 
       var light = new THREE.AmbientLight( 0x888888 )
       scene.add( light )
@@ -91,11 +65,32 @@
       light.position.set(5,3,5)
       scene.add( light )
 
+      //Define parameters for scaling data values to map size
+      var scale = 50 / 6731;
+      var offset = 50;
+      var apogee = vm.orbit.apogee * scale + offset;
+      var perigee = vm.orbit.perigee * scale + offset;
+      var target_apogee = vm.orbit.target_apogee * scale + offset;
+      var target_perigee = vm.orbit.target_perigee * scale + offset;
 
-      //////////////////////
-      /////  OBJECTS  //////
-      //////////////////////
+      //Given altitude, latitude, and longitude, determine (x,y,z)
+      //Convert lat, lng to radians
+      var lat = vm.orbit.latitude * (Math.PI / 180);
+      var lng = vm.orbit.longitude * (Math.PI / 180);
+      var altitude = vm.orbit.altitude * scale + offset;
+      var pos_y = altitude * Math.sin(lat);
+      var pos_x = altitude * Math.cos(lng);
+      var pos_z = altitude * Math.sin(lng);
+      var position = [pos_x, pos_y, pos_z];
+      var cam_position = [position[0], position[1] - offset/2, position[2]];
 
+      var inclination = vm.orbit.inclination * (Math.PI / 180);
+      var targetInclination = vm.orbit.target_inclination * (Math.PI / 180);
+      console.log(altitude);
+      console.log(position);
+
+      // console.log(vm.orbit.target_perigee);
+      // console.log(apogee, perigee, target_apogee, target_perigee);
       //Earth
       var radius = 50;
       var segments = 32;
@@ -114,83 +109,85 @@
       scene.add( earth );
 
       //Spacecraft
-      var radius = 5;
+      var radius = .5;
       var segments = 32;
       var rings = 32;
 
       var craftGeometry = new THREE.SphereGeometry(radius, segments, rings);
       var craftMaterial = new THREE.MeshPhongMaterial({color: 0xffffff});
       var craft = new THREE.Mesh( craftGeometry, craftMaterial );
-      craft.position.set(100, 0, 0);
+      craft.position.set(position[0], position[1], position[2]);
       scene.add( craft );
 
-      //Optional Target
-      var radius = 5;
-      var segments = 32;
-      var rings = 32;
+      // var targetGeometry = new THREE.SphereGeometry(radius, segments, rings);
+      // var targetMaterial = new THREE.MeshPhongMaterial({color: 0xb3ebff});
+      // var targetObject = new THREE.Mesh( targetGeometry, targetMaterial );
+      // targetObject.position.set(0, -30, 100);
+      // scene.add( targetObject );
 
-      var targetGeometry = new THREE.SphereGeometry(radius, segments, rings);
-      var targetMaterial = new THREE.MeshPhongMaterial({color: 0x00cc00});
-      var targetObject = new THREE.Mesh( targetGeometry, targetMaterial );
-      targetObject.position.set(0, -30, 100);
-      scene.add( targetObject );
+      //Current Trajectory
+      var focus_vector;
+      if (vm.orbit.perigee > 0) {
+        //Draw elliptical orbit
+        var ellipseMaterial = new THREE.LineBasicMaterial({color:0xffffff, opacity:1});
+        var ellipse = new THREE.EllipseCurve(
+          0, 0, 
+          perigee, apogee,
+          0, 2.0 * Math.PI, 
+          false);
+        var ellipsePath = new THREE.CurvePath(ellipse.getPoints(1000));
+        ellipsePath.add(ellipse);
+        var ellipseGeometry = ellipsePath.createPointsGeometry(100);
+        var currentTrajectory = new THREE.Line(ellipseGeometry, ellipseMaterial);
+        scene.add( currentTrajectory );
+        currentTrajectory.rotation.x = Math.PI / 2;
+        currentTrajectory.rotation.y = inclination;
 
-      //////////////////////
-      ////  TRAJECTORY  ////
-      //////////////////////
-     
-      //Current Trajectory / orbit
-      var apogee = [0, 150, 0];
-      var perigee = [0, 100, 0];
+        focus_vector = new THREE.Vector3(0, 0, 0);
+        camera.position.set(0, 20, 100);
+      } else {
+        //Draw parabolic trajectory based off of current apogee
+        var curve = new THREE.QuadraticBezierCurve(
+          new THREE.Vector3( offset, 0, -apogee ),
+          new THREE.Vector3( offset + apogee, 0, 0 ),
+          new THREE.Vector3( offset, 0, apogee )
+        );
+        var path = new THREE.Path( curve.getPoints( 50 ) );
+        var geometry = path.createPointsGeometry( 50 );
+        var material = new THREE.LineBasicMaterial( { color : 0xffffff } );
+        var currentTrajectory = new THREE.Line( geometry, material );
+        scene.add(currentTrajectory);
 
-      var ellipseMaterial = new THREE.LineBasicMaterial({color:0xffffff, opacity:1});
-      var ellipse = new THREE.EllipseCurve(
-        0, 0, 
-        perigee[1] * .75, apogee[1] * .75, 
-        0, 2.0 * Math.PI, 
-        false);
-      var ellipsePath = new THREE.CurvePath(ellipse.getPoints(1000));
-      ellipsePath.add(ellipse);
-      var ellipseGeometry = ellipsePath.createPointsGeometry(100);
-      var line = new THREE.Line(ellipseGeometry, ellipseMaterial);
-      scene.add( line );
-      line.rotation.z = (Math.PI / 2) * 0.75;
-      line.rotation.x = (Math.PI / 2) * 1.2;
-
+        focus_vector = new THREE.Vector3(position[0], position[1], position[2]);
+        camera.position.set(cam_position[0], cam_position[1], cam_position[2]);
+      }
 
       //Target trajectory / orbit
       var targetMaterial = new THREE.LineDashedMaterial({
-        color: 0x00cc00, 
+        color: 0xb3ebff, 
         opacity:1, 
         dashSize: 8,
-        gapSize: 8
+        gapSize: 1
       });
       var targetOrbit = new THREE.EllipseCurve(
         0,0,
-        perigee[1] * 1.0, apogee[1] * 1.0, 
+        target_perigee, target_apogee, 
         0, 2.0 * Math.PI, 
         false);
       var targetPath = new THREE.CurvePath(targetOrbit.getPoints(1000));
       targetPath.add(targetOrbit);
       var targetGeometry = targetPath.createPointsGeometry(100);
-      var target = new THREE.Line(targetGeometry, targetMaterial);
-      scene.add( target );
-      target.rotation.z = (Math.PI / 2) * 0.75;
-      target.rotation.x = (Math.PI / 2) * 1.2;
-
-
-      ///////////////////////////
-      /// RENDERING/ANIM LOOP ///
-      ///////////////////////////
+      var targetTrajectory = new THREE.Line(targetGeometry, targetMaterial);
+      scene.add( targetTrajectory );
+      targetTrajectory.rotation.x = Math.PI / 2;
+      targetTrajectory.rotation.y = targetInclination;
 
       var vec = new THREE.Vector3( 0, 0, 0 );
-      var z = 500;
-      var dz = -3;
+
 
       var render = function (actions) {
-        earth.rotation.y += .001;
-
-        camera.lookAt(vec)
+        earth.rotation.y += .0003;
+        camera.lookAt(focus_vector);
         renderer.render(scene, camera);
         requestAnimationFrame( render );
       };

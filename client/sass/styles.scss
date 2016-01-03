@@ -18,6 +18,7 @@ $engineGreen: #017101;
 $grey: #CFC2C2;
 $softRed: #E45151;
 $yellow: #e5e600;
+$lightBlue: #b3ebff;
 
 /* Defaults */
 .default-header {
@@ -40,9 +41,9 @@ $yellow: #e5e600;
 
 
 @-webkit-keyframes warningPulse { 
-  0% {color: $yellow;} 
-  50% {color: #7f8000;} 
-  100% {color: $yellow;} 
+  0% {color: $softRed;} 
+  50% {color: #dd2222;} 
+  100% {color: $softRed;} 
 }
 
 @-webkit-keyframes criticalPulse { 
@@ -61,7 +62,7 @@ $yellow: #e5e600;
 
 html {
   box-sizing: border-box;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   font-family: 'Lato', 'Roboto Condensed', 'Ubuntu', 'Roboto Slab', 'Droid Serif', 'Crimson Text', Trebuchet, sans-serif;;
   font-size: 20px;
@@ -73,6 +74,8 @@ html {
 /* GENERAL */
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -380,9 +383,7 @@ ul {
 *********************************/
 
 .orbit {
-
   
-
   display: flex;
   flex-direction: row; 
   align-items: stretch;
@@ -392,7 +393,8 @@ ul {
   }
   
   .main-container {
-    flex-basis: 80%;
+    flex-basis: 75%;
+    width: 75vw;
     display: flex;
     flex-direction: column;
   }
@@ -404,14 +406,32 @@ ul {
 
   }*/
 
-  .meta-data {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    p {
-      margin-right: 5rem;
-      color: $red;
+  .header {
+    @extend .default-header;
+    border: 0px solid $grey;
+    border-bottom: 1px solid $grey;
+    h2 {
+      flex-basis: 40%;
+      width: 40%;
+      font-size: 2rem;
+      font-weight: 300;
+      color: $green;
     }
+    h4 {
+      flex-basis: 35%;
+      width: 30%;
+      font-size: 1.5rem;
+      font-weight: 200;
+      color: white;
+      .top-level-status {
+        color: $green;
+      }
+    }
+  }
+
+  .trajectory-graphic {
+    flex-basis: 88%;
+    height: 88vh;
   }
 
   i {
@@ -421,31 +441,40 @@ ul {
   }
   
   .data-container {
-    flex-basis: 20%;
+    flex-basis: 25%;
+    width: 25vw;
     flex-grow: 1;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    p {
-    
+    border-left: 1px solid $grey;
+    background: linear-gradient(to bottom, #000000 45%, #3A388D 140%);    
+    font-size: .9rem;
+    li {
+      margin-top: .5rem;
+      border-bottom: 1px solid $grey;
+      padding-bottom: .2rem;
     }
   }
 
   .field-names {
+    flex-basis: 50%;
+    width: 50%;
+    padding-left: .4rem;
     display: flex;
     flex-direction: column;
-    p {
-      border-left: 2px solid white;
-      padding-left: .5rem;
-    }
   }
 
   .field-values {
+    flex-basis: 50%;
+    width: 50%;
     display: flex;
     flex-direction: column;
-    p {
-      color: green;
+    li {
+      color: $lightBlue;
+      padding-left: 2rem;
     }
+    
   }
 
 }
@@ -545,7 +574,7 @@ ul {
         flex-basis: 30%;
         width: 30%;
         
-        color: $green;
+        color: $lightBlue;
         .warning {
           @extend .default-warning;
         }
@@ -553,7 +582,7 @@ ul {
     }
 
     .engine-no {
-      color: $softRed;
+      
     }
 
     img {
