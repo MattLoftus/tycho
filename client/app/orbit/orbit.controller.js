@@ -91,7 +91,8 @@
 
       // console.log(vm.orbit.target_perigee);
       // console.log(apogee, perigee, target_apogee, target_perigee);
-      //Earth
+
+      //EARTH
       var radius = 50;
       var segments = 32;
       var rings = 32;
@@ -99,6 +100,7 @@
       var earthGeometry = new THREE.SphereGeometry(radius, segments, rings);
       var earthMaterial = new THREE.MeshPhongMaterial({
         map: THREE.ImageUtils.loadTexture("../../assets/earth_3.jpg"),
+        bumpMap: THREE.ImageUtils.loadTexture("../../assets/earth_bump.jpg"),
         color: 0xaaaaaa,
         ambient: 0xaaaaaa,
         specular: 0x333333,
@@ -107,6 +109,27 @@
       });
       var earth = new THREE.Mesh( earthGeometry, earthMaterial );
       scene.add( earth );
+
+      //STARS
+      var starsGeometry  = new THREE.SphereGeometry(150, 32, 32)
+      var starMaterial  = new THREE.MeshBasicMaterial()
+      starMaterial.map   = THREE.ImageUtils.loadTexture('../../assets/galaxy_starfield.png')
+      starMaterial.side  = THREE.BackSide
+      var starField  = new THREE.Mesh(starsGeometry, starMaterial)
+      scene.add(starField);
+
+      //CLOUDS
+      var cloudGeometry   = new THREE.SphereGeometry(51, 32, 32)
+      var cloudMaterial  = new THREE.MeshPhongMaterial({
+        map     : new THREE.ImageUtils.loadTexture("../../assets/earthcloudmaptrans.jpg"),
+        side        : THREE.DoubleSide,
+        opacity     : 0.05,
+        transparent : true,
+        depthWrite  : false
+      })
+      var cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial)
+      scene.add(cloudMesh)
+
 
       //Spacecraft
       var radius = .5;

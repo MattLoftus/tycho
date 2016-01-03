@@ -13,7 +13,8 @@ SPACECRAFT VIEW   -- line xx  *********
 $mainBackground: #000;
 $earthBlue: #3022BB;
 $red: #F60A0A;
-$green: #00CC00;
+/*$green: #00CC00;*/
+$green: #00e6ac;
 $engineGreen: #017101;
 $grey: #CFC2C2;
 $softRed: #E45151;
@@ -399,13 +400,6 @@ ul {
     flex-direction: column;
   }
 
-  /*canvas {
-    flex-grow: 9;
-    height: 90vh;
-    width: 90vh;
-
-  }*/
-
   .header {
     @extend .default-header;
     border: 0px solid $grey;
@@ -432,12 +426,6 @@ ul {
   .trajectory-graphic {
     flex-basis: 88%;
     height: 88vh;
-  }
-
-  i {
-    margin-right: 5rem;
-    color: white;
-    font-size: 3rem; 
   }
   
   .data-container {

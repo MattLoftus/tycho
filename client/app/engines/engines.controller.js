@@ -19,7 +19,7 @@
     //Initialization
     //Fetch engine data once per second
     getEngineData();
-    setInterval(getEngineData, 1000);
+    setInterval(getEngineData, 4000);
 
     //Scope methods
     //Non-scope methods
