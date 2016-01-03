@@ -6,7 +6,7 @@
 
       <div class="title">
 
-        <h1>{{ mission.missionName }}</h1>
+        <h1>{{ mission.mission.name }}</h1>
 
       </div>
 
@@ -16,15 +16,15 @@
           
           <div>
             <p>Heading </p>
-            <p>{{ mission.heading }} deg</p>
+            <p>{{ mission.mission.heading }} deg</p>
           </div>
           <div>
             <p>Velocity</p>
-            <p>{{ mission.velocity }} m/s</p>
+            <p>{{ mission.mission.velocity }} m/s</p>
           </div>
           <div>
             <p>Altitude</p>
-            <p>{{ mission.altitude }} km</p>
+            <p>{{ mission.mission.altitude }} km</p>
           </div>
 
         </div>
@@ -72,7 +72,7 @@
       <div class="tanks">
         <span class="stage-2-title">Stage 2</span>
 
-        <div class="s2-tanks" ui-sref="tanks"><span>Fuel Tanks</span></div>
+        <h3 class="s2-tanks" ui-sref="tanks">Fuel Tanks</h3>
         
         <div class="s2-tank-graphic">
 
@@ -129,8 +129,8 @@
             </thead>
             <tbody>
               <td>1</td>
-              <td>{{mission.engines.stage2["1"].force_thrust}}</td>
-              <td>{{mission.engines.stage2["1"].chamber_pressure}}</td>
+              <td>{{mission.engines.stage2["10"].force_thrust}}</td>
+              <td>{{mission.engines.stage2["10"].chamber_pressure}}</td>
               <td>OK</td>
               
             </tbody>
@@ -147,7 +147,7 @@
 
         <span class="stage-1-title">Stage 1</span>
         
-        <div class="s1-tanks" ui-sref="tanks"><span>Fuel Tanks</span></div>
+        <h3 class="s1-tanks" ui-sref="tanks">Fuel Tanks</h3>
 
         <div class="s1-tank-graphic">
           

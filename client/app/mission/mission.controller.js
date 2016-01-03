@@ -11,16 +11,7 @@
 
     //View model properties and methods
     vm.missionID = $window.localStorage.missionID;
-    vm.missionName = '';
-    vm.heading = 0;
-    vm.velocity = 0;
-    vm.altitude = 0;
-    vm.latitude = 0;
-    vm.longitude = 0;
-    vm.apogee = 0;
-    vm.perigee = 0;
-    vm.inclination = 0;
-    vm.timestamp;
+    vm.mission = {};
     vm.engines = {
       "stage1": {},
       "stage2": {}
@@ -34,7 +25,6 @@
     getMissionMeta();
     getEngineData();
     getTankData();
-    trajectoryGraphic();
     s1EngineGraphic();
     s2EngineGraphic();
     fuelTankGraphic(".s2-tank-graphic .RP1", 2);
@@ -50,18 +40,10 @@
     function getMissionMeta () {
       Mission.getMissionMeta(vm.missionID) 
         .then(function (missionData) {
-          console.log(missionData);
-          vm.missionID = missionData.id;
-          vm.missionName = missionData.name[0].toUpperCase() + missionData.name.slice(1);
-          vm.heading = missionData.heading;
-          vm.velocity = missionData.velocity;
-          vm.altitude = missionData.altitude;
-          vm.latitude = missionData.latitude;
-          vm.longitude = missionData.longitude;
-          vm.apogee = missionData.apogee;
-          vm.perigee = missionData.perigee;
-          vm.inclination = missionData.inclination;
-          vm.timestamp = missionData.last_updated;
+          for (var key in missionData) {
+            vm.mission[key] = missionData[key];
+          }
+          trajectoryGraphic();
         });
     }
 
@@ -232,7 +214,7 @@
       
       if (stageNo === 2) {
         height = height * .35 * .7;
-        width = width * .6 * .55 * .34;
+        width = width * .6 * .6 * .34;
       } else {
         height = height * .65 * .8 * .5;
         width = width * .6 * .4 * .5;
@@ -332,35 +314,16 @@
 
     //Create THREEJS trajectory Map
     function trajectoryGraphic () {
-      //////////////////////
-      ///  SCENE/CAMERA  ///
-      //////////////////////
-
+      var width = $window.innerWidth * .3;
+      var height = $window.innerHeight * .52;
       var scene = new THREE.Scene();
-      var camera = new THREE.PerspectiveCamera( 75, $window.innerWidth/$window.innerHeight, 0.1, 1000 );
+      var camera = new THREE.PerspectiveCamera( 75, width/height , 0.1, 1000 );
 
-      var width = $window.innerWidth;
-      var height = $window.innerHeight;
-      width = width * .33;
-      height = height * .45;
-      var renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
-      renderer.setClearColor( 0xffffff, 0);
+      var renderer = new THREE.WebGLRenderer({antialias: true});
       renderer.setSize( width, height );
       $(".trajectory").append( renderer.domElement );
-
-      camera.position.set(0, 0, 175);
-      camera.rotation.x = -(Math.PI / 4) * .4 ;
-      // camera.rotation. = (Math.PI/2) * 0.25;
-      // camera.lookAt(0,0,0);
-
-      ///////////////////////////
-      /// ORBIT CONTROLS //////
-      ///////////////////////////
-      // var orbit = new THREE.OrbitControls(camera, renderer.domElement);
-
-      //////////////////////
-      /////  LIGHTS  ///////
-      //////////////////////
+      
+      var orbit = new THREE.OrbitControls(camera, renderer.domElement);
 
       var light = new THREE.AmbientLight( 0x888888 )
       scene.add( light )
@@ -369,12 +332,34 @@
       light.position.set(5,3,5)
       scene.add( light )
 
+      //Define parameters for scaling data values to map size
+      var scale = 50 / 6731;
+      var offset = 50;
+      var apogee = vm.mission.apogee * scale + offset;
+      var perigee = vm.mission.perigee * scale + offset;
+      var target_apogee = vm.mission.target_apogee * scale + offset;
+      var target_perigee = vm.mission.target_perigee * scale + offset;
 
-      //////////////////////
-      /////  OBJECTS  //////
-      //////////////////////
+      //Given altitude, latitude, and longitude, determine (x,y,z)
+      //Convert lat, lng to radians
+      var lat = vm.mission.latitude * (Math.PI / 180);
+      var lng = vm.mission.longitude * (Math.PI / 180);
+      var altitude = vm.mission.altitude * scale + offset;
+      var pos_y = altitude * Math.sin(lat);
+      var pos_x = altitude * Math.cos(lng);
+      var pos_z = altitude * Math.sin(lng);
+      var position = [pos_x, pos_y, pos_z];
+      var cam_position = [position[0], position[1] - offset/2, position[2]];
 
-      //Earth
+      var inclination = vm.mission.inclination * (Math.PI / 180);
+      var targetInclination = vm.mission.target_inclination * (Math.PI / 180);
+      console.log(altitude);
+      console.log(position);
+
+      // console.log(vm.orbit.target_perigee);
+      // console.log(apogee, perigee, target_apogee, target_perigee);
+
+      //EARTH
       var radius = 50;
       var segments = 32;
       var rings = 32;
@@ -382,6 +367,7 @@
       var earthGeometry = new THREE.SphereGeometry(radius, segments, rings);
       var earthMaterial = new THREE.MeshPhongMaterial({
         map: THREE.ImageUtils.loadTexture("../../assets/earth_3.jpg"),
+        bumpMap: THREE.ImageUtils.loadTexture("../../assets/earth_bump.jpg"),
         color: 0xaaaaaa,
         ambient: 0xaaaaaa,
         specular: 0x333333,
@@ -391,88 +377,257 @@
       var earth = new THREE.Mesh( earthGeometry, earthMaterial );
       scene.add( earth );
 
+      //STARS
+      var starsGeometry  = new THREE.SphereGeometry(150, 32, 32)
+      var starMaterial  = new THREE.MeshBasicMaterial()
+      starMaterial.map   = THREE.ImageUtils.loadTexture('../../assets/galaxy_starfield.png')
+      starMaterial.side  = THREE.BackSide
+      var starField  = new THREE.Mesh(starsGeometry, starMaterial)
+      scene.add(starField);
+
+      //CLOUDS
+      var cloudGeometry   = new THREE.SphereGeometry(51, 32, 32)
+      var cloudMaterial  = new THREE.MeshPhongMaterial({
+        map     : new THREE.ImageUtils.loadTexture("../../assets/earthcloudmaptrans.jpg"),
+        side        : THREE.DoubleSide,
+        opacity     : 0.05,
+        transparent : true,
+        depthWrite  : false
+      })
+      var cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial)
+      scene.add(cloudMesh)
+
+
       //Spacecraft
-      var radius = 5;
+      var radius = .5;
       var segments = 32;
       var rings = 32;
 
       var craftGeometry = new THREE.SphereGeometry(radius, segments, rings);
       var craftMaterial = new THREE.MeshPhongMaterial({color: 0xffffff});
       var craft = new THREE.Mesh( craftGeometry, craftMaterial );
-      craft.position.set(100, 0, 0);
+      craft.position.set(position[0], position[1], position[2]);
       scene.add( craft );
 
-      //Optional Target
-      var radius = 5;
-      var segments = 32;
-      var rings = 32;
+      // var targetGeometry = new THREE.SphereGeometry(radius, segments, rings);
+      // var targetMaterial = new THREE.MeshPhongMaterial({color: 0xb3ebff});
+      // var targetObject = new THREE.Mesh( targetGeometry, targetMaterial );
+      // targetObject.position.set(0, -30, 100);
+      // scene.add( targetObject );
 
-      var targetGeometry = new THREE.SphereGeometry(radius, segments, rings);
-      var targetMaterial = new THREE.MeshPhongMaterial({color: 0x00cc00});
-      var targetObject = new THREE.Mesh( targetGeometry, targetMaterial );
-      targetObject.position.set(0, -30, 100);
-      scene.add( targetObject );
+      //Current Trajectory
+      var focus_vector;
+      if (vm.mission.perigee > 0) {
+        //Draw elliptical orbit
+        var ellipseMaterial = new THREE.LineBasicMaterial({color:0xffffff, opacity:1});
+        var ellipse = new THREE.EllipseCurve(
+          0, 0, 
+          perigee, apogee,
+          0, 2.0 * Math.PI, 
+          false);
+        var ellipsePath = new THREE.CurvePath(ellipse.getPoints(1000));
+        ellipsePath.add(ellipse);
+        var ellipseGeometry = ellipsePath.createPointsGeometry(100);
+        var currentTrajectory = new THREE.Line(ellipseGeometry, ellipseMaterial);
+        scene.add( currentTrajectory );
+        currentTrajectory.rotation.x = Math.PI / 2;
+        currentTrajectory.rotation.y = inclination;
 
-      //////////////////////
-      ////  TRAJECTORY  ////
-      //////////////////////
-     
-      //Current Trajectory / orbit
-      var apogee = [0, 150, 0];
-      var perigee = [0, 100, 0];
+        focus_vector = new THREE.Vector3(0, 0, 0);
+        camera.position.set(0, 20, 100);
+      } else {
+        //Draw parabolic trajectory based off of current apogee
+        var curve = new THREE.QuadraticBezierCurve(
+          new THREE.Vector3( offset, 0, -apogee ),
+          new THREE.Vector3( offset + apogee, 0, 0 ),
+          new THREE.Vector3( offset, 0, apogee )
+        );
+        var path = new THREE.Path( curve.getPoints( 50 ) );
+        var geometry = path.createPointsGeometry( 50 );
+        var material = new THREE.LineBasicMaterial( { color : 0xffffff } );
+        var currentTrajectory = new THREE.Line( geometry, material );
+        scene.add(currentTrajectory);
 
-      var ellipseMaterial = new THREE.LineBasicMaterial({color:0xffffff, opacity:1});
-      var ellipse = new THREE.EllipseCurve(
-        0, 0, 
-        perigee[1] * .75, apogee[1] * .75, 
-        0, 2.0 * Math.PI, 
-        false);
-      var ellipsePath = new THREE.CurvePath(ellipse.getPoints(1000));
-      ellipsePath.add(ellipse);
-      var ellipseGeometry = ellipsePath.createPointsGeometry(100);
-      var line = new THREE.Line(ellipseGeometry, ellipseMaterial);
-      scene.add( line );
-      line.rotation.z = (Math.PI / 2) * 0.75;
-      line.rotation.x = (Math.PI / 2) * 1.2;
-
+        focus_vector = new THREE.Vector3(position[0], position[1], position[2]);
+        camera.position.set(cam_position[0], cam_position[1], cam_position[2]);
+      }
 
       //Target trajectory / orbit
       var targetMaterial = new THREE.LineDashedMaterial({
-        color: 0x00cc00, 
+        color: 0xb3ebff, 
         opacity:1, 
         dashSize: 8,
-        gapSize: 8
+        gapSize: 1
       });
       var targetOrbit = new THREE.EllipseCurve(
         0,0,
-        perigee[1] * 1.0, apogee[1] * 1.0, 
+        target_perigee, target_apogee, 
         0, 2.0 * Math.PI, 
         false);
       var targetPath = new THREE.CurvePath(targetOrbit.getPoints(1000));
       targetPath.add(targetOrbit);
       var targetGeometry = targetPath.createPointsGeometry(100);
-      var target = new THREE.Line(targetGeometry, targetMaterial);
-      scene.add( target );
-      target.rotation.z = (Math.PI / 2) * 0.75;
-      target.rotation.x = (Math.PI / 2) * 1.2;
-
-
-      ///////////////////////////
-      /// RENDERING/ANIM LOOP ///
-      ///////////////////////////
+      var targetTrajectory = new THREE.Line(targetGeometry, targetMaterial);
+      scene.add( targetTrajectory );
+      targetTrajectory.rotation.x = Math.PI / 2;
+      targetTrajectory.rotation.y = targetInclination;
 
       var vec = new THREE.Vector3( 0, 0, 0 );
-      var z = 500;
-      var dz = -3;
+
 
       var render = function (actions) {
-        earth.rotation.y += .001;
-        camera.lookAt(vec)
+        earth.rotation.y += .0003;
+        camera.lookAt(focus_vector);
         renderer.render(scene, camera);
         requestAnimationFrame( render );
       };
       render();
     }
+
+
+    // //Create THREEJS trajectory Map
+    // function trajectoryGraphic () {
+    //   //////////////////////
+    //   ///  SCENE/CAMERA  ///
+    //   //////////////////////
+
+    //   var scene = new THREE.Scene();
+    //   var camera = new THREE.PerspectiveCamera( 75, $window.innerWidth/$window.innerHeight, 0.1, 1000 );
+
+    //   var width = $window.innerWidth;
+    //   var height = $window.innerHeight;
+    //   width = width * .33;
+    //   height = height * .45;
+    //   var renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+    //   renderer.setClearColor( 0xffffff, 0);
+    //   renderer.setSize( width, height );
+    //   $(".trajectory").append( renderer.domElement );
+
+    //   camera.position.set(0, 0, 175);
+    //   camera.rotation.x = -(Math.PI / 4) * .4 ;
+    //   // camera.rotation. = (Math.PI/2) * 0.25;
+    //   // camera.lookAt(0,0,0);
+
+    //   ///////////////////////////
+    //   /// ORBIT CONTROLS //////
+    //   ///////////////////////////
+    //   // var orbit = new THREE.OrbitControls(camera, renderer.domElement);
+
+    //   //////////////////////
+    //   /////  LIGHTS  ///////
+    //   //////////////////////
+
+    //   var light = new THREE.AmbientLight( 0x888888 )
+    //   scene.add( light )
+
+    //   var light = new THREE.DirectionalLight( 0xcccccc, 1 )
+    //   light.position.set(5,3,5)
+    //   scene.add( light )
+
+
+    //   //////////////////////
+    //   /////  OBJECTS  //////
+    //   //////////////////////
+
+    //   //Earth
+    //   var radius = 50;
+    //   var segments = 32;
+    //   var rings = 32;
+
+    //   var earthGeometry = new THREE.SphereGeometry(radius, segments, rings);
+    //   var earthMaterial = new THREE.MeshPhongMaterial({
+    //     map: THREE.ImageUtils.loadTexture("../../assets/earth_3.jpg"),
+    //     color: 0xaaaaaa,
+    //     ambient: 0xaaaaaa,
+    //     specular: 0x333333,
+    //     bumpScale: 0.2,
+    //     shininess: 10
+    //   });
+    //   var earth = new THREE.Mesh( earthGeometry, earthMaterial );
+    //   scene.add( earth );
+
+    //   //Spacecraft
+    //   var radius = 5;
+    //   var segments = 32;
+    //   var rings = 32;
+
+    //   var craftGeometry = new THREE.SphereGeometry(radius, segments, rings);
+    //   var craftMaterial = new THREE.MeshPhongMaterial({color: 0xffffff});
+    //   var craft = new THREE.Mesh( craftGeometry, craftMaterial );
+    //   craft.position.set(100, 0, 0);
+    //   scene.add( craft );
+
+    //   //Optional Target
+    //   var radius = 5;
+    //   var segments = 32;
+    //   var rings = 32;
+
+    //   var targetGeometry = new THREE.SphereGeometry(radius, segments, rings);
+    //   var targetMaterial = new THREE.MeshPhongMaterial({color: 0x00cc00});
+    //   var targetObject = new THREE.Mesh( targetGeometry, targetMaterial );
+    //   targetObject.position.set(0, -30, 100);
+    //   scene.add( targetObject );
+
+    //   //////////////////////
+    //   ////  TRAJECTORY  ////
+    //   //////////////////////
+     
+    //   //Current Trajectory / orbit
+    //   var apogee = [0, 150, 0];
+    //   var perigee = [0, 100, 0];
+
+    //   var ellipseMaterial = new THREE.LineBasicMaterial({color:0xffffff, opacity:1});
+    //   var ellipse = new THREE.EllipseCurve(
+    //     0, 0, 
+    //     perigee[1] * .75, apogee[1] * .75, 
+    //     0, 2.0 * Math.PI, 
+    //     false);
+    //   var ellipsePath = new THREE.CurvePath(ellipse.getPoints(1000));
+    //   ellipsePath.add(ellipse);
+    //   var ellipseGeometry = ellipsePath.createPointsGeometry(100);
+    //   var line = new THREE.Line(ellipseGeometry, ellipseMaterial);
+    //   scene.add( line );
+    //   line.rotation.z = (Math.PI / 2) * 0.75;
+    //   line.rotation.x = (Math.PI / 2) * 1.2;
+
+
+    //   //Target trajectory / orbit
+    //   var targetMaterial = new THREE.LineDashedMaterial({
+    //     color: 0x00cc00, 
+    //     opacity:1, 
+    //     dashSize: 8,
+    //     gapSize: 8
+    //   });
+    //   var targetOrbit = new THREE.EllipseCurve(
+    //     0,0,
+    //     perigee[1] * 1.0, apogee[1] * 1.0, 
+    //     0, 2.0 * Math.PI, 
+    //     false);
+    //   var targetPath = new THREE.CurvePath(targetOrbit.getPoints(1000));
+    //   targetPath.add(targetOrbit);
+    //   var targetGeometry = targetPath.createPointsGeometry(100);
+    //   var target = new THREE.Line(targetGeometry, targetMaterial);
+    //   scene.add( target );
+    //   target.rotation.z = (Math.PI / 2) * 0.75;
+    //   target.rotation.x = (Math.PI / 2) * 1.2;
+
+
+    //   ///////////////////////////
+    //   /// RENDERING/ANIM LOOP ///
+    //   ///////////////////////////
+
+    //   var vec = new THREE.Vector3( 0, 0, 0 );
+    //   var z = 500;
+    //   var dz = -3;
+
+    //   var render = function (actions) {
+    //     earth.rotation.y += .001;
+    //     camera.lookAt(vec)
+    //     renderer.render(scene, camera);
+    //     requestAnimationFrame( render );
+    //   };
+    //   render();
+    // }
   }
 
 })();

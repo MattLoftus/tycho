@@ -88,11 +88,12 @@ ul {
 
   display: flex;
   flex-direction: row;
-  background: linear-gradient(to bottom, #000000 45%, #3A388D 120%);
+  background: linear-gradient(to bottom, #000000 45%, #3A388D 160%);
 
 
   .meta {
     flex-basis: 30%;
+    width: 30vw;
     display: flex;
     flex-direction: column;
     border: 1px solid white;
@@ -100,7 +101,7 @@ ul {
 
   .data {
     flex-basis: 50%;
-    flex-grow: 1;
+    height: 41vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -113,6 +114,7 @@ ul {
     margin: .5rem auto .5rem auto;
     h1 {
       font-size: 1.5rem;
+      font-weight: 200;
       color: $green;
       margin-top: .1rem;
       margin-bottom: .1rem;
@@ -139,27 +141,26 @@ ul {
     }
     div {
       width: 90%;
-      border: 2px solid $grey;
+      border: 1px solid $grey;
       padding: .2rem 0 .2rem 1rem;
     }
   }
 
   .trajectory {
-    flex-grow: 1;
     flex-basis: 50%;
+    height: 55vh;
     p {
       font-size: 1rem;
-      margin: .1rem;
-      margin-right: 16rem;
+      margin: .2rem;
+      margin-right: 14.3rem;
       color: $green;
-      border-bottom: 1px solid $grey;
-      border-right: 1px solid $grey;
     }
   }
 
 
   .falcon-container {
     flex-basis: 10%;
+    width: 10vw;
     
   }
 
@@ -172,6 +173,7 @@ ul {
 
   .engines-tanks {
     flex-basis: 60%;
+    width: 60vw;
     display: flex;
     flex-direction: column;
     border: 1px solid $grey;
@@ -181,12 +183,14 @@ ul {
 
   .stage-2 {
     flex-basis: 35%;
+    height: 34vh;
     flex-grow: 1;
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid $grey;
     .tanks {
-      flex-basis: 55%;
+      flex-basis: 60%;
+      width: 60%;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -203,9 +207,12 @@ ul {
         padding: 0 .2rem .2rem .2rem;
       }
       .s2-tanks {
-        flex-basis: 15%;
-        flex-shrink: 0;
-        color: $softRed;
+        flex-basis: 5%;
+        height: 5%;
+        margin: 0;
+        margin-top: -1rem;
+        font-size: 1rem;
+        font-weight: 300;
       } 
       .s2-tank-graphic {
         flex-basis: 70%;
@@ -217,6 +224,9 @@ ul {
           flex-basis: 50%;
           display: flex;
           flex-direction: row;
+          div {
+            width: 100%;
+          }
         }
         .s2-RP1-stats,
         .s2-LOX-stats {
@@ -224,6 +234,7 @@ ul {
           flex-direction: column;
           h3 {
             font-size: 1rem;
+            font-weight: 300;
             color: $softRed;
             margin-bottom: .3rem;
             padding-left: .3rem
@@ -232,7 +243,8 @@ ul {
             font-size: .8rem;
             margin: 0 0 .5rem .3rem;
             padding-left: .3rem;
-            border-left: 2px solid $grey;
+            border-left: 1px solid $grey;
+            color: white;
           }
         }
 
@@ -240,7 +252,8 @@ ul {
 
     }
     .engines {
-      flex-basis: 45%;
+      flex-basis: 40%;
+      width: 40%;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -248,7 +261,7 @@ ul {
       align-items: center;
       .s2-engines {
         flex-basis: 20%;
-        color: $softRed;
+        color: white;
       }
       .s2-engine-graphic {
         flex-basis: 40%;
@@ -257,8 +270,13 @@ ul {
         flex-basis: 40%;
       }
       th {
+        font-size: 1rem;
+        font-weight: 200;
         border-bottom: 1px solid $grey;
-        padding-right: .5rem;
+        padding-right: .2rem;
+      }
+      td {
+        color: $lightBlue;
       }
     }
   }
@@ -267,6 +285,7 @@ ul {
 
   .stage-1 {
     flex-basis: 65%;
+    height: 64vh;
     flex-grow: 2;
     display: flex;
     flex-direction: row;
@@ -287,9 +306,12 @@ ul {
         padding: 0 .2rem .2rem .2rem;
       }
       .s1-tanks {
-        flex-grow: 0;
-        flex-basis: 10%;
-        color: $softRed;
+        flex-basis: 5%;
+        height: 5%;
+        margin: 0;
+        margin-top: -1rem;
+        font-size: 1rem;
+        font-weight: 300;
       }
       .s1-tank-graphic {
         flex-basis: 80%;
@@ -306,8 +328,12 @@ ul {
         .s1-LOX-stats {
           display: flex;
           flex-direction: column;
+          div {
+            width: 9vw;
+          }
           h3 {
             font-size: 1rem;
+            font-weight: 300;
             color: $softRed;
             margin-bottom: .3rem;
             padding-left: .3rem
@@ -328,7 +354,8 @@ ul {
       align-items: center;
       .s1-engines {
         flex-basis: 10%;
-        color: $softRed;
+        color: white;
+        padding-top: .5rem;
       }
       .s1-engine-graphic {
         flex-basis: 40%;
@@ -338,19 +365,19 @@ ul {
         flex-basis: 40%;
       }
       th {
+        font-weight: 200;
         border-bottom: 1px solid $grey;
         padding-right: .5rem;
         font-size: 1rem;
       }
       tr {
-        font-size: .5rem;
+        font-size: .6rem;
       }
       td {
         border-left: 1px solid $grey;
         padding-left: .5rem;
+        color: $lightBlue;
       }
-
-
     }    
   }
 
@@ -358,8 +385,8 @@ ul {
   .s1-engines span:hover,
   .s2-engines span:hover,
   .trajectory p:hover,
-  .s1-tanks span:hover,
-  .s2-tanks span:hover {
+  h3.s1-tanks:hover,
+  h3.s2-tanks:hover {
     cursor: pointer;
     color: #66ffff;
   }
