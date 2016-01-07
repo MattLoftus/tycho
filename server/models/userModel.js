@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt-nodejs');
 if (process.env.PORT) {
   var auth = require('../config/auth.deploy.js');
 } else {
-  var auth = require("../config/auth");
+  var auth = require("../config/auth.js");
 }
 
 module.exports = {

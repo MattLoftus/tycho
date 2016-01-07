@@ -3,7 +3,7 @@ var expressJWT = require('express-jwt');
 if (process.env.PORT) {
   var auth = require('../config/auth.deploy.js');
 } else {
-  var auth = require('../config/auth');
+  var auth = require('../config/auth.js');
 }
 
 var authController = require('../controllers/authController.js');
