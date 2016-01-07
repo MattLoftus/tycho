@@ -63,13 +63,17 @@ $lightBlue: #b3ebff;
 
 html {
   box-sizing: border-box;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   font-family: 'Lato', 'Roboto Condensed', 'Ubuntu', 'Roboto Slab', 'Droid Serif', 'Crimson Text', Trebuchet, sans-serif;;
   font-size: 20px;
   background-color: $mainBackground;
   color: white;
   font-weight: 300;
+}
+
+body {
+  overflow: hidden;
 }
 
 /* GENERAL */

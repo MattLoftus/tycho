@@ -16,15 +16,12 @@
     vm.tanks = {
       "stage1": {},
       "stage2": {}
-    };    
+    };
+    vm.throttle = 0;    
 
     //Initialization procedures
     getTankData();
     setInterval(getTankData, 1000);
-    fuelTankGraphic(".stage-2 .LOX .tank-graphic");
-    fuelTankGraphic(".stage-2 .RP1 .tank-graphic");
-    fuelTankGraphic(".stage-1 .LOX .tank-graphic");
-    fuelTankGraphic(".stage-1 .RP1 .tank-graphic");
     
     //Get all fuel tank data for both rocket stages
     function getTankData () {
@@ -39,7 +36,13 @@
               vm.tanks.stage2[tank.fuel_type] = tank;
             }
           }
-
+          if (vm.throttle == 0) {
+            fuelTankGraphic(".stage-2 .LOX .tank-graphic");
+            fuelTankGraphic(".stage-2 .RP1 .tank-graphic");
+            fuelTankGraphic(".stage-1 .LOX .tank-graphic");
+            fuelTankGraphic(".stage-1 .RP1 .tank-graphic");
+            vm.throttle++;
+          }
           console.log(vm.tanks);
         });
     }
@@ -49,6 +52,7 @@
     //Stage 1 RP1: 95,000 Liters
     //Stage 2 LOX: 28,000 Liters
     //Stage 2 RP1: 17,000 Liters
+    
 
 
     //Tank Graphic rendering method
@@ -114,6 +118,8 @@
         heightSegments: 30
       }
 
+      
+
       var fuelGeometry = new THREE.CylinderGeometry(fuelSpecs.radius, fuelSpecs.radius, fuelSpecs.height, fuelSpecs.radialSegments, fuelSpecs.heightSegments);
       var fuelMaterial = new THREE.MeshPhongMaterial({
         color: 0x117cb1,
@@ -133,10 +139,28 @@
       ///////////////////////////
       /// RENDERING/ANIM LOOP ///
       ///////////////////////////
+      var s1LOXMax = 150000;
+      var s1RP1Max = 95000;
+      var s2LOXMax = 28000;
+      var s2RP1Max = 17000;
 
+      //Change fuel height based off remaining fuel volume;
       var vec = new THREE.Vector3( 0, 0, 0 );
-    
+
       var render = function (actions) {
+        if (selector == ".stage-2 .LOX .tank-graphic") {
+          fuel.scale.y = vm.tanks.stage2.LOX.fuel_volume / s2LOXMax;
+          fuel.position.y = -4 - 0.5 * vm.tanks.stage2.LOX.fuel_volume / s2LOXMax;
+        } else if (selector == ".stage-2 .RP1 .tank-graphic") {
+          fuel.scale.y = vm.tanks.stage2.RP1.fuel_volume / s2RP1Max;
+          fuel.position.y = -4 - 0.5 * vm.tanks.stage2.RP1.fuel_volume / s2RP1Max;
+        } else if (selector == ".stage-1 .LOX .tank-graphic") {
+          fuel.scale.y = vm.tanks.stage1.LOX.fuel_volume / s1LOXMax;
+          fuel.position.y = -14 - vm.tanks.stage1.LOX.fuel_volume / s1LOXMax;
+        } else if (selector == ".stage-1 .RP1 .tank-graphic") {
+          fuel.scale.y = vm.tanks.stage1.RP1.fuel_volume / s1RP1Max;
+          fuel.position.y = -15 - vm.tanks.stage1.RP1.fuel_volume / s1RP1Max;
+        }
 
         camera.lookAt(vec)
         renderer.render(scene, camera);
