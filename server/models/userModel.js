@@ -1,7 +1,12 @@
 //Require DB connection
 var db = require('../db/connection.js');
 var bcrypt = require('bcrypt-nodejs');
-var auth = require("../config/auth");
+
+if (process.env.PORT) {
+  var auth = require('../config/auth.deploy.js');
+} else {
+  var auth = require("../config/auth");
+}
 
 module.exports = {
 
