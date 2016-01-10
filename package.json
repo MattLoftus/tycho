@@ -30,6 +30,7 @@
     "express-jwt": "^3.1.0",
     "express-session": "^1.11.3",
     "faker": "^3.0.1",
+    "fs": "0.0.2",
     "gm": "^1.20.0",
     "jsonwebtoken": "^5.4.0",
     "morgan": "^1.6.1",

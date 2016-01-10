@@ -2,6 +2,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
+var fs = require('fs');
 
 module.exports = function (app, express) {
   //Express 4 allows us to use multiple routers with their own configurations
@@ -15,8 +16,11 @@ module.exports = function (app, express) {
   var craftRouter = express.Router();
   var vehicleRouter = express.Router();
 
-  //morgan is for logging get and post data to the console.
-  app.use(morgan('dev'));
+  // create a write stream (in append mode) 
+  console.log(__dirname);
+  var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'})
+  // setup the logger 
+  app.use(morgan('combined', {stream: accessLogStream}))
   //bodyParser is for processing body req information (ex: req.body)
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
