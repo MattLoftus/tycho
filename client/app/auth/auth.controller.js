@@ -11,10 +11,20 @@
     // (https://github.com/johnpapa/angular-styleguide#controlleras-with-vm)
     var vm = this;
 
-    vm.message = '';
+    // vm.message = '';
     vm.signin = signin;
-    vm.missionID = 0;
-    vm.user = {};
+    vm.missionID = 1;
+    vm.user = {
+      username: "mattloftus",
+      password: "space"
+    };
+
+    vm.gitHover = false;
+
+    vm.gitActive = function () {
+      console.log("I fired")
+      vm.gitActive = !vm.gitActive;
+    };
 
     function resetForm(message) {
       vm.form.$setPristine();
