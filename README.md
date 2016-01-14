@@ -9,6 +9,27 @@ Tycho is a modern user interface for monitoring launch vehicle and spacecraft da
 
 
 ##Getting started
+To develop locally first fork and clone the repo. Or just clone it directly.
+
+```
+git clone https://github.com/your_name/tycho.git
+
+git clone https://github.com/MattLoftus/tycho.git
+```
+
+Next navigate to the root of the repository and run an npm install.  (if you don't have node yet you'll need to get node.js first, probably through brew).
+
+```
+npm install
+```
+
+This will install all of our node modules and server dependencies.  The package.json posinstall script will then automatically run a bower install, installing all of our front end dependencies.  Next, still from the root of the repository, run the grunt command.
+
+```
+grunt
+```
+
+Grunt will concatentate all of our cleint piles, compile our scss into css(and begin a watch command that will recompile our scss every time the file is changed), and lastly start the server on port 3000.  Navigate to port 3000 and you should be able to demo the application and make any changes you wish.
 
 ##Description
 The purpose of this project is demonstrate how modern web technologies can be used to create beautiful, intuitive interfaces for monitoring hardware systems.  I happen to love space exploration, so that was the particular use case for this project.  The same principles could be applied in a limitless amount of places though.  Think about interacting with a drone, a 3D printer, or any network of of machines that you want to keep track of simulatneously.  Further, modern web technologies could be used this way in an industrial setting, for monitoring manufacturing ops and logistics.  
@@ -27,27 +48,27 @@ Note: one directional arrows represent one way data flow, bidirectional arrows r
 The client consists of the top level App.js module and a route-config file, which determines which controllers/templates should be loaded for each possible route. We have six routes defined, for six separate controllers, which use four services in total.  
 
 Our services handle all outgoing HTTP requests, and all posting and fetching of data.
-Auth Service:  Handles all signin functionality, sending user data to the server for verification.
+**Auth Service:**  Handles all signin functionality, sending user data to the server for verification.
 
-Mission Service: Fetches all meta data for the current mission.  Top level vehicle stats and orbit characteristics.  Ex: Mission name, trajectory, orbital data.
+**Mission Service:** Fetches all meta data for the current mission.  Top level vehicle stats and orbit characteristics.  Ex: Mission name, trajectory, orbital data.
 
-Vehicle Service: Fetches all data relating to launch vehicle engines and fuel tanks. Ex: Thrust, chamber pressure, fuel mass, etc.
+**Vehicle Service:** Fetches all data relating to launch vehicle engines and fuel tanks. Ex: Thrust, chamber pressure, fuel mass, etc.
 
-Spacecraft Service: Fetches all data regarding the spacecraft.  This could be a satellite or a manned spacecraft.  Ex: RCS engines, life support systems, trajectory, power systems, etc.
+**Spacecraft Service:** Fetches all data regarding the spacecraft.  This could be a satellite or a manned spacecraft.  Ex: RCS engines, life support systems, trajectory, power systems, etc.
 
 We have six controllers and their associated views.
-Auth Controller: Interacts with the Auth Factory, handles signin.
+**Auth Controller:** Interacts with the Auth Factory, handles signin.
 
-Mission Controller: Interacts with Mission Service and Vehicle Service.  
+**Mission Controller:** Interacts with Mission Service and Vehicle Service.  
 This can be considered the top level view of the application.  It contains reduced versions of all of the other views in one place, giving a comprehensive overview at a glance.
 
-Orbit Controller:  Interacts with the Mission Service.  This contains all of the logic for creating the orbit/trajectory view, including building the Three.js orbit graphic based on current mission parameters.
+**Orbit Controller:**  Interacts with the Mission Service.  This contains all of the logic for creating the orbit/trajectory view, including building the Three.js orbit graphic based on current mission parameters.
 
-Engines Controller: Interacts with the Mission Service and Vehicle Service.  Manages logic for the engines view.
+**Engines Controller:** Interacts with the Mission Service and Vehicle Service.  Manages logic for the engines view.
 
-Tanks Controller: Interacts with the Mission Service and the Vehicle Service.  Manages logic for the fuel tanks view.
+**Tanks Controller:** Interacts with the Mission Service and the Vehicle Service.  Manages logic for the fuel tanks view.
 
-Craft Controller: Interacts witht the Spacecraft Service.  Manages logic for spacecraft view.
+**Craft Controller:** Interacts witht the Spacecraft Service.  Manages logic for spacecraft view.
 
 The back end of Tycho is written in Node.js/Express, with a MySQL.  We use Express Router for routing, and do all of our database operations with raw MySQL queries.  The server is broken down into the following components.
 ![Server Architecture Diagram](https://github.com/MattLoftus/tycho/blob/master/images/tycho_server_architecture.png)
