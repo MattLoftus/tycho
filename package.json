@@ -27,6 +27,7 @@
     "cookie-parser": "^1.4.0",
     "cors": "^2.7.1",
     "express": "^4.13.3",
+    "express-ipfilter": "0.0.24",
     "express-jwt": "^3.1.0",
     "express-session": "^1.11.3",
     "faker": "^3.0.1",
