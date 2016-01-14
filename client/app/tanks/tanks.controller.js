@@ -21,7 +21,7 @@
 
     //Initialization procedures
     getTankData();
-    setInterval(getTankData, 1000);
+    // setInterval(getTankData, 1000);
     
     //Get all fuel tank data for both rocket stages
     function getTankData () {

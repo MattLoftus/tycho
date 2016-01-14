@@ -19,7 +19,7 @@
     //Initialization
     //Fetch engine data once per second
     getEngineData();
-    setInterval(getEngineData, 4000);
+    // setInterval(getEngineData, 4000);
 
     //Scope methods
     //Non-scope methods
@@ -28,13 +28,13 @@
     function getEngineData() {
       Vehicle.getAllEngines(vm.missionID)
         .then(function (engineData) {
-          console.log(engineData);
+          // console.log(engineData);
           for (var i = 0; i < engineData.length; i++) {
             var engine = engineData[i];
             vm.engines[engine.engine_num] = engine;
             checkStatus(vm.engines[engine.engine_num]);
           }
-          console.log(vm.engines);
+          // console.log(vm.engines);
         });
     }
 

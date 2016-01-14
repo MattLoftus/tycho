@@ -48,6 +48,7 @@ Note: one directional arrows represent one way data flow, bidirectional arrows r
 The client consists of the top level App.js module and a route-config file, which determines which controllers/templates should be loaded for each possible route. We have six routes defined, for six separate controllers, which use four services in total.  
 
 Our services handle all outgoing HTTP requests, and all posting and fetching of data.
+
 **Auth Service:**  Handles all signin functionality, sending user data to the server for verification.
 
 **Mission Service:** Fetches all meta data for the current mission.  Top level vehicle stats and orbit characteristics.  Ex: Mission name, trajectory, orbital data.
@@ -57,6 +58,7 @@ Our services handle all outgoing HTTP requests, and all posting and fetching of 
 **Spacecraft Service:** Fetches all data regarding the spacecraft.  This could be a satellite or a manned spacecraft.  Ex: RCS engines, life support systems, trajectory, power systems, etc.
 
 We have six controllers and their associated views.
+
 **Auth Controller:** Interacts with the Auth Factory, handles signin.
 
 **Mission Controller:** Interacts with Mission Service and Vehicle Service.  
