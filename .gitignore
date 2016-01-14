@@ -13,7 +13,8 @@ client/lib
 client/dist
 client/styles
 
-
+#server access logs
+server/config/access.log
 
 #API Keys
 client/keys/dashboardConfigure.js
