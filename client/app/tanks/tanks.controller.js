@@ -148,19 +148,19 @@
       var vec = new THREE.Vector3( 0, 0, 0 );
 
       var render = function (actions) {
-        if (selector == ".stage-2 .LOX .tank-graphic") {
-          fuel.scale.y = vm.tanks.stage2.LOX.fuel_volume / s2LOXMax;
-          fuel.position.y = -4 - 0.5 * vm.tanks.stage2.LOX.fuel_volume / s2LOXMax;
-        } else if (selector == ".stage-2 .RP1 .tank-graphic") {
-          fuel.scale.y = vm.tanks.stage2.RP1.fuel_volume / s2RP1Max;
-          fuel.position.y = -4 - 0.5 * vm.tanks.stage2.RP1.fuel_volume / s2RP1Max;
-        } else if (selector == ".stage-1 .LOX .tank-graphic") {
-          fuel.scale.y = vm.tanks.stage1.LOX.fuel_volume / s1LOXMax;
-          fuel.position.y = -14 - vm.tanks.stage1.LOX.fuel_volume / s1LOXMax;
-        } else if (selector == ".stage-1 .RP1 .tank-graphic") {
-          fuel.scale.y = vm.tanks.stage1.RP1.fuel_volume / s1RP1Max;
-          fuel.position.y = -15 - vm.tanks.stage1.RP1.fuel_volume / s1RP1Max;
-        }
+        // if (selector == ".stage-2 .LOX .tank-graphic") {
+        //   fuel.scale.y = vm.tanks.stage2.LOX.fuel_volume / s2LOXMax;
+        //   fuel.position.y = -4 - 0.5 * vm.tanks.stage2.LOX.fuel_volume / s2LOXMax;
+        // } else if (selector == ".stage-2 .RP1 .tank-graphic") {
+        //   fuel.scale.y = vm.tanks.stage2.RP1.fuel_volume / s2RP1Max;
+        //   fuel.position.y = -4 - 0.5 * vm.tanks.stage2.RP1.fuel_volume / s2RP1Max;
+        // } else if (selector == ".stage-1 .LOX .tank-graphic") {
+        //   fuel.scale.y = vm.tanks.stage1.LOX.fuel_volume / s1LOXMax;
+        //   fuel.position.y = -14 - vm.tanks.stage1.LOX.fuel_volume / s1LOXMax;
+        // } else if (selector == ".stage-1 .RP1 .tank-graphic") {
+        //   fuel.scale.y = vm.tanks.stage1.RP1.fuel_volume / s1RP1Max;
+        //   fuel.position.y = -15 - vm.tanks.stage1.RP1.fuel_volume / s1RP1Max;
+        // }
 
         camera.lookAt(vec)
         renderer.render(scene, camera);

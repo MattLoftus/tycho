@@ -229,7 +229,7 @@
       camera.position.set(0, 0, 67);
 
       //Orbit Controls
-      var orbit = new THREE.OrbitControls(camera, renderer.domElement);
+      // var orbit = new THREE.OrbitControls(camera, renderer.domElement);
 
       //Lighting
       var light = new THREE.AmbientLight( 0x404040 ); // soft white light
@@ -299,7 +299,7 @@
     
       var render = function (actions) {
         if (fuel.scale.y > 0) {
-          fuel.scale.y -= .001;
+          fuel.scale.y -= .000001;
           fuel.position.y -= .02;
         } else {
           fuel.visible = false;

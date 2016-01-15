@@ -95,7 +95,7 @@ $lightBlue: #b3ebff;
 html {
   box-sizing: border-box;
   width: 100%;
-  height: 100vh;
+  height: 99vh;
   font-family: 'Lato', 'Roboto Condensed', 'Ubuntu', 'Roboto Slab', 'Droid Serif', 'Crimson Text', Trebuchet, sans-serif;;
   font-size: 20px;
   background-color: $mainBackground;
@@ -197,7 +197,6 @@ ul {
   }
 
   .data {
-    flex-basis: 50%;
     height: 41vh;
     display: flex;
     flex-direction: column;
@@ -206,22 +205,29 @@ ul {
 
   .title {
     flex-basis: 15%;
-    flex-grow: 0;
-    margin: .5rem auto .5rem auto;
+    height: 10vh;
     display: flex;
     flex-direction: row;
     h1 {
+      margin-top: 0.5rem;
+      margin-left: .5rem;
       font-size: 1.5rem;
+      margin-bottom: .2rem;
       font-weight: 200;
       color: $green;
-      margin-top: .1rem;
-      margin-bottom: .1rem;
     }
+    padding-bottom: .1rem;
   }
 
   .dropdown {
     @extend .dropdown-menu;
+    width: 30%;
   }
+
+  .dropdown .menu {
+    margin-top: 0;
+  }
+
 
   .main-stats {
     flex-basis: 85%;
@@ -243,9 +249,13 @@ ul {
     }
     div {
       width: 90%;
-      border: 1px solid $grey;
+      border-top: 1px solid $grey;
+      border-bottom: 1px solid $grey;
       padding: .2rem 0 .2rem 1rem;
     }
+  }
+  .time div {
+    border-left: 1px solid $grey;
   }
 
   .trajectory {
@@ -534,13 +544,15 @@ ul {
     border: 0px solid $grey;
     border-bottom: 1px solid $grey;
     h2 {
+      margin-top: 1rem;
       flex-basis: 40%;
       width: 40%;
       font-size: 2rem;
-      font-weight: 300;
+      font-weight: 200;
       color: $green;
     }
     h4 {
+      margin-top: 1.5rem;
       flex-basis: 35%;
       width: 30%;
       font-size: 1.5rem;
@@ -554,6 +566,9 @@ ul {
 
   .dropdown {
     @extend .dropdown-menu;
+    ul.menu {
+      top: 9.9vh;
+    }
   }
 
   .trajectory-graphic {
@@ -613,13 +628,15 @@ ul {
   .header {
     @extend .default-header;
     h2 {
+      margin-top: 1rem;
       flex-basis: 25%;
       width: 25%;
       font-size: 2rem;
-      font-weight: 300;
+      font-weight: 200;
       color: $green;
     }
     h4 {
+      margin-top: 1.5rem;
       flex-basis: 35%;
       width: 30%;
       font-size: 1.5rem;
@@ -728,18 +745,20 @@ ul {
   display: flex;
   flex-direction: column;
 
-  background: linear-gradient(to bottom, #000000 50%, #653030 120%);
+  background: linear-gradient(to bottom, #000000 50%, #653030 160%);
 
   .header {
     @extend .default-header;
     h2 {
+      margin-top: 1rem;
       flex-basis: 25%;
       width: 25%;
       font-size: 2rem;
-      font-weight: 300;
+      font-weight: 200;
       color: $green;
     }
     h4 {
+      margin-top: 1.5rem;
       flex-basis: 35%;
       width: 30%;
       font-size: 1.5rem;
@@ -826,10 +845,11 @@ ul {
   .header {
     @extend .default-header;
     h2 {
+      margin-top: 1rem;
       flex-basis: 25%;
       width: 25%;
       font-size: 2rem;
-      font-weight: 300;
+      font-weight: 200;
       color: $green;
     }
     h4 {
@@ -935,7 +955,7 @@ ul {
         flex-basis: 30%;
         width: 30%;
         li {
-          color: $green;
+          color: $lightBlue;
         }
       }
     }
@@ -983,7 +1003,7 @@ ul {
       }
       td {
         font-size: .8rem;
-        color: $green;
+        color: $lightBlue;
       }
 
     }
