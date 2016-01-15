@@ -299,8 +299,8 @@
     
       var render = function (actions) {
         if (fuel.scale.y > 0) {
-          fuel.scale.y -= .000001;
-          fuel.position.y -= .02;
+          fuel.scale.y -= .00003;
+          fuel.position.y -= .004;
         } else {
           fuel.visible = false;
         }
