@@ -19,13 +19,6 @@
       password: "space"
     };
 
-    vm.gitHover = false;
-
-    vm.gitActive = function () {
-      console.log("I fired")
-      vm.gitActive = !vm.gitActive;
-    };
-
     function resetForm(message) {
       vm.form.$setPristine();
       vm.user.password = '';

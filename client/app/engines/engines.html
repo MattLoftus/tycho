@@ -2,8 +2,20 @@
   
   <div class="header">
 
-    <i class="material-icons">menu</i>
-
+    
+      <ul class="dropdown">
+        <li>
+          <i class="material-icons">menu</i>
+          <ul class="menu">
+            <li ui-sref="mission">Mission</li>
+            <li ui-sref="orbit">Orbit</li>
+            <li ui-sref="engines">Engines</li>
+            <li ui-sref="tanks">Fuel Tanks</li>
+            <li ui-sref="craft">Spacecraft</li>
+            <li ui-sref="auth">Signin</li>
+          </ul>
+      </ul>  
+    
     <h2>Engine Overview</h2>
 
     <h4>S-1 Engine Status: <span class="top-level-status">Nominal</span></h4>
