@@ -298,12 +298,12 @@
       var vec = new THREE.Vector3( 0, 0, 0 );
     
       var render = function (actions) {
-        if (fuel.scale.y > 0) {
-          fuel.scale.y -= .00003;
-          fuel.position.y -= .004;
-        } else {
-          fuel.visible = false;
-        }
+        // if (fuel.scale.y > 0) {
+        //   fuel.scale.y -= .00003;
+        //   fuel.position.y -= .004;
+        // } else {
+        //   fuel.visible = false;
+        // }
 
         camera.lookAt(vec)
         renderer.render(scene, camera);
