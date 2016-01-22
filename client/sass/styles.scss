@@ -56,7 +56,7 @@ $lightBlue: #b3ebff;
   ul.menu {
     display: none;
     margin-top: .5rem;
-    border: 1px solid #262626;
+    border: 2px solid #000;
     position: absolute;
     top: 10vh;
     background-color: #262626;
@@ -66,7 +66,6 @@ $lightBlue: #b3ebff;
     }
     li:hover {
       color: $lightBlue;
-      border: 1px solid $lightBlue;
       cursor: pointer;
     }
   }
@@ -226,8 +225,8 @@ ul {
     width: 30%;
   }
 
-  .dropdown .menu {
-    margin-top: 0;
+  .dropdown ul.menu {
+    top: 9.5vh;
   }
 
 
@@ -356,8 +355,6 @@ ul {
           p {
             font-size: .8rem;
             margin: 0 0 .5rem .3rem;
-            padding-left: .3rem;
-            border-left: 1px solid $grey;
             color: white;
           }
         }
@@ -412,6 +409,7 @@ ul {
   .stage-1 {
     flex-basis: 65%;
     height: 66vh;
+    width: 100%;
     flex-grow: 2;
     display: flex;
     flex-direction: row;
@@ -420,15 +418,16 @@ ul {
       border-right: 1px solid $grey;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
       .stage-1-title {
         flex-grow: 0;
-        flex-basis: 10%;
+        flex-basis: 5%;
         align-self: flex-start;
         color: $green;
         padding: 0 .2rem .2rem .2rem;
         font-weight: 200;
+        margin-top: -.5rem;
       }
       .s1-tanks {
         flex-basis: 5%;
@@ -439,18 +438,22 @@ ul {
         font-weight: 300;
       }
       .s1-tank-graphic {
-        flex-basis: 80%;
+        flex-basis: 90%;
+        height: 90%;
         display: flex;
         flex-direction: column;
         .RP1,
         .LOX {
           flex-basis: 50%;
+          height: 50%;
           display: flex;
           flex-direction: row;
-          justify-content: space-around;
+          justify-content: center;
+          margin-right: -1.5rem;
         }
         .s1-RP1-stats,
         .s1-LOX-stats {
+          width: 30%;
           display: flex;
           flex-direction: column;
           div {
