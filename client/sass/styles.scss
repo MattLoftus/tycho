@@ -356,6 +356,12 @@ ul {
             font-size: .8rem;
             margin: 0 0 .5rem .3rem;
             color: white;
+            font-weight: 200;
+          }
+          .tank-header {
+            font-weight: 300;
+            margin-bottom: .1rem;
+            margin-top: .2rem;
           }
         }
 
@@ -464,13 +470,18 @@ ul {
             font-weight: 300;
             color: $softRed;
             margin-bottom: .3rem;
-            padding-left: .3rem
+            padding-left: .3rem;
           }
           p {
             font-size: .8rem;
             margin: 0 0 .5rem 0;
             padding-left: .3rem;
-            border-left: 2px solid $grey;
+            font-weight: 200;
+          }
+          .tank-header {
+            font-weight: 300;
+            margin-bottom: .1rem;
+            margin-top: .2rem;
           }
         }
       }
