@@ -25,8 +25,8 @@
     getMissionMeta();
     getEngineData();
     getTankData();
-    s1EngineGraphic();
-    s2EngineGraphic();
+    // s1EngineGraphic();
+    // s2EngineGraphic();
     fuelTankGraphic(".s2-tank-graphic .RP1", 2);
     fuelTankGraphic(".s2-tank-graphic .LOX", 2);
     fuelTankGraphic(".s1-tank-graphic .RP1", 1);

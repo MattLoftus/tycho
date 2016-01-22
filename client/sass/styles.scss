@@ -66,6 +66,7 @@ $lightBlue: #b3ebff;
     }
     li:hover {
       color: $lightBlue;
+      border: 1px solid $lightBlue;
       cursor: pointer;
     }
   }
@@ -138,6 +139,7 @@ ul {
   }
 
   button {
+    transition: 0.2s;
     margin-top: 1.5rem;
     height: 3rem;
     width: 8rem;
@@ -160,12 +162,13 @@ ul {
 
   a:hover {
     cursor: pointer;
-    color: $lightBlue;
+    background-color: $lightBlue;
   }
 
   button:hover {
+    transition: 0.2s;
     cursor: pointer;
-    border: 1px solid $mainBackground;
+    
     background-color: $lightBlue;
     color: $mainBackground;
   }
@@ -204,8 +207,7 @@ ul {
   }
 
   .title {
-    flex-basis: 15%;
-    height: 10vh;
+    flex-basis: 20%;
     display: flex;
     flex-direction: row;
     h1 {
@@ -230,8 +232,7 @@ ul {
 
 
   .main-stats {
-    flex-basis: 85%;
-    flex-grow: 2;
+    flex-basis: 75%;
     display: flex;
     flex-direction: row;
   }
@@ -253,6 +254,9 @@ ul {
       border-bottom: 1px solid $grey;
       padding: .2rem 0 .2rem 1rem;
     }
+    .stat-value {
+      font-weight: 200;
+    }
   }
   .time div {
     border-left: 1px solid $grey;
@@ -260,12 +264,11 @@ ul {
 
   .trajectory {
     flex-basis: 50%;
-    height: 55vh;
+    height: 50vh;
     p {
       font-size: 1rem;
       margin: .2rem;
       margin-right: 14.3rem;
-      color: $green;
     }
   }
 
@@ -295,7 +298,7 @@ ul {
 
   .stage-2 {
     flex-basis: 35%;
-    height: 34vh;
+    height: 32vh;
     flex-grow: 1;
     display: flex;
     flex-direction: row;
@@ -314,9 +317,8 @@ ul {
         flex-grow: 0;
         align-self: flex-start;
         color: $green;
-        border-bottom: 1px solid $grey;
-        border-right: 1px solid $grey;
         padding: 0 .2rem .2rem .2rem;
+        font-weight: 200;
       }
       .s2-tanks {
         flex-basis: 5%;
@@ -364,8 +366,9 @@ ul {
 
     }
     .engines {
-      flex-basis: 40%;
-      width: 40%;
+      flex-basis: 32%;
+      height: 32vh;
+      width: 45%;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -373,13 +376,24 @@ ul {
       align-items: center;
       .s2-engines {
         flex-basis: 20%;
+        height: 20%;
         color: white;
+        padding-top: .5rem;
       }
       .s2-engine-graphic {
         flex-basis: 40%;
+        height: 40%;
+        width: 100%;
+        position: relative;
+        .circle {
+          top: -81%;
+          right: 40%;
+          border: 2px solid grey;
+        }
       }
       .s2-engines-stats {
         flex-basis: 40%;
+        height: 40%
       }
       th {
         font-size: 1rem;
@@ -397,7 +411,7 @@ ul {
 
   .stage-1 {
     flex-basis: 65%;
-    height: 64vh;
+    height: 66vh;
     flex-grow: 2;
     display: flex;
     flex-direction: row;
@@ -413,9 +427,8 @@ ul {
         flex-basis: 10%;
         align-self: flex-start;
         color: $green;
-        border-bottom: 1px solid $grey;
-        border-right: 1px solid $grey;
         padding: 0 .2rem .2rem .2rem;
+        font-weight: 200;
       }
       .s1-tanks {
         flex-basis: 5%;
@@ -459,22 +472,33 @@ ul {
         }
       }
     }
+
+    
+
     .engines {
-      flex-basis: 60%;
+      flex-basis: 66%;
+      height: 66vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: space-between;
       .s1-engines {
-        flex-basis: 10%;
+        flex-basis: 8%;
+        height: 8%;
         color: white;
         padding-top: .5rem;
       }
       .s1-engine-graphic {
-        flex-basis: 40%;
+        flex-basis: 43%;
+        height: 43%;
+        width: 45%;
         position: relative;
+        border: 2px ridge $grey;
+        border-radius: 50%;
       }
       .s1-engine-stats {
-        flex-basis: 40%;
+        flex-basis: 45%;
+        height: 45%;
       }
       th {
         font-weight: 200;
@@ -491,6 +515,73 @@ ul {
         color: $lightBlue;
       }
     }    
+  }
+
+  .circle {
+    background: radial-gradient(ellipse at center, #83c783 11%,#52b152 60%,#b4ddb4 66%,#b4ddb4 66%,#005700 70%,#002400 93%);
+    position: absolute;
+    top: 0%;
+    right: 37.5%;
+    /*bottom: 0;
+    left: 0;*/
+    /*margin: auto;*/
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /*background-color: #006600;*/
+    /*-webkit-transform: translateY(90px); */
+    transform: translateY(85px);
+    border: 1px solid black;
+  }
+
+  .circle-1 {
+    /*transform: translateY(85px);*/
+    transform: translateY(75px);
+  }
+
+  .circle-2 {
+    transform-origin: center 100px;
+    /*transform-origin: 50% 100px;*/
+    transform: rotate(45deg);
+  }
+
+  .circle-3 {
+    transform-origin: center 100px;
+    transform: rotate(90deg);
+  }
+
+  .circle-4 {
+    transform-origin: center 100px;
+    transform: rotate(135deg);
+  }
+
+  .circle-5 {
+    transform-origin: 50% 100px;
+    transform: rotate(180deg);
+  }
+
+  .circle-6 {
+    transform-origin: 50% 100px;
+    transform: rotate(225deg);
+  }
+
+  .circle-7 {
+    transform-origin: 50% 100px;
+    transform: rotate(270deg);
+  }
+
+  .circle-8 {
+    transform-origin: 50% 100px;
+    transform: rotate(315deg);
+  }
+
+  .circle-9 {
+    transform-origin: 50% 100px;
+    transform: rotate(360deg);
+  }
+
+  .nominal {
+    background-color: #006600;
   }
 
   /*Actions*/

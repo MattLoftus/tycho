@@ -29,15 +29,15 @@
           
           <div>
             <p>Heading </p>
-            <p>{{ mission.mission.heading }} deg</p>
+            <p class="stat-value">{{ mission.mission.heading }} deg</p>
           </div>
           <div>
             <p>Velocity</p>
-            <p>{{ mission.mission.velocity }} m/s</p>
+            <p class="stat-value">{{ mission.mission.velocity }} m/s</p>
           </div>
           <div>
             <p>Altitude</p>
-            <p>{{ mission.mission.altitude }} km</p>
+            <p class="stat-value">{{ mission.mission.altitude }} km</p>
           </div>
 
         </div>
@@ -46,15 +46,15 @@
 
           <div>
             <p>Mission Clock</p>
-            <p>00:38:46</p>
+            <p class="stat-value">00:38:46</p>
           </div>
           <div>
             <p>Main Shutdown</p>
-            <p>-00:03:42</p>
+            <p class="stat-value">-00:03:42</p>
           </div>
           <div>
             <p>Stage 2 Start</p>
-            <p>-00:03:55</p>
+            <p class="stat-value">-00:03:55</p>
           </div>
 
         </div>
@@ -130,12 +130,13 @@
         <div class="s2-engines" ui-sref="engines"><span>Engines</span></div>
 
         <div class="s2-engine-graphic">
+          <div class="circle"></div>
         </div>
 
         <div class="s2-engine-stats">
           <table>
             <thead>
-              <th>Engine #</th>
+              <th>Engine</th>
               <th>Ft (kN)</th>
               <th>Cp (kN)</th>
               <th>Status</th>
@@ -206,7 +207,7 @@
 
         <div class="s1-engine-graphic">
           
-          <!-- <div class="circle circle-1"></div>
+          <div class="circle circle-1"></div>
           <div class="circle circle-2"></div>
           <div class="circle circle-3"></div>
           <div class="circle circle-4"></div>
@@ -214,7 +215,7 @@
           <div class="circle circle-6"></div>
           <div class="circle circle-7"></div>
           <div class="circle circle-8"></div>
-          <div class="circle circle-9"></div> -->
+          <div class="circle circle-9"></div>
           
         </div>
 
@@ -222,7 +223,7 @@
           
           <table>
             <thead>
-              <th>Engine #</th>
+              <th>Engine</th>
               <th>Ft (kN)</th>
               <th>Cp (kN)</th>
               <th>Status</th>
