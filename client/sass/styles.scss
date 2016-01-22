@@ -481,7 +481,7 @@ ul {
           .tank-header {
             font-weight: 300;
             margin-bottom: .1rem;
-            margin-top: .2rem;
+            margin-top: .8rem;
           }
         }
       }
@@ -539,58 +539,58 @@ ul {
     /*bottom: 0;
     left: 0;*/
     /*margin: auto;*/
-    width: 50px;
-    height: 50px;
+    width: 3.9vw;
+    height: 3.9vw;
     border-radius: 50%;
     /*background-color: #006600;*/
     /*-webkit-transform: translateY(90px); */
-    transform: translateY(85px);
+    transform: translateY(6.4vw);
     border: 1px solid black;
   }
 
   .circle-1 {
     /*transform: translateY(85px);*/
-    transform: translateY(75px);
+    transform: translateY(5.55vw);
   }
 
   .circle-2 {
-    transform-origin: center 100px;
-    /*transform-origin: 50% 100px;*/
+    transform-origin: center 7.7vw;
+    /*transform-origin: 50% 7.7vw;*/
     transform: rotate(45deg);
   }
 
   .circle-3 {
-    transform-origin: center 100px;
+    transform-origin: center 7.7vw;
     transform: rotate(90deg);
   }
 
   .circle-4 {
-    transform-origin: center 100px;
+    transform-origin: center 7.7vw;
     transform: rotate(135deg);
   }
 
   .circle-5 {
-    transform-origin: 50% 100px;
+    transform-origin: 50% 7.7vw;
     transform: rotate(180deg);
   }
 
   .circle-6 {
-    transform-origin: 50% 100px;
+    transform-origin: 50% 7.7vw;
     transform: rotate(225deg);
   }
 
   .circle-7 {
-    transform-origin: 50% 100px;
+    transform-origin: 50% 7.7vw;
     transform: rotate(270deg);
   }
 
   .circle-8 {
-    transform-origin: 50% 100px;
+    transform-origin: 50% 7.7vw;
     transform: rotate(315deg);
   }
 
   .circle-9 {
-    transform-origin: 50% 100px;
+    transform-origin: 50% 7.7vw;
     transform: rotate(360deg);
   }
 
@@ -909,7 +909,7 @@ ul {
       margin-top: 0;
     }
     ul li {
-      margin: 0rem 0 .3rem 0;
+      margin: .45vw 0 0 0;
     }
   }
 
@@ -918,10 +918,10 @@ ul {
   }
 
   .secondary-stats li:nth-child(even) {
-    margin-bottom: .6rem;
+    margin-bottom: .4vw;
   }
   .main-stats li:nth-child(odd) {
-    margin-bottom: .6rem;
+    margin-bottom: .4vw;
   }
 
   .fuel-type {
