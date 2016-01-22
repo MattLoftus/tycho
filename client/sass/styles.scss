@@ -140,8 +140,8 @@ ul {
   button {
     transition: 0.2s;
     margin-top: 1.5rem;
-    height: 3rem;
-    width: 8rem;
+    height: 50px;
+    width: 170px;
     border: 1px solid $lightBlue;
     color: $lightBlue;
     background-color: $mainBackground;
@@ -161,7 +161,6 @@ ul {
 
   a:hover {
     cursor: pointer;
-    background-color: $lightBlue;
   }
 
   button:hover {
