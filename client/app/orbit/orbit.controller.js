@@ -61,8 +61,8 @@
       var light = new THREE.AmbientLight( 0x888888 )
       scene.add( light )
 
-      var light = new THREE.DirectionalLight( 0xcccccc, 1 )
-      light.position.set(5,3,5)
+      var light = new THREE.DirectionalLight( 0xFFFFFF)
+      light.position.set(50,50,50)
       scene.add( light )
 
       //Define parameters for scaling data values to map size
@@ -99,16 +99,26 @@
 
       var earthGeometry = new THREE.SphereGeometry(radius, segments, rings);
       var earthMaterial = new THREE.MeshPhongMaterial({
-        map: THREE.ImageUtils.loadTexture("../../assets/earth_3.jpg"),
-        bumpMap: THREE.ImageUtils.loadTexture("../../assets/earth_bump.jpg"),
-        color: 0xaaaaaa,
-        ambient: 0xaaaaaa,
-        specular: 0x333333,
-        bumpScale: 0.2,
-        shininess: 10
+        map: THREE.ImageUtils.loadTexture("../../assets/earth_3.jpg")
+        // bumpMap: THREE.ImageUtils.loadTexture("../../assets/earth_bump.jpg")
+        // color: 0xaaaaaa,
+        // ambient: 0xaaaaaa,
+        // specular: 0x333333,
+        // bumpScale: 0.2,
+        // shininess: 10
       });
       var earth = new THREE.Mesh( earthGeometry, earthMaterial );
       scene.add( earth );
+
+      //Clouds
+      var cloudGeometry = new THREE.SphereGeometry(51,  50, 50);
+      var cloudMaterial = new THREE.MeshPhongMaterial({
+        map: new THREE.ImageUtils.loadTexture("../../assets/earthcloudmaptrans.jpg"),
+        transparent: true,
+        opacity: 0.08
+      });
+      var clouds = new THREE.Mesh(cloudGeometry, cloudMaterial);
+      scene.add(clouds);
 
       //STARS
       var starsGeometry  = new THREE.SphereGeometry(150, 32, 32)
@@ -118,17 +128,17 @@
       var starField  = new THREE.Mesh(starsGeometry, starMaterial)
       scene.add(starField);
 
-      //CLOUDS
-      var cloudGeometry   = new THREE.SphereGeometry(51, 32, 32)
-      var cloudMaterial  = new THREE.MeshPhongMaterial({
-        map     : new THREE.ImageUtils.loadTexture("../../assets/earthcloudmaptrans.jpg"),
-        side        : THREE.DoubleSide,
-        opacity     : 0.05,
-        transparent : true,
-        depthWrite  : false
-      })
-      var cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial)
-      scene.add(cloudMesh)
+      // //CLOUDS
+      // var cloudGeometry   = new THREE.SphereGeometry(51, 32, 32)
+      // var cloudMaterial  = new THREE.MeshPhongMaterial({
+      //   map     : new THREE.ImageUtils.loadTexture("../../assets/earthcloudmaptrans.jpg"),
+      //   side        : THREE.DoubleSide,
+      //   opacity     : 0.05,
+      //   transparent : true,
+      //   depthWrite  : false
+      // })
+      // var cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial)
+      // scene.add(cloudMesh)
 
 
       //Spacecraft
@@ -210,6 +220,7 @@
 
       var render = function (actions) {
         earth.rotation.y += .0003;
+        clouds.rotation.y += .0001;
         camera.lookAt(focus_vector);
         renderer.render(scene, camera);
         requestAnimationFrame( render );
