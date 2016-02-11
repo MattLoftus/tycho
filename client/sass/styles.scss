@@ -970,6 +970,13 @@ ul {
     }
   }
 
+  h5 {
+    font-size: 1rem;
+    font-weight: 300;
+    color: $softRed;
+    margin: .5rem 0 0 .5rem;
+  }
+
   .dropdown {
     @extend .dropdown-menu;
   }
@@ -994,34 +1001,28 @@ ul {
     .col-1 {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      justify-content: space-between;
     }
-    .dragon-image-container, 
-    .orientation-graphic {
-      flex-basis: 50%;
-      height: 44vh;
+    .dragon-image-container {
+      height: 50vh;
+    }
+
+    .dragon-image-container {
       img {
-        margin-top: .4rem;
+        margin-left: 6vw;
+        margin-top: 5px;
       }
-    }
-    .orientation-graphic {
-      border-top: 1px solid $grey;
-      width: 100%;
     }
 
     .col-2 {
       display: flex;
       flex-direction: column;
-    }
-    .life-power-systems,
-    .trajectory-graphic {
-      flex-basis: 50%;
-      height: 44vh;
-
+      justify-content: space-between;
     }
     .trajectory-graphic {
-      border-top: 1px solid $grey;
-      height: 44vh;
+      height: 50vh;
+    }
+    .trajectory-graphic {
       h5:hover {
         cursor: pointer;
         color: #66ffff;
@@ -1029,13 +1030,14 @@ ul {
     }
     .life-support,
     .power-systems {
-      height: 22vh;
+      border-top: 1px solid $grey;
+      height: 35vh;
       ul {
         margin: .2rem 0;
         list-style: none;
         padding:0;
         li {
-          margin: .1rem auto;
+          margin: .5rem auto;
           padding:0;
           font-size: .8rem;
           font-weight: 300;
@@ -1048,6 +1050,7 @@ ul {
       .stats {
         display: flex;
         flex-direction: row;
+        margin-left: 0.5rem;
       }
       .stats .stat-name {
         flex-basis: 70%;
@@ -1072,34 +1075,42 @@ ul {
       display: flex;
       flex-direction: column;
       h5 {
-        flex-basis: 8%;
-        height: 4vh;
+        margin-bottom: .5rem;
       }
-      .super-draco {
-        flex-basis: 20%;
-        height: 22vh;
-        border-top: 1px solid $grey;
+      h6 {
+        font-size: 1rem;
+        font-weight: 300;
+        color: $softRed;
+        margin: .5rem 0 .5rem .6rem;
       }
-      .RCS {
-        flex-basis: 70%;
-        height: 63vh;
-        border-top: 1px solid $grey;
-      }
-      .super-draco,
-      .RCS {
+      .prop-fuel-systems {
+        height: 84vh;
         display: flex;
         flex-direction: row;
+        justify-content: center;
+        border-top: 1px solid $grey;
       }
-      .engines,
-      .fuel-tanks {
+      .RCS, 
+      .draco {
         flex-basis: 50%;
-        width: 25%;
+        width: 50%;
       }
-      .engines {
-        border-right: 1px solid $grey;
+      .draco {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        border-left: 1px solid $grey;
+        h6 {
+          font-size: 1rem;
+          font-weight: 300;
+          color: $softRed;
+          margin: .5rem 0 .5rem .6rem;
+        }
       }
       table {
-        margin: auto;
+        margin-left: .6rem;
+        width: 90%;
       }
       th {
         font-size: .8rem;
@@ -1108,21 +1119,14 @@ ul {
       }
       td {
         font-size: .8rem;
+        padding-bottom: .3rem;
         color: $lightBlue;
+        margin: auto;
       }
 
     }
 
   }
-
-  h5 {
-    font-size: 1rem;
-    font-weight: 300;
-    color: $softRed;
-    margin: .2rem 0 0 .2rem;
-  }
-
-
 
 }
 

@@ -37,44 +37,44 @@
         
       </div>
 
-      <div class="orientation-graphic">
-        Graphic Placeholder
+      <div class="life-support">
+
+        <h5>Life Support</h5>
+
+        <div class="stats"> 
+
+          <ul class="stat-name">
+            <li>Atm Pressure</li>
+            <li>O2 Level</li>
+            <li>CO2 Level</li>
+            <li>Cycle Rate</li>
+            <li>O2 Storage</li>
+            <li>H20 Storage</li>
+          </ul>
+
+          <ul class="stat-value">
+            <li>1.2 atm</li>
+            <li>87%</li>
+            <li>13%</li>
+            <li>33 cm3/sec</li>
+            <li>234 L</li>
+            <li>200 L</li>
+          </ul>
+
+        </div>
+
       </div>
 
     </div> 
 
     <div class="col-2">
 
-      <div class="life-power-systems">
-        
-        <div class="life-support">
+        <div class="trajectory-graphic">
 
-          <h5>Life Support</h5>
-
-          <div class="stats"> 
-
-            <ul class="stat-name">
-              <li>Atm Pressure</li>
-              <li>O2 Level</li>
-              <li>CO2 Level</li>
-              <li>Cycle Rate</li>
-              <li>O2 Storage</li>
-              <li>H20 Storage</li>
-            </ul>
-
-            <ul class="stat-value">
-              <li>1.2 atm</li>
-              <li>87%</li>
-              <li>13%</li>
-              <li>33 cm3/sec</li>
-              <li>234 L</li>
-              <li>200 L</li>
-            </ul>
-
-          </div>
+          <h5 ui-sref="orbit">Trajectory</h5>
 
         </div>
-
+        
         <div class="power-systems">
 
           <h5>Power Systems</h5>
@@ -101,121 +101,22 @@
 
         </div>
 
-      </div>
-
-      <div class="trajectory-graphic">
-
-        <h5 ui-sref="orbit">Trajectory</h5>
-
-      </div>
-
     </div> 
 
     <div class="col-3">
 
       <h5>Propulsion/Fuel Systems</h5>
 
-      <div class="super-draco">
+      <div class="prop-fuel-systems">
         
-        <div class="engines">
-
-          <h5>SuperDraco Main Engines</h5>
-
-          <table>
-            
-            <thead>
-              <th>Super Draco</th>
-              <th>Thrust (N)</th>
-              <th>Cp (atm)</th>
-              <th>Ct (K)</th>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>100</td>
-                <td>20</td>
-                <td>30</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>100</td>
-                <td>20</td>
-                <td>30</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>20</td>
-                <td>20</td>
-                <td>100</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>24</td>
-                <td>30</td>
-                <td>20</td>
-              </tr>
-            </tbody>
-
-          </table>
-          
-        </div>
-
-        <div class="fuel-tanks">
-
-          <h5>Super Draco Fuel Tanks</h5>
-
-          <table>
-            
-            <thead>
-              <th>Tank ID</th>
-              <th>Fuel Mass (Kg)</th>
-              <th>Temp (K)</th>
-              <th>Tp (atm)</th>
-            </thead>
-            <tbody>
-              <tr>
-                <td>SD-1</td>
-                <td>100</td>
-                <td>20</td>
-                <td>30</td>
-              </tr>
-              <tr>
-                <td>SD-2</td>
-                <td>100</td>
-                <td>20</td>
-                <td>30</td>
-              </tr>
-              <tr>
-                <td>SD-3</td>
-                <td>20</td>
-                <td>20</td>
-                <td>100</td>
-              </tr>
-              <tr>
-                <td>SD-4</td>
-                <td>24</td>
-                <td>30</td>
-                <td>20</td>
-              </tr>
-            </tbody>
-
-          </table>
-          
-        </div>
-
-      </div>
-
-      <div class="RCS">
-        
-        <div class="engines">
-
-          <h5>RCS Draco Engines</h5>
+        <div class="RCS">
+          <h6>RCS Draco Engines</h6>
           
           <table>
             
             <thead>
-              <th>RCS Block-ID</th>
-              <th>Thrust (N)</th>
+              <th>Block</th>
+              <th>Ft (N)</th>
               <th>Cp (atm)</th>
               <th>Ct (K)</th>
             </thead>
@@ -319,21 +220,98 @@
             </tbody>
 
           </table>
-
           
         </div>
-        
-        <div class="fuel-tanks">
 
-          <h5>RCS Draco Fuel Tanks</h5>
+        <div class="draco">
+
+          <h6>SuperDraco Main Engines</h6>
 
           <table>
             
             <thead>
-              <th>Tank ID</th>
-              <th>Fuel Mass (Kg)</th>
+              <th>Engine</th>
+              <th>Ft (N)</th>
+              <th>Cp (mPa)</th>
+              <th>Ct (K)</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>100</td>
+                <td>20</td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>100</td>
+                <td>20</td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>20</td>
+                <td>20</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>24</td>
+                <td>30</td>
+                <td>20</td>
+              </tr>
+            </tbody>
+
+          </table>
+
+          <h6>Super Draco Fuel Tanks</h6>
+
+          <table>
+            
+            <thead>
+              <th>ID</th>
+              <th>Fuel (Kg)</th>
               <th>Temp (K)</th>
-              <th>Tp (atm)</th>
+              <th>Tp (mPa)</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SD-1</td>
+                <td>100</td>
+                <td>20</td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>SD-2</td>
+                <td>100</td>
+                <td>20</td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>SD-3</td>
+                <td>20</td>
+                <td>20</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td>SD-4</td>
+                <td>24</td>
+                <td>30</td>
+                <td>20</td>
+              </tr>
+            </tbody>
+
+          </table>
+          
+          <h6>RCS Draco Fuel Tanks</h6>
+
+          <table>
+            
+            <thead>
+              <th>Tank</th>
+              <th>Fuel (Kg)</th>
+              <th>Temp (K)</th>
+              <th>Tp (mPa)</th>
             </thead>
             <tbody>
               <tr>
@@ -363,12 +341,11 @@
             </tbody>
 
           </table>
-          
-        </div>
 
+        </div>
+        
       </div>
-      
-    </div> 
+
 
   </div>
 
