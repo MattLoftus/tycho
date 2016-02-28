@@ -21,8 +21,9 @@
     getEngineData();
     setInterval(getEngineData, 2000);
 
-    //Scope methods
-    //Non-scope methods
+    ///////////////////////////////
+    ////DATA RETRIEVAL METHODS/////
+    ///////////////////////////////
 
     //Get all engine data for both rocket stages
     function getEngineData() {
@@ -37,6 +38,10 @@
           console.log(vm.engines);
         });
     }
+
+    ////////////////////////////
+    //Basic Warning Indicators//
+    ////////////////////////////
 
     //Check levels of engine data values against predefined
     //thresholds and determine appropriate status

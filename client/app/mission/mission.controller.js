@@ -81,10 +81,8 @@
     ///GRAPHIC RENDERING METHODS///
     ///////////////////////////////
 
-   
-
     //////////////////////////////////
-    ///////////FUEL TANKS/////////////
+    //////Fuel Tank Graphics//////////
     //////////////////////////////////
 
     function fuelTankGraphic (selector, stageNo) {
@@ -168,12 +166,9 @@
       fuelBottom.position.y = -11;
       fuelBottom.rotation.z = Math.PI;
 
-      ///////////////////////////
-      /// RENDERING/ANIM LOOP ///
-      ///////////////////////////
-
       var vec = new THREE.Vector3( 0, 0, 0 );
     
+      //Rendering & animation loop
       var render = function (actions) {
         camera.lookAt(vec)
         renderer.render(scene, camera);
@@ -182,7 +177,11 @@
       render();
     }
 
-    //Create THREEJS trajectory Map
+
+    //////////////////////////////////
+    ///Earth & Vehicle Trajectory/////
+    //////////////////////////////////
+
     function trajectoryGraphic () {
       var width = $window.innerWidth * .3;
       var height = $window.innerHeight * .52;
@@ -226,8 +225,6 @@
       console.log(altitude);
       console.log(position);
 
-      // console.log(vm.orbit.target_perigee);
-      // console.log(apogee, perigee, target_apogee, target_perigee);
 
       //EARTH
       var radius = 50;
@@ -257,7 +254,7 @@
       var clouds = new THREE.Mesh(cloudGeometry, cloudMaterial);
       scene.add(clouds);
 
-      //STARS
+      //Stars
       var starsGeometry  = new THREE.SphereGeometry(150, 32, 32)
       var starMaterial  = new THREE.MeshBasicMaterial()
       starMaterial.map   = THREE.ImageUtils.loadTexture('../../assets/galaxy_starfield.png')
@@ -276,7 +273,8 @@
       craft.position.set(position[0], position[1], position[2]);
       scene.add( craft );
 
-      //Current Trajectory
+      //Current Trajectory - Conditional check for changing camera location/orientation
+      //based on current vehicle perigee.
       var focus_vector;
       if (vm.mission.perigee > 0) {
         //Draw elliptical orbit

@@ -16,7 +16,7 @@
 
     return services;
 
-    //engine and tank functions
+    //engine and tank data retrieval methods
 
     function getEngineForStage (missionID, stageNo) {
       return $http.get('/vehicle/engine/stage/' + missionID + '/' + stageNo)

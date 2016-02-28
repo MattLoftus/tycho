@@ -16,7 +16,10 @@
     //Initialization procedures
     getOrbitalData();
 
-    //Non scope methods
+    ///////////////////////////////
+    ////DATA RETRIEVAL METHODS/////
+    ///////////////////////////////
+
     function getOrbitalData () {
       Mission.getMissionMeta(vm.missionID) 
         .then(function (orbitData) {
@@ -128,19 +131,6 @@
       var starField  = new THREE.Mesh(starsGeometry, starMaterial)
       scene.add(starField);
 
-      // //CLOUDS
-      // var cloudGeometry   = new THREE.SphereGeometry(51, 32, 32)
-      // var cloudMaterial  = new THREE.MeshPhongMaterial({
-      //   map     : new THREE.ImageUtils.loadTexture("../../assets/earthcloudmaptrans.jpg"),
-      //   side        : THREE.DoubleSide,
-      //   opacity     : 0.05,
-      //   transparent : true,
-      //   depthWrite  : false
-      // })
-      // var cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial)
-      // scene.add(cloudMesh)
-
-
       //Spacecraft
       var radius = .5;
       var segments = 32;
@@ -151,12 +141,6 @@
       var craft = new THREE.Mesh( craftGeometry, craftMaterial );
       craft.position.set(position[0], position[1], position[2]);
       scene.add( craft );
-
-      // var targetGeometry = new THREE.SphereGeometry(radius, segments, rings);
-      // var targetMaterial = new THREE.MeshPhongMaterial({color: 0xb3ebff});
-      // var targetObject = new THREE.Mesh( targetGeometry, targetMaterial );
-      // targetObject.position.set(0, -30, 100);
-      // scene.add( targetObject );
 
       //Current Trajectory
       var focus_vector;
@@ -229,8 +213,6 @@
       render();
     }
 
-    
-    
   }
 
 })();
