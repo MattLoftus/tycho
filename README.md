@@ -3,12 +3,13 @@ Tycho is a modern user interface for monitoring launch vehicle and spacecraft da
 
 ##Table of contents
 1. [Getting started](#getting-started)
+2. [Testing](#testing)
 2. [Description](#description)
 3. [Api interface](#api-interface)
 4. [Architecture](#architecture)
 
 
-##Getting started
+##Getting started and testing
 To develop locally, just clone the repo down to your machine:
 
 ```
@@ -46,6 +47,13 @@ grunt
 ```
 
 Grunt will concatentate all of our client files, concatenate and minify our dependencies, compile our scss into css(and begin a watch command that will compile our scss every time the file is changed), and lastly start the server on port 3000.  Navigate to "localhost:3000" in the browser to view the application.
+
+##Testing
+To run tests on the API endpoints, execute the following command from the root of the repository:
+
+```
+npm test
+```
 
 ##Description
 The purpose of this project is demonstrate how modern web technologies can be used to create beautiful, intuitive interfaces for monitoring hardware systems.  I happen to love space exploration, so that was the particular use case for this project.  The same principles could be applied in a limitless amount of places though.  Think about interacting with a drone, a 3D printer, or any network of of machines that you want to keep track of simulatneously.
