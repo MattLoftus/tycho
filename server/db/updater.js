@@ -31,10 +31,13 @@ setInterval(function () {
 function updateEngineData (time) {
   for (var i = 0; i < sampleEngines.length; i++) {
     var engine = sampleEngines[i];
-    if (time < 9.7) {
-      engine.chamber_pressure++;
+    if (time < 8) {
+      engine.chamber_pressure += .8;
       engine.exit_pressure++;
       
+    }
+    if (engine.engine_num === 3 && time < 20) {
+      engine.chamber_pressure += .2;
     }
     if (time < 825) {
       engine.force_thrust++;

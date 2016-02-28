@@ -19,7 +19,7 @@
     //Initialization
     //Fetch engine data once per second
     getEngineData();
-    setInterval(getEngineData, 4000);
+    setInterval(getEngineData, 2000);
 
     //Scope methods
     //Non-scope methods
@@ -34,7 +34,7 @@
             vm.engines[engine.engine_num] = engine;
             checkStatus(vm.engines[engine.engine_num]);
           }
-          // console.log(vm.engines);
+          console.log(vm.engines);
         });
     }
 
@@ -45,7 +45,9 @@
         throwCaution(engine.engine_num, " .chamber_pressure");
       }
       if (engine.nozzle_temp > vm.nozzTempThresh) {
-        throwCaution(engine.engine_num, " .nozzle_temp");
+        if (engine.engine_num === 3) {
+          throwCaution(engine.engine_num, " .nozzle_temp");
+        }
       }
     }
 

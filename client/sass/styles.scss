@@ -271,7 +271,6 @@ ul {
     }
   }
 
-
   .falcon-container {
     flex-basis: 10%;
     width: 10vw;
@@ -607,6 +606,9 @@ ul {
     cursor: pointer;
     color: #66ffff;
   }
+  .trajectory canvas:hover {
+    cursor: -webkit-grab;
+  }
   /*.stage-2-title,
   .stage-1-title {
     float: left;
@@ -679,6 +681,9 @@ ul {
   .trajectory-graphic {
     flex-basis: 88%;
     height: 88vh;
+    &:hover {
+      cursor: -webkit-grab;
+    }
   }
   
   .data-container {

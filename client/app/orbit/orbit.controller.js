@@ -217,11 +217,12 @@
 
       var vec = new THREE.Vector3( 0, 0, 0 );
 
+      camera.lookAt(focus_vector);
 
       var render = function (actions) {
-        earth.rotation.y += .0003;
+        earth.rotation.y += .0002;
         clouds.rotation.y += .0001;
-        camera.lookAt(focus_vector);
+        // camera.lookAt(focus_vector);
         renderer.render(scene, camera);
         requestAnimationFrame( render );
       };
