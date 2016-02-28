@@ -1,0 +1,423 @@
+/*********************************
+********   MISSION VIEW **********
+*********************************/
+
+.mission {
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(to bottom, #000000 45%, #3A388D 160%);
+
+  .meta {
+    flex-basis: 30%;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+  }
+
+  .data {
+    height: 41vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .title {
+    flex-basis: 20%;
+    display: flex;
+    flex-direction: row;
+    h1 {
+      margin-top: 0.5rem;
+      margin-left: .5rem;
+      font-size: 1.5rem;
+      margin-bottom: .2rem;
+      font-weight: 200;
+      color: $green;
+    }
+    padding-bottom: .1rem;
+  }
+
+  .dropdown {
+    @extend .dropdown-menu;
+    width: 30%;
+  }
+
+  .dropdown ul.menu {
+    top: 9.5vh;
+  }
+
+  .main-stats {
+    flex-basis: 75%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .vehic-stats,
+  .time {
+    flex-basis: 50%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    p {
+      margin: 0 auto;
+    }
+    div {
+      width: 90%;
+      border-top: 1px solid $grey;
+      border-bottom: 1px solid $grey;
+      padding: .2rem 0 .2rem 1rem;
+    }
+    .stat-value {
+      font-weight: 200;
+    }
+  }
+  .time div {
+    border-left: 1px solid $grey;
+  }
+
+  .trajectory {
+    flex-basis: 50%;
+    height: 50vh;
+    p {
+      font-size: 1rem;
+      margin: .2rem;
+      margin-right: 14.3rem;
+    }
+  }
+
+  .falcon-container {
+    flex-basis: 10%;
+    width: 10vw;
+    
+  }
+
+  img {
+    display: block;
+    margin: auto;
+    height: 95vh;
+    padding: .5rem 0 .5rem 0;
+  }
+
+  .engines-tanks {
+    flex-basis: 60%;
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $grey;
+  } 
+
+  /* STAGE 2 STYLES */
+
+  .stage-2 {
+    flex-basis: 35%;
+    height: 32vh;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid $grey;
+    .tanks {
+      flex-basis: 60%;
+      width: 60%;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      border-right: 1px solid $grey;
+      .stage-2-title {
+        flex-basis: 15%;
+        flex-grow: 0;
+        align-self: flex-start;
+        color: $green;
+        padding: 0 .2rem .2rem .2rem;
+        font-weight: 200;
+      }
+      .s2-tanks {
+        flex-basis: 5%;
+        height: 5%;
+        margin: 0;
+        margin-top: -1rem;
+        font-size: 1rem;
+        font-weight: 300;
+      } 
+      .s2-tank-graphic {
+        flex-basis: 70%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        .RP1,
+        .LOX {
+          flex-basis: 50%;
+          display: flex;
+          flex-direction: row;
+          div {
+            width: 100%;
+          }
+        }
+        .s2-RP1-stats,
+        .s2-LOX-stats {
+          display: flex;
+          flex-direction: column;
+          h3 {
+            font-size: 1rem;
+            font-weight: 300;
+            color: $softRed;
+            margin-bottom: .3rem;
+            padding-left: .3rem
+          }
+          p {
+            font-size: .8rem;
+            margin: 0 0 .5rem .3rem;
+            color: white;
+            font-weight: 200;
+          }
+          .tank-header {
+            font-weight: 300;
+            margin-bottom: .1rem;
+            margin-top: .2rem;
+          }
+        }
+
+      }
+
+    }
+    .engines {
+      flex-basis: 32%;
+      height: 32vh;
+      width: 45%;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      .s2-engines {
+        flex-basis: 20%;
+        height: 20%;
+        color: white;
+        padding-top: .5rem;
+      }
+      .s2-engine-graphic {
+        flex-basis: 40%;
+        height: 40%;
+        width: 100%;
+        position: relative;
+        .circle {
+          top: -81%;
+          right: 40%;
+          border: 2px solid grey;
+        }
+      }
+      .s2-engines-stats {
+        flex-basis: 40%;
+        height: 40%
+      }
+      th {
+        font-size: 1rem;
+        font-weight: 200;
+        border-bottom: 1px solid $grey;
+        padding-right: .2rem;
+      }
+      td {
+        color: $lightBlue;
+      }
+    }
+  }
+
+  /* STAGE 1 STYLES */
+
+  .stage-1 {
+    flex-basis: 65%;
+    height: 66vh;
+    width: 100%;
+    flex-grow: 2;
+    display: flex;
+    flex-direction: row;
+    .tanks {
+      flex-basis: 40%;
+      border-right: 1px solid $grey;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      .stage-1-title {
+        flex-grow: 0;
+        flex-basis: 5%;
+        align-self: flex-start;
+        color: $green;
+        padding: 0 .2rem .2rem .2rem;
+        font-weight: 200;
+        margin-top: -.5rem;
+      }
+      .s1-tanks {
+        flex-basis: 5%;
+        height: 5%;
+        margin: 0;
+        margin-top: -1rem;
+        font-size: 1rem;
+        font-weight: 300;
+      }
+      .s1-tank-graphic {
+        flex-basis: 90%;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        .RP1,
+        .LOX {
+          flex-basis: 50%;
+          height: 50%;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          margin-right: -1.5rem;
+        }
+        .s1-RP1-stats,
+        .s1-LOX-stats {
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          div {
+            width: 9vw;
+          }
+          h3 {
+            font-size: 1rem;
+            font-weight: 300;
+            color: $softRed;
+            margin-bottom: .3rem;
+            padding-left: .3rem;
+          }
+          p {
+            font-size: .8rem;
+            margin: 0 0 .5rem 0;
+            padding-left: .3rem;
+            font-weight: 200;
+          }
+          .tank-header {
+            font-weight: 300;
+            margin-bottom: .1rem;
+            margin-top: .8rem;
+          }
+        }
+      }
+    }
+
+    
+
+    .engines {
+      flex-basis: 66%;
+      height: 66vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      .s1-engines {
+        flex-basis: 8%;
+        height: 8%;
+        color: white;
+        padding-top: .5rem;
+      }
+      .s1-engine-graphic {
+        flex-basis: 43%;
+        height: 43%;
+        width: 45%;
+        position: relative;
+        border: 2px ridge $grey;
+        border-radius: 50%;
+      }
+      .s1-engine-stats {
+        flex-basis: 45%;
+        height: 45%;
+      }
+      th {
+        font-weight: 200;
+        border-bottom: 1px solid $grey;
+        padding-right: .5rem;
+        font-size: 1rem;
+      }
+      tr {
+        font-size: .6rem;
+      }
+      td {
+        border-left: 1px solid $grey;
+        padding-left: .5rem;
+        color: $lightBlue;
+      }
+    }    
+  }
+
+  .circle {
+    background: radial-gradient(ellipse at center, #83c783 11%,#52b152 60%,#b4ddb4 66%,#b4ddb4 66%,#005700 70%,#002400 93%);
+    position: absolute;
+    top: 0%;
+    right: 37.5%;
+    width: 3.9vw;
+    height: 3.9vw;
+    border-radius: 50%;
+    transform: translateY(6.4vw);
+    border: 1px solid black;
+  }
+
+  .circle-1 {
+    /*transform: translateY(85px);*/
+    transform: translateY(5.55vw);
+  }
+
+  .circle-2 {
+    transform-origin: center 7.7vw;
+    /*transform-origin: 50% 7.7vw;*/
+    transform: rotate(45deg);
+  }
+
+  .circle-3 {
+    transform-origin: center 7.7vw;
+    transform: rotate(90deg);
+  }
+
+  .circle-4 {
+    transform-origin: center 7.7vw;
+    transform: rotate(135deg);
+  }
+
+  .circle-5 {
+    transform-origin: 50% 7.7vw;
+    transform: rotate(180deg);
+  }
+
+  .circle-6 {
+    transform-origin: 50% 7.7vw;
+    transform: rotate(225deg);
+  }
+
+  .circle-7 {
+    transform-origin: 50% 7.7vw;
+    transform: rotate(270deg);
+  }
+
+  .circle-8 {
+    transform-origin: 50% 7.7vw;
+    transform: rotate(315deg);
+  }
+
+  .circle-9 {
+    transform-origin: 50% 7.7vw;
+    transform: rotate(360deg);
+  }
+
+  .nominal {
+    background-color: #006600;
+  }
+
+  /*Actions*/
+  .s1-engines span:hover,
+  .s2-engines span:hover,
+  .trajectory p:hover,
+  h3.s1-tanks:hover,
+  h3.s2-tanks:hover {
+    cursor: pointer;
+    color: #66ffff;
+  }
+  .trajectory canvas:hover {
+    cursor: -webkit-grab;
+  }
+}

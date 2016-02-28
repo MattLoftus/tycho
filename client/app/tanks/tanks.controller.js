@@ -16,6 +16,7 @@
       "stage1": {},
       "stage2": {}
     };
+    //Throttle parameter for throttling API calls. Incomplete
     vm.throttle = 0;    
 
     //Initialization procedures
@@ -58,11 +59,9 @@
       var height = $window.innerHeight * .44;
       
       var camera = new THREE.PerspectiveCamera( 75, width/height, 0.1, 1000 );
-      // var camera = new THREE.OrthographicCamera(- width/1 , width / 1, height / 1, -height /  1, 1, 1000 );
       var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
       renderer.setClearColor( 0xffffff, 0);
       renderer.setSize( width, height);
-      // $(renderer.domElement).insertAfter(selector);
       $(selector).append(renderer.domElement);
 
       camera.position.set(0, 0, 67);
@@ -117,7 +116,6 @@
       var fuel = new THREE.Mesh(fuelGeometry, fuelMaterial);
       scene.add(fuel);
 
-      // var fuelCapGeometry = new THREE.SphereGeometry(39,30, 30, Math.PI*1.5, Math.PI, 0, 3.1);
       var fuelCapGeometry = new THREE.SphereGeometry(25,30, 30, 0, 2*Math.PI, 0, 1.3);
       var fuelBottom = new THREE.Mesh(fuelCapGeometry, fuelMaterial);
       scene.add(fuelBottom);
@@ -130,7 +128,6 @@
       var s2LOXMax = 28000;
       var s2RP1Max = 17000;
 
-      //Change fuel height based off remaining fuel volume;
       var vec = new THREE.Vector3( 0, 0, 0 );
 
       var render = function (actions) {

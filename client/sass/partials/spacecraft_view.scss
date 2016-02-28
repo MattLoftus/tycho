@@ -1,0 +1,191 @@
+/*********************************
+*******   SPACECRAFT VIEW ********
+*********************************/
+
+.spacecraft {
+
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    @extend .default-header;
+    h2 {
+      margin-top: 1rem;
+      flex-basis: 25%;
+      width: 25%;
+      font-size: 1.5rem;
+      font-weight: 200;
+      color: $green;
+    }
+    h4 {
+      flex-basis: 17%;
+      width: 17%;
+      align-self: center;
+      font-size: 1.5rem;
+      font-weight: 200;
+      color: white;
+      .top-level-status {
+        color: $green;
+      }
+    }
+  }
+
+  h5 {
+    font-size: 1rem;
+    font-weight: 300;
+    color: $softRed;
+    margin: .5rem 0 0 .5rem;
+  }
+
+  .dropdown {
+    @extend .dropdown-menu;
+  }
+
+  .main {
+    flex-basis: 88%;
+    height: 88vh;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid $grey;
+    .col-1,
+    .col-2 {
+      flex-basis: 25%;
+      width: 25%;
+      border-left: 1px solid $grey;
+    }
+    .col-3 {
+      flex-basis: 50%;
+      width: 50%;
+      border-left: 1px solid $grey;
+    }
+    .col-1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .dragon-image-container {
+      height: 50vh;
+    }
+
+    .dragon-image-container {
+      img {
+        margin-left: 6vw;
+        margin-top: 5px;
+      }
+    }
+
+    .col-2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .trajectory-graphic {
+      height: 50vh;
+    }
+    .trajectory-graphic {
+      h5:hover {
+        cursor: pointer;
+        color: #66ffff;
+      }
+    }
+    .life-support,
+    .power-systems {
+      border-top: 1px solid $grey;
+      height: 35vh;
+      ul {
+        margin: .2rem 0;
+        list-style: none;
+        padding:0;
+        li {
+          margin: .5rem auto;
+          padding:0;
+          font-size: .8rem;
+          font-weight: 300;
+        }
+        .status {
+          color: $green;
+        }
+      }
+
+      .stats {
+        display: flex;
+        flex-direction: row;
+        margin-left: 0.5rem;
+      }
+      .stats .stat-name {
+        flex-basis: 70%;
+        width: 70%; 
+        li {
+          padding-left: .2rem;
+        }
+      }
+      .stats .stat-value {
+        flex-basis: 30%;
+        width: 30%;
+        li {
+          color: $lightBlue;
+        }
+      }
+    }
+    .power-systems {
+      border-top: 1px solid $grey;
+    }
+
+    .col-3 {
+      display: flex;
+      flex-direction: column;
+      h5 {
+        margin-bottom: .5rem;
+      }
+      h6 {
+        font-size: 1rem;
+        font-weight: 300;
+        color: $softRed;
+        margin: .5rem 0 .5rem .6rem;
+      }
+      .prop-fuel-systems {
+        height: 84vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        border-top: 1px solid $grey;
+      }
+      .RCS, 
+      .draco {
+        flex-basis: 50%;
+        width: 50%;
+      }
+      .draco {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        border-left: 1px solid $grey;
+        h6 {
+          font-size: 1rem;
+          font-weight: 300;
+          color: $softRed;
+          margin: .5rem 0 .5rem .6rem;
+        }
+      }
+      table {
+        margin-left: .6rem;
+        width: 90%;
+      }
+      th {
+        font-size: .8rem;
+        font-weight: 300;
+        border-bottom: 1px solid $grey;
+      }
+      td {
+        font-size: .8rem;
+        padding-bottom: .3rem;
+        color: $lightBlue;
+        margin: auto;
+      }
+
+    }
+
+  }
+
+}

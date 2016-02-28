@@ -21,14 +21,14 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         files: {
-          'client/styles/styles.css' : 'client/sass/styles.scss'
+          'client/styles/styles.css' : 'client/sass/main.scss'
         }
       }
     },
 
     watch: {
       css: {
-        files: ['client/sass/styles.scss'],
+        files: ['client/sass/main.scss'],
         tasks: ['sass']
       }
     },

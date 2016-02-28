@@ -1,0 +1,96 @@
+/*********************************
+*******  FUEL TANKS VIEW *********
+*********************************/
+
+.tank-overview {
+
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(to bottom, #000000 50%, #653030 160%);
+
+  .header {
+    @extend .default-header;
+    h2 {
+      margin-top: 1rem;
+      flex-basis: 25%;
+      width: 25%;
+      font-size: 1.5rem;
+      font-weight: 200;
+      color: $green;
+    }
+    h4 {
+      margin-top: 1.5rem;
+      flex-basis: 35%;
+      width: 30%;
+      font-size: 1.5rem;
+      font-weight: 200;
+      color: white;
+      .top-level-status {
+        color: $green;
+      }
+    }
+  }
+
+  .dropdown {
+    @extend .dropdown-menu;
+  }
+
+  .stage-1,
+  .stage-2 {
+    flex-basis: 44%;
+    height: 44vh;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid $grey;
+    .graphic-container {
+      flex-basis: 50%;
+      width: 50%;
+    }
+    .LOX {
+      border-left: 1px solid $grey;
+    }
+    .LOX,
+    .RP1 {
+      border-right: 1px solid $grey;
+      display: flex;
+      flex-direction: row;
+    }
+    .LOX .main-stats,
+    .RP1 .secondary-stats {
+      flex-basis: 33%;
+      width: 33%;
+    }
+    ul {
+      padding-left: .5rem;
+      margin-top: 0;
+    }
+    ul li {
+      margin: .45vw 0 0 0;
+    }
+  }
+
+  .secondary-stats {
+    margin-top: 2rem;
+  }
+
+  .secondary-stats li:nth-child(even) {
+    margin-bottom: .4vw;
+  }
+  .main-stats li:nth-child(odd) {
+    margin-bottom: .4vw;
+  }
+
+  .fuel-type {
+    color: $softRed;
+    font-size: 1.25rem;
+  }
+
+  .title-bar {
+    font-size: 1.25rem;
+  }
+
+  .stat-value {
+    color: $lightBlue;
+  }
+}
