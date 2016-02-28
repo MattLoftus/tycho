@@ -1,5 +1,5 @@
 ##About
-Tycho is a modern user interface for monitoring launch vehicle and spacecraft data.  The main technologies used in this repository are AngularJS for the client, Three.js for the vehicle and trajectory graphics, Node.js/Express for the server, and MySQL for the database operations.  CSS Flexbox is also used for all of the positioning and styling of the views.  Please see the table of contents for more information
+Tycho is a modern user interface for monitoring launch vehicle and spacecraft data.  On the front end, AngularJS is used for the application, the Three.js WebGL library is used for the trajectory and fuel tank grapics, and CSS (Flexbox) and Sass are used for all of the positioning and styling.  On the back end, the server is build with Node.js and Express, and we have a MySQL database.  See the table of contents for more information.
 
 ##Table of contents
 1. [Getting started](#getting-started)
@@ -9,11 +9,9 @@ Tycho is a modern user interface for monitoring launch vehicle and spacecraft da
 
 
 ##Getting started
-To develop locally first fork and clone the repo. Or just clone it directly.
+To develop locally, just clone the repo down to your machine:
 
 ```
-git clone https://github.com/your_name/tycho.git
-
 git clone https://github.com/MattLoftus/tycho.git
 ```
 
@@ -23,16 +21,34 @@ Next navigate to the root of the repository and run an npm install.  (if you don
 npm install
 ```
 
-This will install all of our node modules and server dependencies.  The package.json posinstall script will then automatically run a bower install, installing all of our front end dependencies.  Next, still from the root of the repository, run the grunt command.
+This will install all of our node modules and server dependencies.  The package.json posinstall script will then automatically run a bower install, installing all of our front end dependencies.  Before proceeding, you will need to make sure you have Sass (CSS preprocessor) installed.  If you do not, you can install it using ruby (may require sudo to get proper permissions):
+
+```
+gem install sass
+```
+
+Or:
+
+```
+sudo gem install sass
+```
+
+Next, you will need to have the Grunt CLI installed on your computer.  If you don't currenty, run
+
+```
+npm install -g grunt-cli
+```
+
+This will install the grunt CLI globally on your machine.  Lastly, execute the grunt command from the root of the repository.
 
 ```
 grunt
 ```
 
-Grunt will concatentate all of our cleint piles, compile our scss into css(and begin a watch command that will recompile our scss every time the file is changed), and lastly start the server on port 3000.  Navigate to port 3000 and you should be able to demo the application and make any changes you wish.
+Grunt will concatentate all of our client files, concatenate and minify our dependencies, compile our scss into css(and begin a watch command that will compile our scss every time the file is changed), and lastly start the server on port 3000.  Navigate to "localhost:3000" in the browser to view the application.
 
 ##Description
-The purpose of this project is demonstrate how modern web technologies can be used to create beautiful, intuitive interfaces for monitoring hardware systems.  I happen to love space exploration, so that was the particular use case for this project.  The same principles could be applied in a limitless amount of places though.  Think about interacting with a drone, a 3D printer, or any network of of machines that you want to keep track of simulatneously.  Further, modern web technologies could be used this way in an industrial setting, for monitoring manufacturing ops and logistics.  
+The purpose of this project is demonstrate how modern web technologies can be used to create beautiful, intuitive interfaces for monitoring hardware systems.  I happen to love space exploration, so that was the particular use case for this project.  The same principles could be applied in a limitless amount of places though.  Think about interacting with a drone, a 3D printer, or any network of of machines that you want to keep track of simulatneously.
 
 ##Api interface
 If developing locally, you can interact with the API for Tycho as follows:
