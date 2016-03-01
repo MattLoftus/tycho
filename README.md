@@ -1,5 +1,5 @@
 ##About
-Tycho is a modern user interface for monitoring launch vehicle and spacecraft data.  On the front end, AngularJS is used for the application, the Three.js WebGL library is used for the trajectory and fuel tank grapics, and CSS (Flexbox) and Sass are used for all of the positioning and styling.  On the back end, the server is build with Node.js and Express, and we have a MySQL database.  See the table of contents for more information.
+Tycho is a modern user interface for monitoring launch vehicle and spacecraft data.  You can find the application deployed at [loftus.xyz/tycho](loftus.xyz/tycho). On the front end, AngularJS is used for the application, the Three.js WebGL library is used for the trajectory and fuel tank grapics, and CSS (Flexbox) and Sass are used for all of the positioning and styling.  On the back end, the server is build with Node.js and Express, and we have a MySQL database.  See the table of contents for more information.
 
 ##Table of contents
 1. [Getting started](#getting-started)
